@@ -9,25 +9,39 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-
+    let locationManager = CLLocationManager()
+    var userLat: Double = 0
+    var userLong: Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        centerMapOnLocation(location: initialLocation)
+        
+        locationManager.delegate = self
+        mapView.delegate = self
+        
+        centerOnUser()
     }
 
+    func centerOnUser() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
     
-    // Center map on user's location
-    let initialLocation = CLLocation(latitude: 42.407132, longitude: 71.121332)
-    let regionRadius: CLLocationDistance = 1000
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
-                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.first!
+        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         mapView.setRegion(coordinateRegion, animated: true)
+        userLat = location.coordinate.latitude
+        userLong = location.coordinate.longitude
+        
+        locationManager.stopUpdatingLocation()
     }
-
 
 }
 
