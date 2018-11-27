@@ -11,6 +11,32 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+    // Create Hamburger Menu
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var menuViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var menuViewLeading: NSLayoutConstraint!
+    var menuIsVisible = false
+    
+    @IBAction func showMenu(_ sender: Any) {
+        if !menuIsVisible {
+            menuViewLeading.constant = 0
+            menuViewTrailing.constant = 0
+            menuIsVisible = true
+        } else {
+            menuViewLeading.constant = 0
+            menuViewTrailing.constant = -375
+            menuIsVisible = false
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:  {
+            self.view.layoutIfNeeded()
+        }) { (animationComplete) in
+            print(self.menuViewTrailing.constant)
+        }
+        
+    }
+    
+    // Create Map
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     var userLat: Double = 0
@@ -18,6 +44,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set menu off screen
+        menuViewTrailing.constant = -375
         
         locationManager.delegate = self
         mapView.delegate = self
