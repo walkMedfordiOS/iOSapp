@@ -21,10 +21,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         locationManager.delegate = self
         mapView.delegate = self
+        mapView.showsUserLocation = true
         
         centerOnUser()
     }
 
+    // Center map on User's location
     func centerOnUser() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
@@ -33,6 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    // Update User's location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first!
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
@@ -42,6 +45,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         locationManager.stopUpdatingLocation()
     }
+    
+    // When crosshairs button is tapped recenter map on user's location
+    @IBAction func reCenter(_ sender: Any) {
+        centerOnUser()
+    }
+    
 
 }
 
