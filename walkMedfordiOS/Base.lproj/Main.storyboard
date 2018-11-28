@@ -96,39 +96,41 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Route to take around Medford" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-Fz-wjF">
                                 <rect key="frame" x="26" y="249" width="323" height="102"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="102" id="GeD-Nr-l86"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="usp-gM-Sej">
                                 <rect key="frame" x="111" y="88" width="153" height="153"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="153" id="Sbh-HA-eN5"/>
-                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bo-Uq-R9Q">
-                                <rect key="frame" x="42.5" y="382" width="290" height="41"/>
+                                <rect key="frame" x="41" y="382" width="293" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="lfZ-15-KtV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Scholars Walk          1.2 miles">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Scholars Walk  2.3 miles"/>
                                 <connections>
-                                    <action selector="routeChosen:" destination="wBi-lF-mel" eventType="touchUpInside" id="fKq-bK-sLY"/>
+                                    <action selector="scholarsWalkChosen:" destination="wBi-lF-mel" eventType="touchUpInside" id="KGK-VA-4Zl"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="KpX-6B-f41"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dTR-Fz-wjF" firstAttribute="centerX" secondItem="5bo-Uq-R9Q" secondAttribute="centerX" id="0QG-RD-x98"/>
-                            <constraint firstItem="dTR-Fz-wjF" firstAttribute="centerX" secondItem="usp-gM-Sej" secondAttribute="centerX" id="0fs-QD-zPo"/>
-                            <constraint firstItem="dTR-Fz-wjF" firstAttribute="top" secondItem="usp-gM-Sej" secondAttribute="bottom" constant="8" symbolic="YES" id="ULp-vz-6Gp"/>
-                            <constraint firstItem="usp-gM-Sej" firstAttribute="top" secondItem="M8m-Dm-22G" secondAttribute="top" constant="68" id="e6m-o5-flu"/>
-                            <constraint firstItem="usp-gM-Sej" firstAttribute="leading" secondItem="M8m-Dm-22G" secondAttribute="leading" constant="111" id="gkc-jG-iya"/>
-                            <constraint firstItem="M8m-Dm-22G" firstAttribute="bottom" secondItem="dTR-Fz-wjF" secondAttribute="bottom" constant="316" id="hZ4-xr-UYh"/>
-                            <constraint firstItem="M8m-Dm-22G" firstAttribute="bottom" secondItem="5bo-Uq-R9Q" secondAttribute="bottom" constant="244" id="jh5-HK-4zK"/>
-                            <constraint firstItem="5bo-Uq-R9Q" firstAttribute="centerX" secondItem="L2a-ys-efx" secondAttribute="centerX" id="lbF-sn-vRD"/>
-                            <constraint firstItem="dTR-Fz-wjF" firstAttribute="leading" secondItem="M8m-Dm-22G" secondAttribute="leading" constant="26" id="neD-WA-ltc"/>
+                            <constraint firstItem="usp-gM-Sej" firstAttribute="leading" secondItem="M8m-Dm-22G" secondAttribute="leading" constant="111" id="29F-EE-o25"/>
+                            <constraint firstItem="usp-gM-Sej" firstAttribute="centerX" secondItem="dTR-Fz-wjF" secondAttribute="centerX" id="36g-KW-zwh"/>
+                            <constraint firstItem="usp-gM-Sej" firstAttribute="top" secondItem="M8m-Dm-22G" secondAttribute="top" constant="68" id="Ce2-BY-ZDE"/>
+                            <constraint firstItem="5bo-Uq-R9Q" firstAttribute="top" secondItem="dTR-Fz-wjF" secondAttribute="bottom" constant="31" id="F37-Rm-cBG"/>
+                            <constraint firstItem="usp-gM-Sej" firstAttribute="centerX" secondItem="L2a-ys-efx" secondAttribute="centerX" id="WyN-EE-dBp"/>
+                            <constraint firstItem="dTR-Fz-wjF" firstAttribute="top" secondItem="usp-gM-Sej" secondAttribute="bottom" constant="8" symbolic="YES" id="cCa-3T-e1U"/>
+                            <constraint firstItem="5bo-Uq-R9Q" firstAttribute="leading" secondItem="M8m-Dm-22G" secondAttribute="leading" constant="41" id="goX-Fs-Bwi"/>
+                            <constraint firstItem="dTR-Fz-wjF" firstAttribute="centerX" secondItem="5bo-Uq-R9Q" secondAttribute="centerX" id="u4D-4J-3CL"/>
+                            <constraint firstItem="M8m-Dm-22G" firstAttribute="bottom" secondItem="5bo-Uq-R9Q" secondAttribute="bottom" constant="244" id="yCZ-Oo-taK"/>
+                            <constraint firstItem="dTR-Fz-wjF" firstAttribute="leading" secondItem="M8m-Dm-22G" secondAttribute="leading" constant="26" id="zWA-t4-taI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M8m-Dm-22G"/>
                     </view>

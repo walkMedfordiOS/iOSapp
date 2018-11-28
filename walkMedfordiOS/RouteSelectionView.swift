@@ -10,10 +10,25 @@ import UIKit
 
 class RouteSelectionView: UIViewController {
 
+    let routes = Routes()
+    var desiredRoute = [(Latitude: Double,Longitude: Double)]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    @IBAction func scholarsWalkChosen(_ sender: Any) {
+        desiredRoute = routes.ScholarsWalkRoute
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is ViewController
+        {
+            let vc = segue.destination as? ViewController
+            vc?.desiredRoute = routes.ScholarsWalkRoute
+        }
+    }
     
     
     

@@ -36,9 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:  {
             self.view.layoutIfNeeded()
-        }) { (animationComplete) in
-            print(self.menuViewTrailing.constant)
-        }
+        })
         
     }
     
@@ -47,6 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let locationManager = CLLocationManager()
     var userLat: Double = 0
     var userLong: Double = 0
+     var desiredRoute = [(Latitude: Double,Longitude: Double)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,13 +54,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         menuViewTrailing.constant = -375
         chooseRoutesTrailing.constant = 0
         
+        // Set up Map
         locationManager.delegate = self
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsScale = true
-    
-        addRoute()
         centerOnUser()
+        
+        // Show selected route on Map
+        if !desiredRoute.isEmpty {
+            addRoute(route: desiredRoute)
+        }
     }
 
     // Center map on User's location
@@ -90,32 +93,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     // Plot a route on the map
-    func addRoute() {
-        let routes = Routes()
-        let route = routes.ScholarsWalkRoute
-        
-        addSourceDestinationAnnotations(route: route)
-        
+    func addRoute(route: [(Latitude: Double,Longitude: Double)]) {
         if route.count == 0 {
             return
         }
         var pointsToUse: [CLLocationCoordinate2D] = []
         
-        var isRouteChanged = false
-        
         for i in 0...route.count-1 {
             let x = CLLocationDegrees(route[i].Latitude)
             let y = CLLocationDegrees(route[i].Longitude)
             pointsToUse += [CLLocationCoordinate2DMake(x, y)]
-            if i > 0 {
-                if pointsToUse[i-1].latitude != pointsToUse[i].latitude || pointsToUse[i-1].longitude != pointsToUse[i].longitude  {
-                    isRouteChanged = true
-                }
-            }
         }
         
         let myPolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: route.count)
         mapView.addOverlay(myPolyline)
+        
+        addSourceDestinationAnnotations(route: route)
     }
     
     // Add markers for start and end of route
