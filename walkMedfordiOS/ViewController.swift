@@ -18,6 +18,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var chooseRoutesTrailing: NSLayoutConstraint!
     var menuIsVisible = false
     
+    // Shift view when hamburger icon is tapped
     @IBAction func showMenu(_ sender: Any) {
         if !menuIsVisible {
             menuViewLeading.constant = 0
@@ -57,7 +58,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.delegate = self
         mapView.delegate = self
         mapView.showsUserLocation = true
-        
+        mapView.showsScale = true
+    
+        addRoute()
         centerOnUser()
     }
 
@@ -84,6 +87,69 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // When crosshairs button is tapped recenter map on user's location
     @IBAction func reCenter(_ sender: Any) {
         centerOnUser()
+    }
+    
+    // Plot a route on the map
+    func addRoute() {
+        let routes = Routes()
+        let route = routes.ScholarsWalkRoute
+        
+        addSourceDestinationAnnotations(route: route)
+        
+        if route.count == 0 {
+            return
+        }
+        var pointsToUse: [CLLocationCoordinate2D] = []
+        
+        var isRouteChanged = false
+        
+        for i in 0...route.count-1 {
+            let x = CLLocationDegrees(route[i].Latitude)
+            let y = CLLocationDegrees(route[i].Longitude)
+            pointsToUse += [CLLocationCoordinate2DMake(x, y)]
+            if i > 0 {
+                if pointsToUse[i-1].latitude != pointsToUse[i].latitude || pointsToUse[i-1].longitude != pointsToUse[i].longitude  {
+                    isRouteChanged = true
+                }
+            }
+        }
+        
+        let myPolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: route.count)
+        mapView.addOverlay(myPolyline)
+    }
+    
+    // Add markers for start and end of route
+    func addSourceDestinationAnnotations(route: [(Latitude: Double,Longitude: Double)]) {
+        let sourceLocation = CLLocationCoordinate2D(latitude: route[0].Latitude, longitude: route[0].Longitude)
+        let destinationLocation = CLLocationCoordinate2D(latitude: route[route.count - 1].Latitude, longitude: route[route.count - 1].Longitude)
+        
+        let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
+        let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
+        
+        let sourceAnnotation = MKPointAnnotation()
+        sourceAnnotation.title = "Start"
+        
+        if let location = sourcePlacemark.location {
+            sourceAnnotation.coordinate = location.coordinate
+        }
+        
+        let destinationAnnotation = MKPointAnnotation()
+        destinationAnnotation.title = "End"
+        
+        if let location = destinationPlacemark.location {
+            destinationAnnotation.coordinate = location.coordinate
+        }
+        
+        self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
+    }
+    
+    // Format the route line
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.red
+        renderer.lineWidth = 4.0
+        
+        return renderer
     }
     
 
