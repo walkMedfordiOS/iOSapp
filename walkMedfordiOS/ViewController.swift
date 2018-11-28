@@ -12,19 +12,24 @@ import MapKit
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     // Create Hamburger Menu
-    @IBOutlet weak var menuView: UIView!
-    @IBOutlet weak var menuViewTrailing: NSLayoutConstraint!
     @IBOutlet weak var menuViewLeading: NSLayoutConstraint!
+    @IBOutlet weak var menuViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var chooseRoutesLeading: NSLayoutConstraint!
+    @IBOutlet weak var chooseRoutesTrailing: NSLayoutConstraint!
     var menuIsVisible = false
     
     @IBAction func showMenu(_ sender: Any) {
         if !menuIsVisible {
             menuViewLeading.constant = 0
             menuViewTrailing.constant = 0
+            chooseRoutesLeading.constant = 0
+            chooseRoutesTrailing.constant = 0
             menuIsVisible = true
         } else {
             menuViewLeading.constant = 0
             menuViewTrailing.constant = -375
+            chooseRoutesLeading.constant = -375
+            chooseRoutesTrailing.constant = 0
             menuIsVisible = false
         }
         
@@ -47,6 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         // Set menu off screen
         menuViewTrailing.constant = -375
+        chooseRoutesTrailing.constant = 0
         
         locationManager.delegate = self
         mapView.delegate = self

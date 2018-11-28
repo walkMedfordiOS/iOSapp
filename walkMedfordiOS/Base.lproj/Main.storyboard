@@ -32,9 +32,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAf-fu-0ju">
                                 <rect key="frame" x="0.0" y="64" width="150" height="603"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-G2-2Li">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-G2-2Li">
                                         <rect key="frame" x="8" y="8" width="133" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Choose Routes"/>
                                         <connections>
@@ -43,6 +42,12 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jMJ-G2-2Li" firstAttribute="top" secondItem="cAf-fu-0ju" secondAttribute="top" constant="8" id="Hbv-BG-hOC"/>
+                                    <constraint firstAttribute="bottom" secondItem="jMJ-G2-2Li" secondAttribute="bottom" constant="559" id="VNV-SL-L1R"/>
+                                    <constraint firstAttribute="trailing" secondItem="jMJ-G2-2Li" secondAttribute="trailing" constant="9" id="fpb-wH-Ghk"/>
+                                    <constraint firstItem="jMJ-G2-2Li" firstAttribute="leading" secondItem="cAf-fu-0ju" secondAttribute="leading" constant="8" id="muP-Rb-32J"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,8 +75,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="chooseRoutesLeading" destination="muP-Rb-32J" id="b6w-MA-bBd"/>
+                        <outlet property="chooseRoutesTrailing" destination="fpb-wH-Ghk" id="Ecx-s9-03z"/>
                         <outlet property="mapView" destination="uGw-9e-3XN" id="H9w-xS-U6v"/>
-                        <outlet property="menuView" destination="cAf-fu-0ju" id="L3I-gQ-tDy"/>
                         <outlet property="menuViewLeading" destination="Zbz-95-pJD" id="ODb-uJ-AvE"/>
                         <outlet property="menuViewTrailing" destination="e6c-i7-zfI" id="VHv-aj-Bis"/>
                     </connections>
