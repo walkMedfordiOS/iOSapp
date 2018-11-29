@@ -11,14 +11,17 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    // Create Hamburger Menu
+    // Global Variables for Hamburger Menu
     @IBOutlet weak var menuViewLeading: NSLayoutConstraint!
     @IBOutlet weak var menuViewTrailing: NSLayoutConstraint!
     @IBOutlet weak var chooseRoutesLeading: NSLayoutConstraint!
     @IBOutlet weak var chooseRoutesTrailing: NSLayoutConstraint!
     var menuIsVisible = false
     
-    // Shift view when hamburger icon is tapped
+    /*
+     Purpose: To shift the menuView when hamburger icon is tapped
+     Notes: Currently have to individually shift menuView and button
+    */
     @IBAction func showMenu(_ sender: Any) {
         if !menuIsVisible {
             menuViewLeading.constant = 0
@@ -40,21 +43,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
     
-    // Create Map
+    // Global Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     var userLat: Double = 0
     var userLong: Double = 0
     var desiredRoute = [(Latitude: Double,Longitude: Double)]()
-    
     // Variables for two different polylines, one for route another for directions to route
     //var routePolyline : MKPolyline
     //var directionsToRoutePolyline : MKPolyline
     
+    /*
+     Purpose: To call functions when view is loaded
+     Notes: Need to figure out how to initialize polylines
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set menu off screen
+        // Set menuView off screen
         menuViewTrailing.constant = -375
         chooseRoutesTrailing.constant = 0
         
@@ -75,7 +81,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
 
-    // Center map on User's location
+    /*
+     Purpose: To center the map on the user
+     Notes:
+     */
     func centerOnUser() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
@@ -84,7 +93,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    // Update User's location
+    /*
+     Purpose: To update the user's location while moving around the map
+     Notes:
+     */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first!
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
@@ -95,12 +107,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.stopUpdatingLocation()
     }
     
-    // When crosshairs button is tapped recenter map on user's location
+    /*
+     Purpose: To recenter the map on the user when crosshairs button is tapped
+     Notes:
+     */
     @IBAction func reCenter(_ sender: Any) {
         centerOnUser()
     }
     
-    // Plot a route on the map
+    /*
+     Purpose: To add the desired route to the map
+     Notes: Need to change to use global variables (routePolyline)
+     */
     func addRoute(route: [(Latitude: Double,Longitude: Double)]) {
         if route.count == 0 {
             return
@@ -122,7 +140,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         addLandmarks()
     }
     
-    // Add markers for start and end of route
+    /*
+     Purpose: To add annotations to the start and end of the desired route
+     Notes: Need to create a custom class for start/end annotations
+     */
     func addSourceDestinationAnnotations(route: [(Latitude: Double,Longitude: Double)]) {
         let sourceLocation = CLLocationCoordinate2D(latitude: route[0].Latitude, longitude: route[0].Longitude)
         let destinationLocation = CLLocationCoordinate2D(latitude: route[route.count - 1].Latitude, longitude: route[route.count - 1].Longitude)
@@ -147,7 +168,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
     }
     
-    // Format the route line
+    /*
+     Purpose: To format the route lines
+     Notes: Need to switch to global variables in order to use different colors for routes
+     */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.lineWidth = 4.0
@@ -165,13 +189,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return renderer
     }
     
-    
-    
-    
-    
-    
-    // shitty way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
+    /*
+     Purpose: To add landmarks along the route
+     Notes: Shitty way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
+            Also loop to add landmarks from an array
+     */
     func addLandmarks() {
+        // Adds Royall House
         var sourceLocation = CLLocationCoordinate2D(latitude: 42.412382, longitude: -71.111524)
         var sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         var sourceAnnotation = MKPointAnnotation()
@@ -183,10 +207,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         self.mapView.showAnnotations([sourceAnnotation], animated: true )
         
-        
-        
-        
-        
+        // Adds John Ciardi's House
         sourceLocation = CLLocationCoordinate2D(latitude: 42.417404, longitude: -71.114892)
         sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         sourceAnnotation = MKPointAnnotation()
@@ -198,11 +219,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         self.mapView.showAnnotations([sourceAnnotation], animated: true )
         
-        
-        
-        
-        
-        
+        // Adds James Curtis House
         sourceLocation = CLLocationCoordinate2D(latitude: 42.412961, longitude: -71.110786)
         sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         sourceAnnotation = MKPointAnnotation()
@@ -214,13 +231,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         self.mapView.showAnnotations([sourceAnnotation], animated: true )
         
-        
-        
-        
-        
-        
-        
-        
+        // Adds Tufts Park
         sourceLocation = CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229)
         sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         sourceAnnotation = MKPointAnnotation()
@@ -233,31 +244,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.mapView.showAnnotations([sourceAnnotation], animated: true )
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // Reformat to add route from user's location to desiredRoute
+    /*
+     Purpose: To add route from user's location to start of desired route
+     Notes: Reformat to add route from user's location to start of desiredRoute
+     */
     func addRouteToScholarsWalk() {
         let sourceLocation = CLLocationCoordinate2D(latitude: 42.406906, longitude: -71.117560)
         let destinationLocation = CLLocationCoordinate2D(latitude: 42.401613, longitude: -71.106343)
