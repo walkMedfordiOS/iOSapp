@@ -48,12 +48,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let locationManager = CLLocationManager()
     var desiredRoute = [CLLocationCoordinate2D]()
     // Variables for two different polylines, one for route another for directions to route
-    //var routePolyline : MKPolyline
-    //var directionsToRoutePolyline : MKPolyline
+    var routePolyline : MKPolyline?
+    var directionsToRoutePolyline : MKPolyline?
     
     /*
      Purpose: To call functions when view is loaded
-     Notes: Need to figure out how to initialize polylines
+     Notes: 
      */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +70,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         centerOnUser()
         
         // Initialize polylines
-        //routePolyline = MKPolyline(coordinates: &desiredRoute, count: desiredRoute.count)
-        //directionsToRoutePolyline = MKPolyline(coordinates: &desiredRoute, count: desiredRoute.count)
+        var polyInit = desiredRoute
+        if desiredRoute.isEmpty {
+            polyInit = [CLLocationCoordinate2D(latitude: 0, longitude: 0)]
+        }
+        routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
+        directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
         
         // Show selected route on Map
         if !desiredRoute.isEmpty {
@@ -113,7 +117,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     /*
      Purpose: To add the desired route to the map
-     Notes: Need to change to use global variables (routePolyline)
+     Notes:
      */
     func addRoute(route: [CLLocationCoordinate2D]) {
         if route.count == 0 {
@@ -127,10 +131,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             pointsToUse += [CLLocationCoordinate2DMake(x, y)]
         }
         
-        // Change to use global variables of polylines
-        let routePolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: route.count)
-        mapView.addOverlay(routePolyline)
+        // Create route polyline
+        routePolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: route.count)
+        mapView.addOverlay(routePolyline!)
         
+        // Add annotations, landmarks, and directions to start
         addSourceDestinationAnnotations(route: route)
         addRouteFromUserToStart()
         addLandmarks()
@@ -166,21 +171,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     /*
      Purpose: To format the route lines
-     Notes: Need to switch to global variables in order to use different colors for routes
+     Notes:
      */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.lineWidth = 4.0
-        renderer.strokeColor = UIColor.red
 
-        // Change format of Routes array to be CLLocation2D so this can be used for different colors
-//        if overlay is MKPolyline {
-//            if overlay as? MKPolyline == routePolyline {
-//                renderer.strokeColor = UIColor.red
-//            } else if overlay as? MKPolyline == directionsToRoutePolyline {
-//                renderer.strokeColor = UIColor.blue
-//            }
-//        }
+        if overlay is MKPolyline {
+            if overlay as? MKPolyline == routePolyline {
+                renderer.strokeColor = UIColor.red
+            } else if overlay as? MKPolyline == directionsToRoutePolyline {
+                renderer.strokeColor = UIColor.blue
+            }
+        }
         
         return renderer
     }
@@ -272,11 +275,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 return
             }
             
-            
-            // Chang to use global variable
+            // Sets up polyline on Map
             let route = response.routes[0]
-            let directionsToRoutePolyline = route.polyline
-            self.mapView.addOverlay((directionsToRoutePolyline), level: MKOverlayLevel.aboveRoads)
+            self.directionsToRoutePolyline = route.polyline
+            self.mapView.addOverlay((self.directionsToRoutePolyline!), level: MKOverlayLevel.aboveRoads)
             
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
