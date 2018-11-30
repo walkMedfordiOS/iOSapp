@@ -47,13 +47,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     var desiredRoute = [CLLocationCoordinate2D]()
-    // Variables for two different polylines, one for route another for directions to route
     var routePolyline : MKPolyline?
     var directionsToRoutePolyline : MKPolyline?
     
     /*
      Purpose: To call functions when view is loaded
-     Notes: 
+     Notes:
      */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -231,16 +230,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.mapView.showAnnotations([sourceAnnotation], animated: true )
         
         // Adds Tufts Park
-        sourceLocation = CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229)
-        sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
-        sourceAnnotation = MKPointAnnotation()
-        sourceAnnotation.title = "Tufts Park"
+//        sourceLocation = CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229)
+//        sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
+//        sourceAnnotation = MKPointAnnotation()
+//        sourceAnnotation.title = "Tufts Park"
+//
+//        if let location = sourcePlacemark.location {
+//            sourceAnnotation.coordinate = location.coordinate
+//        }
+//
+//        self.mapView.showAnnotations([sourceAnnotation], animated: true )
         
-        if let location = sourcePlacemark.location {
-            sourceAnnotation.coordinate = location.coordinate
-        }
         
-        self.mapView.showAnnotations([sourceAnnotation], animated: true )
+        
+        
+        
+        let landmarkAnnotation = LandmarkAnnotation(title: "Tufts Park",
+                                                    coordinate: CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229))
+        self.mapView.addAnnotation(landmarkAnnotation)
+        
+        
+        
+        
     }
     
     /*
