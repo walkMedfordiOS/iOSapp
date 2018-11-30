@@ -46,9 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // Global Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var userLat: Double = 0
-    var userLong: Double = 0
-    var desiredRoute = [(Latitude: Double,Longitude: Double)]()
+    var desiredRoute = [CLLocationCoordinate2D]()
     // Variables for two different polylines, one for route another for directions to route
     //var routePolyline : MKPolyline
     //var directionsToRoutePolyline : MKPolyline
@@ -101,8 +99,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let location = locations.first!
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         mapView.setRegion(coordinateRegion, animated: true)
-        userLat = location.coordinate.latitude
-        userLong = location.coordinate.longitude
         
         locationManager.stopUpdatingLocation()
     }
@@ -119,15 +115,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      Purpose: To add the desired route to the map
      Notes: Need to change to use global variables (routePolyline)
      */
-    func addRoute(route: [(Latitude: Double,Longitude: Double)]) {
+    func addRoute(route: [CLLocationCoordinate2D]) {
         if route.count == 0 {
             return
         }
         var pointsToUse: [CLLocationCoordinate2D] = []
         
         for i in 0...route.count-1 {
-            let x = CLLocationDegrees(route[i].Latitude)
-            let y = CLLocationDegrees(route[i].Longitude)
+            let x = CLLocationDegrees(route[i].latitude)
+            let y = CLLocationDegrees(route[i].longitude)
             pointsToUse += [CLLocationCoordinate2DMake(x, y)]
         }
         
@@ -136,7 +132,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.addOverlay(routePolyline)
         
         addSourceDestinationAnnotations(route: route)
-        addRouteToScholarsWalk()
+        addRouteFromUserToStart()
         addLandmarks()
     }
     
@@ -144,9 +140,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      Purpose: To add annotations to the start and end of the desired route
      Notes: Need to create a custom class for start/end annotations
      */
-    func addSourceDestinationAnnotations(route: [(Latitude: Double,Longitude: Double)]) {
-        let sourceLocation = CLLocationCoordinate2D(latitude: route[0].Latitude, longitude: route[0].Longitude)
-        let destinationLocation = CLLocationCoordinate2D(latitude: route[route.count - 1].Latitude, longitude: route[route.count - 1].Longitude)
+    func addSourceDestinationAnnotations(route: [CLLocationCoordinate2D]) {
+        let sourceLocation = CLLocationCoordinate2D(latitude: route[0].latitude, longitude: route[0].longitude)
+        let destinationLocation = CLLocationCoordinate2D(latitude: route[route.count - 1].latitude, longitude: route[route.count - 1].longitude)
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
@@ -191,7 +187,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     /*
      Purpose: To add landmarks along the route
-     Notes: Shitty way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
+     Notes: Bad way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
             Also loop to add landmarks from an array
      */
     func addLandmarks() {
@@ -246,11 +242,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     /*
      Purpose: To add route from user's location to start of desired route
-     Notes: Reformat to add route from user's location to start of desiredRoute
+     Notes:
      */
-    func addRouteToScholarsWalk() {
-        let sourceLocation = CLLocationCoordinate2D(latitude: 42.406906, longitude: -71.117560)
-        let destinationLocation = CLLocationCoordinate2D(latitude: 42.401613, longitude: -71.106343)
+    func addRouteFromUserToStart() {
+        let sourceLocation = locationManager.location!.coordinate
+        let destinationLocation = desiredRoute[0]
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)

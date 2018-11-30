@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class RouteSelectionView: UIViewController {
 
     // Global Variables for selected route
     let routes = Routes()
-    var desiredRoute = [(Latitude: Double,Longitude: Double)]()
+    var desiredRoute = [CLLocationCoordinate2D]()
     
     /*
      Purpose: To call any functions when view is loaded
