@@ -271,6 +271,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-
+    // Added a comment to see if Macincloud works
 }
 
