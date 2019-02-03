@@ -12,10 +12,7 @@ import MapKit
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     // Global Variables for Hamburger Menu
-    @IBOutlet weak var menuViewLeading: NSLayoutConstraint!
-    @IBOutlet weak var menuViewTrailing: NSLayoutConstraint!
-    @IBOutlet weak var chooseRoutesLeading: NSLayoutConstraint!
-    @IBOutlet weak var chooseRoutesTrailing: NSLayoutConstraint!
+    @IBOutlet weak var hamburgerMenuView: UIView!
     var menuIsVisible = false
     
     /*
@@ -24,18 +21,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     */
     @IBAction func showMenu(_ sender: Any) {
         if !menuIsVisible {
-            menuViewLeading.constant = 0
-            menuViewTrailing.constant = 0
-            chooseRoutesLeading.constant = 0
-            chooseRoutesTrailing.constant = 0
-            menuIsVisible = true
+            hamburgerMenuView.isHidden = true
         } else {
-            menuViewLeading.constant = 0
-            menuViewTrailing.constant = -375
-            chooseRoutesLeading.constant = -375
-            chooseRoutesTrailing.constant = 0
-            menuIsVisible = false
+            hamburgerMenuView.isHidden = false
         }
+        menuIsVisible = !menuIsVisible
         
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:  {
             self.view.layoutIfNeeded()
@@ -58,8 +48,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewDidLoad()
         
         // Set menuView off screen
-        menuViewTrailing.constant = -375
-        chooseRoutesTrailing.constant = 0
+        //menuViewTrailing.constant = -375
+        //chooseRoutesTrailing.constant = 0
         
         // Set up Map
         locationManager.delegate = self
@@ -230,21 +220,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.mapView.showAnnotations([sourceAnnotation], animated: true )
         
         // Adds Tufts Park
-//        sourceLocation = CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229)
-//        sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
-//        sourceAnnotation = MKPointAnnotation()
-//        sourceAnnotation.title = "Tufts Park"
-//
-//        if let location = sourcePlacemark.location {
-//            sourceAnnotation.coordinate = location.coordinate
-//        }
-//
-//        self.mapView.showAnnotations([sourceAnnotation], animated: true )
-        
-        
-        
-        
-        
         let landmarkAnnotation = LandmarkAnnotation(title: "Tufts Park",
                                                     coordinate: CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229))
         self.mapView.addAnnotation(landmarkAnnotation)
