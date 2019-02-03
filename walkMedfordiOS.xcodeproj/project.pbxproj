@@ -15,6 +15,7 @@
 		650DD95521ACEA3D00AEBDD7 /* RouteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD95421ACEA3D00AEBDD7 /* RouteSelectionView.swift */; };
 		650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD95621AF13C300AEBDD7 /* Routes.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
+		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		650DD95421ACEA3D00AEBDD7 /* RouteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectionView.swift; sourceTree = "<group>"; };
 		650DD95621AF13C300AEBDD7 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
+		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */,
 				650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */,
 				650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */,
+				B8393BF62204D7FB006A2F66 /* ARView.swift */,
 				650DD94E21AC8F0A00AEBDD7 /* Info.plist */,
 			);
 			path = walkMedfordiOS;
@@ -149,6 +152,7 @@
 				655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */,
 				650DD95521ACEA3D00AEBDD7 /* RouteSelectionView.swift in Sources */,
 				650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */,
+				B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

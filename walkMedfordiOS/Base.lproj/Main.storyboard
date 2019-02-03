@@ -215,6 +215,7 @@
         <image name="logo" width="314" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="CEZ-8H-wEm"/>
         <segue reference="KpX-6B-f41"/>
     </inferredMetricsTieBreakers>
 </document>
