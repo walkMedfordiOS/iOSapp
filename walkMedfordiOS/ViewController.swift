@@ -20,10 +20,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      Notes: Currently have to individually shift menuView and button
     */
     @IBAction func showMenu(_ sender: Any) {
-        if !menuIsVisible {
-            hamburgerMenuView.isHidden = true
-        } else {
+        if (!menuIsVisible) {
             hamburgerMenuView.isHidden = false
+        } else {
+            hamburgerMenuView.isHidden = true
         }
         menuIsVisible = !menuIsVisible
         
@@ -48,8 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewDidLoad()
         
         // Set menuView off screen
-        //menuViewTrailing.constant = -375
-        //chooseRoutesTrailing.constant = 0
+        hamburgerMenuView.isHidden = true
         
         // Set up Map
         locationManager.delegate = self
