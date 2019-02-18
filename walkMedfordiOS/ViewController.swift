@@ -17,7 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     /*
      Purpose: To shift the menuView when hamburger icon is tapped
-     Notes: Currently have to individually shift menuView and button
+     Notes: 
     */
     @IBAction func showMenu(_ sender: Any) {
         if (!menuIsVisible) {
@@ -39,6 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var desiredRoute = [CLLocationCoordinate2D]()
     var routePolyline : MKPolyline?
     var directionsToRoutePolyline : MKPolyline?
+    var arrayOfRoutes: [MKRoute]?
     
     /*
      Purpose: To call functions when view is loaded
@@ -120,8 +121,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         // Create route polyline
-        routePolyline = MKGeodesicPolyline(coordinates: &pointsToUse, count: route.count)
+        routePolyline = MKPolyline(coordinates: &pointsToUse, count: route.count)
         mapView.addOverlay(routePolyline!)
+        
+        // Create a walkable route
+        let request: MKDirections.Request = MKDirections.Request()
+        
+        request.source = route[0].mapItem
+        request.destination = route[1].mapItem
+        request.requestsAlternateRoutes = true
+        request.transportType = .Walking
+
+        let directions = MKDirections(request: request)
+        directions.calculateDirectionsWithCompletionHandler ({
+            (response: MKDirections.Response?, error: NSError?) in
+            if let routeResponse = response?.routes {
+                
+            } else if let _ = error {
+                
+            }
+        })
         
         // Add annotations, landmarks, and directions to start
         addSourceDestinationAnnotations(route: route)
@@ -182,42 +201,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             Also loop to add landmarks from an array
      */
     func addLandmarks() {
-        // Adds Royall House
-        var sourceLocation = CLLocationCoordinate2D(latitude: 42.412382, longitude: -71.111524)
-        var sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
-        var sourceAnnotation = MKPointAnnotation()
-        sourceAnnotation.title = "Royall House and Slave Quarters"
-        
-        if let location = sourcePlacemark.location {
-            sourceAnnotation.coordinate = location.coordinate
-        }
-        
-        self.mapView.showAnnotations([sourceAnnotation], animated: true )
-        
-        // Adds John Ciardi's House
-        sourceLocation = CLLocationCoordinate2D(latitude: 42.417404, longitude: -71.114892)
-        sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
-        sourceAnnotation = MKPointAnnotation()
-        sourceAnnotation.title = "Poet John Ciardi's House"
-        
-        if let location = sourcePlacemark.location {
-            sourceAnnotation.coordinate = location.coordinate
-        }
-        
-        self.mapView.showAnnotations([sourceAnnotation], animated: true )
-        
-        // Adds James Curtis House
-        sourceLocation = CLLocationCoordinate2D(latitude: 42.412961, longitude: -71.110786)
-        sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
-        sourceAnnotation = MKPointAnnotation()
-        sourceAnnotation.title = "James Curtis House"
-        
-        if let location = sourcePlacemark.location {
-            sourceAnnotation.coordinate = location.coordinate
-        }
-        
-        self.mapView.showAnnotations([sourceAnnotation], animated: true )
-        
         // Adds Tufts Park
         let landmarkAnnotation = LandmarkAnnotation(title: "Tufts Park",
                                                     coordinate: CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229))

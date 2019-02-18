@@ -48,6 +48,7 @@
 			children = (
 				650DD94121AC8F0900AEBDD7 /* walkMedfordiOS */,
 				650DD94021AC8F0900AEBDD7 /* Products */,
+				6584F526221B31AB00737CB1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +75,13 @@
 				650DD94E21AC8F0A00AEBDD7 /* Info.plist */,
 			);
 			path = walkMedfordiOS;
+			sourceTree = "<group>";
+		};
+		6584F526221B31AB00737CB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +116,11 @@
 				TargetAttributes = {
 					650DD93E21AC8F0900AEBDD7 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -308,7 +321,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = walkMedford.walkMedfordiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -326,7 +339,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = walkMedford.walkMedfordiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
