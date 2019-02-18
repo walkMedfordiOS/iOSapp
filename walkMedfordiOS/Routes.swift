@@ -11,8 +11,8 @@ import CoreLocation
 
 class Routes {
     let ScholarsWalkRoute = [
-        CLLocationCoordinate2D(latitude: 42.401835, longitude: -71.108129),
-        CLLocationCoordinate2D(latitude: 42.412287, longitude: -71.111855),
-        CLLocationCoordinate2D(latitude: 42.417487, longitude: -71.116506)
+        Landmark(title: "Tufts Park", latitude: 42.401835, longitude: -71.108129, description: "A nice park"),
+        Landmark(title: "Royall House & Slave Quarters", latitude: 42.412287, longitude: -71.111855, description: "A house"),
+        Landmark(title: "Poet John Ciardi's House", latitude: 42.417487, longitude: -71.116506, description: "Another house")
     ]
 }

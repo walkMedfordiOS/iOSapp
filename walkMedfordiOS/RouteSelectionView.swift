@@ -13,7 +13,7 @@ class RouteSelectionView: UIViewController {
 
     // Global Variables for selected route
     let routes = Routes()
-    var desiredRoute = [CLLocationCoordinate2D]()
+    var desiredRoute = [Landmark]()
     
     /*
      Purpose: To call any functions when view is loaded

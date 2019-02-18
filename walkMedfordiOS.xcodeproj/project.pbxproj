@@ -15,6 +15,7 @@
 		650DD95521ACEA3D00AEBDD7 /* RouteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD95421ACEA3D00AEBDD7 /* RouteSelectionView.swift */; };
 		650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD95621AF13C300AEBDD7 /* Routes.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
+		6584F52A221B625500737CB1 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584F529221B625500737CB1 /* Landmark.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		650DD95421ACEA3D00AEBDD7 /* RouteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectionView.swift; sourceTree = "<group>"; };
 		650DD95621AF13C300AEBDD7 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
+		6584F529221B625500737CB1 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +67,7 @@
 			children = (
 				650DD94221AC8F0900AEBDD7 /* AppDelegate.swift */,
 				650DD94421AC8F0900AEBDD7 /* ViewController.swift */,
+				6584F529221B625500737CB1 /* Landmark.swift */,
 				650DD94621AC8F0900AEBDD7 /* Main.storyboard */,
 				650DD95421ACEA3D00AEBDD7 /* RouteSelectionView.swift */,
 				650DD95621AF13C300AEBDD7 /* Routes.swift */,
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6584F52A221B625500737CB1 /* Landmark.swift in Sources */,
 				650DD94521AC8F0900AEBDD7 /* ViewController.swift in Sources */,
 				650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */,
 				655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */,

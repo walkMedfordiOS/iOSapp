@@ -36,7 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // Global Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var desiredRoute = [CLLocationCoordinate2D]()       // User's selected route
+    var desiredRoute = [Landmark]()       // User's selected route
     var routePolyline : MKPolyline?                     // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
@@ -58,7 +58,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         centerOnUser()
         
         // Initialize polylines
-        var polyInit = desiredRoute
+        var polyInit = [CLLocationCoordinate2D]()
+        for landmark in desiredRoute {
+            polyInit.append(landmark.location)
+        }
+        
         if desiredRoute.isEmpty {
             polyInit = [CLLocationCoordinate2D(latitude: 0, longitude: 0)]
         }
@@ -112,11 +116,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             return
         }
         
-        // Create a walkable route
+        // Create a walkable route, loop through and set walking paths between consecutive landmarks
         for index in 0..<(desiredRoute.count-1) {
         
-            let sourceLocation = desiredRoute[index]
-            let destinationLocation = desiredRoute[index + 1]
+            let sourceLocation = desiredRoute[index].location
+            let destinationLocation = desiredRoute[index + 1].location
             
             let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
             let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
@@ -152,7 +156,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         // Add annotations, landmarks, and directions to start
-        addSourceDestinationAnnotations()
+        //addStartEndAnnotations()
         addRouteFromUserToStart()
         addLandmarkAnnotations()
     }
@@ -161,9 +165,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      Purpose: To add annotations to the start and end of the desired route
      Notes: Need to create a custom class for start/end annotations
      */
-    func addSourceDestinationAnnotations() {
-        let sourceLocation = CLLocationCoordinate2D(latitude: desiredRoute[0].latitude, longitude: desiredRoute[0].longitude)
-        let destinationLocation = CLLocationCoordinate2D(latitude: desiredRoute[desiredRoute.count - 1].latitude, longitude: desiredRoute[desiredRoute.count - 1].longitude)
+    func addStartEndAnnotations() {
+        let sourceLocation = desiredRoute[0].location
+        let destinationLocation = desiredRoute[desiredRoute.count - 1].location
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
@@ -210,10 +214,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             Also loop to add landmarks from an array
      */
     func addLandmarkAnnotations() {
-        // Adds Tufts Park
-        let landmarkAnnotation = LandmarkAnnotation(title: "Tufts Park",
-                                                    coordinate: CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229))
-        self.mapView.addAnnotation(landmarkAnnotation)
+        
+        for landmark in desiredRoute {
+            let landmarkAnnotation = LandmarkAnnotation(title: landmark.title,
+                                                        coordinate: landmark.location)
+            self.mapView.addAnnotation(landmarkAnnotation)
+        }
     }
     
     /*
@@ -222,7 +228,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      */
     func addRouteFromUserToStart() {
         let sourceLocation = locationManager.location!.coordinate
-        let destinationLocation = desiredRoute[0]
+        let destinationLocation = desiredRoute[0].location
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
