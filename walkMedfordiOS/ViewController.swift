@@ -36,10 +36,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // Global Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var desiredRoute = [CLLocationCoordinate2D]()
-    var routePolyline : MKPolyline?
-    var directionsToRoutePolyline : MKPolyline?
-    var arrayOfRoutes: [MKRoute]?
+    var desiredRoute = [CLLocationCoordinate2D]()       // User's selected route
+    var routePolyline : MKPolyline?                     // Line for route that visits landmarks
+    var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
     /*
      Purpose: To call functions when view is loaded
@@ -67,8 +66,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
         
         // Show selected route on Map
-        if !desiredRoute.isEmpty {
-            addRoute(route: desiredRoute)
+        if (!desiredRoute.isEmpty) {
+            addRoute()
         }
     }
 
@@ -108,53 +107,63 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      Purpose: To add the desired route to the map
      Notes:
      */
-    func addRoute(route: [CLLocationCoordinate2D]) {
-        if route.count == 0 {
+    func addRoute() {
+        if (desiredRoute.count == 0) {
             return
         }
-        var pointsToUse: [CLLocationCoordinate2D] = []
-        
-        for i in 0...route.count-1 {
-            let x = CLLocationDegrees(route[i].latitude)
-            let y = CLLocationDegrees(route[i].longitude)
-            pointsToUse += [CLLocationCoordinate2DMake(x, y)]
-        }
-        
-        // Create route polyline
-        routePolyline = MKPolyline(coordinates: &pointsToUse, count: route.count)
-        mapView.addOverlay(routePolyline!)
         
         // Create a walkable route
-        let request: MKDirections.Request = MKDirections.Request()
+        for index in 0..<(desiredRoute.count-1) {
         
-        request.source = route[0].mapItem
-        request.destination = route[1].mapItem
-        request.requestsAlternateRoutes = true
-        request.transportType = .Walking
-
-        let directions = MKDirections(request: request)
-        directions.calculateDirectionsWithCompletionHandler ({
-            (response: MKDirections.Response?, error: NSError?) in
-            if let routeResponse = response?.routes {
+            let sourceLocation = desiredRoute[index]
+            let destinationLocation = desiredRoute[index + 1]
+            
+            let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
+            let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
+            
+            let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+            let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+            
+            let directionRequest = MKDirections.Request()
+            directionRequest.source = sourceMapItem
+            directionRequest.destination = destinationMapItem
+            directionRequest.transportType = .walking
+            
+            let directions = MKDirections(request: directionRequest)
+            
+            directions.calculate {
+                (response, error) -> Void in
                 
-            } else if let _ = error {
+                guard let response = response else {
+                    if let error = error {
+                        print("Error: \(error)")
+                    }
+                    return
+                }
                 
+                // Sets up polyline on Map
+                let route = response.routes[0]
+                self.routePolyline = route.polyline
+                self.mapView.addOverlay((self.routePolyline!), level: MKOverlayLevel.aboveRoads)
+                
+                let rect = route.polyline.boundingMapRect
+                self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
-        })
+        }
         
         // Add annotations, landmarks, and directions to start
-        addSourceDestinationAnnotations(route: route)
+        addSourceDestinationAnnotations()
         addRouteFromUserToStart()
-        addLandmarks()
+        addLandmarkAnnotations()
     }
     
     /*
      Purpose: To add annotations to the start and end of the desired route
      Notes: Need to create a custom class for start/end annotations
      */
-    func addSourceDestinationAnnotations(route: [CLLocationCoordinate2D]) {
-        let sourceLocation = CLLocationCoordinate2D(latitude: route[0].latitude, longitude: route[0].longitude)
-        let destinationLocation = CLLocationCoordinate2D(latitude: route[route.count - 1].latitude, longitude: route[route.count - 1].longitude)
+    func addSourceDestinationAnnotations() {
+        let sourceLocation = CLLocationCoordinate2D(latitude: desiredRoute[0].latitude, longitude: desiredRoute[0].longitude)
+        let destinationLocation = CLLocationCoordinate2D(latitude: desiredRoute[desiredRoute.count - 1].latitude, longitude: desiredRoute[desiredRoute.count - 1].longitude)
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
@@ -200,15 +209,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      Notes: Bad way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
             Also loop to add landmarks from an array
      */
-    func addLandmarks() {
+    func addLandmarkAnnotations() {
         // Adds Tufts Park
         let landmarkAnnotation = LandmarkAnnotation(title: "Tufts Park",
                                                     coordinate: CLLocationCoordinate2D(latitude: 42.401953, longitude: -71.108229))
         self.mapView.addAnnotation(landmarkAnnotation)
-        
-        
-        
-        
     }
     
     /*
