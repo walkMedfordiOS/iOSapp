@@ -16,6 +16,8 @@
 		650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD95621AF13C300AEBDD7 /* Routes.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
 		6584F52A221B625500737CB1 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584F529221B625500737CB1 /* Landmark.swift */; };
+		B829D714221CE02400E6E02B /* WorkoutDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B829D713221CE02400E6E02B /* WorkoutDataStore.swift */; };
+		B829D716221CE10C00E6E02B /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B829D715221CE10C00E6E02B /* Workout.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 		B84577DA221B80480067ED0F /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84577D9221B80480067ED0F /* HealthView.swift */; };
 		B84577DC221B81370067ED0F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84577DB221B81370067ED0F /* HealthKit.framework */; };
@@ -33,6 +35,8 @@
 		650DD95621AF13C300AEBDD7 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		6584F529221B625500737CB1 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		B829D713221CE02400E6E02B /* WorkoutDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDataStore.swift; sourceTree = "<group>"; };
+		B829D715221CE10C00E6E02B /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		B84577D9221B80480067ED0F /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
 		B84577DB221B81370067ED0F /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -73,8 +77,10 @@
 			children = (
 				B84577DD221B81370067ED0F /* walkMedfordiOS.entitlements */,
 				650DD94221AC8F0900AEBDD7 /* AppDelegate.swift */,
+				B829D713221CE02400E6E02B /* WorkoutDataStore.swift */,
 				650DD94421AC8F0900AEBDD7 /* ViewController.swift */,
 				B84577D9221B80480067ED0F /* HealthView.swift */,
+				B829D715221CE10C00E6E02B /* Workout.swift */,
 				6584F529221B625500737CB1 /* Landmark.swift */,
 				650DD94621AC8F0900AEBDD7 /* Main.storyboard */,
 				650DD95421ACEA3D00AEBDD7 /* RouteSelectionView.swift */,
@@ -178,9 +184,11 @@
 				6584F52A221B625500737CB1 /* Landmark.swift in Sources */,
 				650DD94521AC8F0900AEBDD7 /* ViewController.swift in Sources */,
 				650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */,
+				B829D716221CE10C00E6E02B /* Workout.swift in Sources */,
 				655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */,
 				B84577DA221B80480067ED0F /* HealthView.swift in Sources */,
 				650DD95521ACEA3D00AEBDD7 /* RouteSelectionView.swift in Sources */,
+				B829D714221CE02400E6E02B /* WorkoutDataStore.swift in Sources */,
 				650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */,
 				B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */,
 			);
