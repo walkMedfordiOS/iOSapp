@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD94221AC8F0900AEBDD7 /* AppDelegate.swift */; };
-		650DD94521AC8F0900AEBDD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD94421AC8F0900AEBDD7 /* ViewController.swift */; };
+		650DD94521AC8F0900AEBDD7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD94421AC8F0900AEBDD7 /* MapView.swift */; };
 		650DD94821AC8F0900AEBDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94621AC8F0900AEBDD7 /* Main.storyboard */; };
 		650DD94A21AC8F0A00AEBDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */; };
 		650DD94D21AC8F0A00AEBDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */; };
@@ -16,13 +16,15 @@
 		650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD95621AF13C300AEBDD7 /* Routes.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
 		6584F52A221B625500737CB1 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584F529221B625500737CB1 /* Landmark.swift */; };
+		6584F52C221B6C3C00737CB1 /* EventCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584F52B221B6C3C00737CB1 /* EventCreationView.swift */; };
+		65D6D7D52221DD290078891B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D6D7D42221DD290078891B /* Route.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		650DD93F21AC8F0900AEBDD7 /* walkMedfordiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = walkMedfordiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650DD94221AC8F0900AEBDD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		650DD94421AC8F0900AEBDD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		650DD94421AC8F0900AEBDD7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		650DD94721AC8F0900AEBDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		650DD94C21AC8F0A00AEBDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +33,8 @@
 		650DD95621AF13C300AEBDD7 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		6584F529221B625500737CB1 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		6584F52B221B6C3C00737CB1 /* EventCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreationView.swift; sourceTree = "<group>"; };
+		65D6D7D42221DD290078891B /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,12 +70,14 @@
 			isa = PBXGroup;
 			children = (
 				650DD94221AC8F0900AEBDD7 /* AppDelegate.swift */,
-				650DD94421AC8F0900AEBDD7 /* ViewController.swift */,
+				650DD94421AC8F0900AEBDD7 /* MapView.swift */,
 				6584F529221B625500737CB1 /* Landmark.swift */,
 				650DD94621AC8F0900AEBDD7 /* Main.storyboard */,
+				6584F52B221B6C3C00737CB1 /* EventCreationView.swift */,
 				650DD95421ACEA3D00AEBDD7 /* RouteSelectionView.swift */,
 				650DD95621AF13C300AEBDD7 /* Routes.swift */,
 				655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */,
+				65D6D7D42221DD290078891B /* Route.swift */,
 				650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */,
 				650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */,
 				B8393BF62204D7FB006A2F66 /* ARView.swift */,
@@ -163,10 +169,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D6D7D52221DD290078891B /* Route.swift in Sources */,
 				6584F52A221B625500737CB1 /* Landmark.swift in Sources */,
-				650DD94521AC8F0900AEBDD7 /* ViewController.swift in Sources */,
+				650DD94521AC8F0900AEBDD7 /* MapView.swift in Sources */,
 				650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */,
 				655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */,
+				6584F52C221B6C3C00737CB1 /* EventCreationView.swift in Sources */,
 				650DD95521ACEA3D00AEBDD7 /* RouteSelectionView.swift in Sources */,
 				650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */,
 				B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     // Global Variables for Hamburger Menu
     @IBOutlet weak var hamburgerMenuView: UIView!
@@ -33,10 +33,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
     
+    // Variables for HTTP Requests
+    let defaultSession = URLSession(configuration: .default)
+    var dataTask: URLSessionDataTask?
+    
     // Global Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var desiredRoute = [Landmark]()       // User's selected route
+    var desiredRoute = [Landmark]()                     // User's selected route
     var routePolyline : MKPolyline?                     // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
@@ -73,6 +77,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if (!desiredRoute.isEmpty) {
             addRoute()
         }
+        
+        wakeUpServer()
     }
 
     /*
@@ -105,6 +111,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      */
     @IBAction func reCenter(_ sender: Any) {
         centerOnUser()
+    }
+    
+    /*
+     Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView
+     Notes:
+     */
+    func wakeUpServer() {
+        dataTask?.cancel()
+        
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/") {
+            urlComponents.query = ""
+            
+            guard let url = urlComponents.url else { return }
+            dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                defer { self.dataTask = nil }
+                
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                } else if let _ = data,
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 {
+                  
+                    print("Server is woken up")
+                }
+            }
+        }
+        
+        dataTask?.resume()
     }
     
     /*
