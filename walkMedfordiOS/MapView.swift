@@ -5,20 +5,19 @@
 //  Created by Sam Hollingsworth on 11/26/18.
 //  Copyright © 2018 walkMedford. All rights reserved.
 //
-
 import UIKit
 import MapKit
 
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-
+    
     // Global Variables for Hamburger Menu
     @IBOutlet weak var hamburgerMenuView: UIView!
     var menuIsVisible = false
     
     /*
      Purpose: To shift the menuView when hamburger icon is tapped
-     Notes: 
-    */
+     Notes:
+     */
     @IBAction func showMenu(_ sender: Any) {
         if (!menuIsVisible) {
             hamburgerMenuView.isHidden = false
@@ -80,7 +79,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         wakeUpServer()
     }
-
+    
     /*
      Purpose: To center the map on the user
      Notes:
@@ -132,7 +131,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                 } else if let _ = data,
                     let response = response as? HTTPURLResponse,
                     response.statusCode == 200 {
-                  
+                    
                     print("Server is woken up")
                 }
             }
@@ -152,7 +151,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         // Create a walkable route, loop through and set walking paths between consecutive landmarks
         for index in 0..<(desiredRoute.count-1) {
-        
+            
             let sourceLocation = desiredRoute[index].location
             let destinationLocation = desiredRoute[index + 1].location
             
@@ -230,7 +229,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.lineWidth = 4.0
-
+        
         if overlay is MKPolyline {
             if overlay as? MKPolyline == routePolyline {
                 renderer.strokeColor = UIColor.red
@@ -245,7 +244,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     /*
      Purpose: To add landmarks along the route
      Notes: Bad way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
-            Also loop to add landmarks from an array
+     Also loop to add landmarks from an array
      */
     func addLandmarkAnnotations() {
         
@@ -300,4 +299,3 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // Added a comment to see if Macincloud works
 }
-
