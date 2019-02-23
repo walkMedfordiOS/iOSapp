@@ -49,7 +49,10 @@ class RouteSelectionView: UIViewController {
                     response.statusCode == 200 {
                     
                     // Do something with results
-                    print("Data: \(String(data: data, encoding: .utf8))")
+                    let result = String(describing: String(data: data, encoding: .utf8))
+                    print("Data: \(result)")
+                    
+
                 }
             }
         }
