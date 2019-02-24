@@ -5,6 +5,7 @@
 //  Created by Sam Hollingsworth on 11/28/18.
 //  Copyright © 2018 walkMedford. All rights reserved.
 //
+
 import Foundation
 import CoreLocation
 

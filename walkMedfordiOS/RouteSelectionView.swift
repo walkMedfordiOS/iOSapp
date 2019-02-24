@@ -5,18 +5,15 @@
 //  Created by Sam Hollingsworth on 11/26/18.
 //  Copyright © 2018 walkMedford. All rights reserved.
 //
+
 import UIKit
 import CoreLocation
 
 class RouteSelectionView: UIViewController {
-    
+
     // Global Variables for selected route
     let routes = Routes()
     var desiredRoute = [Landmark]()
-    
-    // Variables for HTTP Requests
-    let defaultSession = URLSession(configuration: .default)
-    var dataTask: URLSessionDataTask?
     
     /*
      Purpose: To call any functions when view is loaded
@@ -24,40 +21,6 @@ class RouteSelectionView: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getRoutes()
-    }
-    
-    /*
-     Purpose: To get all the walking routes
-     Notes:
-     */
-    func getRoutes() {
-        dataTask?.cancel()
-        
-        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/allRoutes") {
-            urlComponents.query = ""
-            
-            guard let url = urlComponents.url else { return }
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil }
-                
-                if let error = error {
-                    print("DataTask error: " + error.localizedDescription + "\n")
-                } else if let data = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    
-                    // Do something with results
-                    let result = String(describing: String(data: data, encoding: .utf8))
-                    print("Data: \(result)")
-                    
-
-                }
-            }
-        }
-        
-        dataTask?.resume()
     }
     
     /*
@@ -74,14 +37,14 @@ class RouteSelectionView: UIViewController {
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.destination is MapView
+        if segue.destination is ViewController
         {
-            let vc = segue.destination as? MapView
+            let vc = segue.destination as? ViewController
             vc?.desiredRoute = routes.ScholarsWalkRoute
         }
     }
     
     
     
-    
+
 }

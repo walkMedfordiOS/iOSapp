@@ -135,10 +135,10 @@ extension ARView: ARSCNViewDelegate {
         switch name {
         case "Sign":
             node = signNode
-            /*case "Snow Mountain":
-             node = mountainNode
-             case "Trees In the Dark":
-             node = treeNode*/
+        /*case "Snow Mountain":
+            node = mountainNode
+        case "Trees In the Dark":
+            node = treeNode*/
         default:
             break
         }

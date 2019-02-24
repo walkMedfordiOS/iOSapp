@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapView" customModule="walkMedfordiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="walkMedfordiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="99.400299850074973"/>
         </scene>
-        <!--Event Creation View-->
+        <!--View Controller-->
         <scene sceneID="Rjl-5d-DbU">
             <objects>
-                <viewController id="ASi-Qv-6I4" customClass="EventCreationView" customModule="walkMedfordiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ASi-Qv-6I4" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CqE-fH-Zlm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
