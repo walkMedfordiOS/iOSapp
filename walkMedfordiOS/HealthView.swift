@@ -31,76 +31,59 @@
 import UIKit
 import HealthKit
 
-class HealthView: UITableViewController {
-    private enum WorkoutsSegues: String {
-        case showCreateWorkout
-        case finishedCreatingWorkout
-    }
+class HealthView: UIViewController {
     
-    private var workouts: [HKWorkout]?
-    private let prancerciseWorkoutCellID = "PrancerciseWorkoutCell"
     
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .medium
-        return formatter
-    }()
+    @IBOutlet weak var stepsLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        clearsSelectionOnViewWillAppear = false
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        reloadWorkouts()
-    }
-    
-    func reloadWorkouts() {
-        WorkoutDataStore.loadPrancerciseWorkouts { (workouts, error) in
-            self.workouts = workouts
-            self.tableView.reloadData()
-        }
-    }
-}
-
-extension HealthView {
-    override func tableView(_ tableView: UITableView,
-                            numberOfRowsInSection section: Int) -> Int {
-        return workouts?.count ?? 0
-    }
-    
-    override func tableView(_ tableView: UITableView,
-                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let workouts = workouts else {
-            fatalError("""
-               CellForRowAtIndexPath should \
-               not get called if there are no workouts
-               """)
-        }
+    func retrieveStepCount(completion: @escaping (Double) -> Void) {
         
-        //1. Get a cell to display the workout in
-        let cell = tableView.dequeueReusableCell(withIdentifier:
-            prancerciseWorkoutCellID, for: indexPath)
+        //   Define the Step Quantity Type
+        let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
         
-        //2. Get the workout corresponding to this row
-        let workout = workouts[indexPath.row]
+        //   Get the start of the day
+        let date = Date()
+        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+        let newDate = cal.startOfDay(for: date)
         
-        //3. Show the workout's start date in the label
-        cell.textLabel?.text = dateFormatter.string(from: workout.startDate)
+        //  Set the Predicates & Interval
+        let predicate = HKQuery.predicateForSamples(withStart: newDate, end: Date(), options: .strictStartDate)
+        var interval = DateComponents()
+        interval.day = 1
         
-        //4. Show the Calorie burn in the lower label
-        if let caloriesBurned =
-            workout.totalEnergyBurned?.doubleValue(for: .kilocalorie()) {
-            let formattedCalories = String(format: "CaloriesBurned: %.2f",
-                                           caloriesBurned)
+        //  Perform the Query
+        let query = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: newDate as Date, intervalComponents:interval)
+        
+        query.initialResultsHandler = { query, results, error in
             
-            cell.detailTextLabel?.text = formattedCalories
-        } else {
-            cell.detailTextLabel?.text = nil
+            if error != nil {
+                
+                //  Something went Wrong
+                return
+            }
+            
+            if let myResults = results{
+                myResults.enumerateStatistics(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, to: Date()) {
+                    statistics, stop in
+                    
+                    if let quantity = statistics.sumQuantity() {
+                        
+                        let steps = quantity.doubleValue(for: HKUnit.count())
+                        
+                        print("Steps = \(steps)")
+                        completion(steps)
+                        
+                    }
+                }
+            }
         }
-        
-        return cell
+        HKHealthStore().execute(query);
     }
+    
+    @IBAction func showNumberSteps(_ sender: UIButton) {
+        retrieveStepCount(completion: {steps in
+            self.stepsLabel.text = String(format: "%f", steps)
+        })
+    }
+    
 }

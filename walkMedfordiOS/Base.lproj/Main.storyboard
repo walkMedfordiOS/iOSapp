@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uGw-9e-3XN">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="659"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="647" id="exO-hy-4N8"/>
                                 </constraints>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGs-85-wsU">
-                                <rect key="frame" x="321" y="609" width="38" height="38"/>
+                                <rect key="frame" x="321" y="653" width="38" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="38" id="eA7-ol-6Hj"/>
                                 </constraints>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAf-fu-0ju">
-                                <rect key="frame" x="0.0" y="20" width="150" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="150" height="659"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z2l-as-Gdf">
                                         <rect key="frame" x="9" y="8" width="133" height="320"/>
@@ -82,7 +82,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Health Info"/>
                                                 <connections>
-                                                    <segue destination="hRe-t9-hk9" kind="show" id="Rcc-zd-Rxg"/>
+                                                    <segue destination="Awj-cx-ySX" kind="show" id="FAG-vv-Pde"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -330,52 +330,41 @@
             </objects>
             <point key="canvasLocation" x="993" y="812"/>
         </scene>
-        <!--Workouts-->
-        <scene sceneID="8hE-2r-Map">
+        <!--Health View-->
+        <scene sceneID="a7N-3x-O4y">
             <objects>
-                <tableViewController id="hRe-t9-hk9" customClass="HealthView" customModule="walkMedfordiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UU6-5r-Z6U">
+                <viewController id="Awj-cx-ySX" customClass="HealthView" customModule="walkMedfordiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="74f-Ys-g5w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PrancerciseWorkoutCell" textLabel="pfr-a2-rS3" detailTextLabel="cwh-LD-NQr" style="IBUITableViewCellStyleSubtitle" id="pei-cP-GAh">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pei-cP-GAh" id="u1j-ib-r1S">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pfr-a2-rS3">
-                                            <rect key="frame" x="16" y="6" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cwh-LD-NQr">
-                                            <rect key="frame" x="16" y="25.5" width="40.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="hRe-t9-hk9" id="jtT-9l-OGF"/>
-                            <outlet property="delegate" destination="hRe-t9-hk9" id="fLF-Ao-KO9"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Workouts" id="cpQ-xd-ynt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UEM-MZ-6nK"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IEm-Zr-hMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78n-Lq-GhM">
+                                <rect key="frame" x="112" y="318" width="151" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show Calories Burned"/>
+                                <connections>
+                                    <action selector="showNumberSteps:" destination="VIa-mg-aQ3" eventType="touchUpInside" id="XgI-0O-dn9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steps Walked Today: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXU-fO-1Pc">
+                                <rect key="frame" x="16" y="447" width="164" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uoR-3Z-3tG"/>
+                    </view>
+                    <connections>
+                        <outlet property="stepsLabel" destination="FXU-fO-1Pc" id="jCd-eY-UFy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w00-Lh-EJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VIa-mg-aQ3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2785" y="835"/>
+            <point key="canvasLocation" x="2817" y="-598"/>
         </scene>
     </scenes>
     <resources>
@@ -384,7 +373,6 @@
         <image name="logo" width="314" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CEZ-8H-wEm"/>
-        <segue reference="KpX-6B-f41"/>
+        <segue reference="SPJ-DD-mgn"/>
     </inferredMetricsTieBreakers>
 </document>
