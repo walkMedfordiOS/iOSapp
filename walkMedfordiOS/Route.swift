@@ -9,11 +9,13 @@ import Foundation
 import MapKit
 
 class Route {
+    let id: Int
     let name: String
     let description: String
-    let landmarks: [Landmark] = [Landmark]()
+    var landmarks: [Landmark] = [Landmark]()
     
-    init(name: String, description: String) {
+    init(id: Int, name: String, description: String) {
+        self.id = id
         self.name = name
         self.description = description
     }

@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbs-jA-CbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2785" y="99"/>
+            <point key="canvasLocation" x="2817" y="573"/>
         </scene>
         <!--Route Selection View-->
         <scene sceneID="VE5-68-r11">
@@ -207,7 +207,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Route to take around Medford" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-Fz-wjF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choose a Route to take around Medford" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-Fz-wjF">
                                 <rect key="frame" x="26" y="249" width="323" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="GeD-Nr-l86"/>
@@ -216,18 +216,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bo-Uq-R9Q">
-                                <rect key="frame" x="41" y="382" width="293" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="lfZ-15-KtV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Scholars Walk  2.3 miles"/>
-                                <connections>
-                                    <action selector="scholarsWalkChosen:" destination="wBi-lF-mel" eventType="touchUpInside" id="KGK-VA-4Zl"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="KpX-6B-f41"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="usp-gM-Sej">
                                 <rect key="frame" x="112" y="91" width="150" height="150"/>
                             </imageView>
@@ -235,14 +223,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="usp-gM-Sej" firstAttribute="centerX" secondItem="dTR-Fz-wjF" secondAttribute="centerX" id="1PM-3V-91n"/>
-                            <constraint firstItem="5bo-Uq-R9Q" firstAttribute="top" secondItem="dTR-Fz-wjF" secondAttribute="bottom" constant="31" id="F37-Rm-cBG"/>
                             <constraint firstItem="usp-gM-Sej" firstAttribute="centerX" secondItem="L2a-ys-efx" secondAttribute="centerX" id="ICT-ol-eap"/>
-                            <constraint firstItem="usp-gM-Sej" firstAttribute="top" secondItem="M8m-Dm-22G" secondAttribute="top" constant="71" id="StT-mR-Lte"/>
+                            <constraint firstItem="usp-gM-Sej" firstAttribute="top" secondItem="M8m-Dm-22G" secondAttribute="top" constant="27" id="StT-mR-Lte"/>
                             <constraint firstItem="dTR-Fz-wjF" firstAttribute="top" secondItem="usp-gM-Sej" secondAttribute="bottom" constant="8" symbolic="YES" id="b1T-AJ-FwD"/>
-                            <constraint firstItem="5bo-Uq-R9Q" firstAttribute="leading" secondItem="M8m-Dm-22G" secondAttribute="leading" constant="41" id="goX-Fs-Bwi"/>
                             <constraint firstItem="usp-gM-Sej" firstAttribute="leading" secondItem="M8m-Dm-22G" secondAttribute="leading" constant="112" id="qP9-kG-D3w"/>
-                            <constraint firstItem="dTR-Fz-wjF" firstAttribute="centerX" secondItem="5bo-Uq-R9Q" secondAttribute="centerX" id="u4D-4J-3CL"/>
-                            <constraint firstItem="M8m-Dm-22G" firstAttribute="bottom" secondItem="5bo-Uq-R9Q" secondAttribute="bottom" constant="244" id="yCZ-Oo-taK"/>
                             <constraint firstItem="dTR-Fz-wjF" firstAttribute="leading" secondItem="M8m-Dm-22G" secondAttribute="leading" constant="26" id="zWA-t4-taI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M8m-Dm-22G"/>
@@ -250,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scO-8a-Dwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="-393"/>
+            <point key="canvasLocation" x="2013.5999999999999" y="-393.55322338830587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aQ7-xg-s8e">
@@ -364,7 +348,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w00-Lh-EJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VIa-mg-aQ3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2817" y="-598"/>
+            <point key="canvasLocation" x="2817" y="-394"/>
         </scene>
     </scenes>
     <resources>
@@ -372,7 +356,4 @@
         <image name="hamburger" width="30" height="30"/>
         <image name="logo" width="314" height="320"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="SPJ-DD-mgn"/>
-    </inferredMetricsTieBreakers>
 </document>

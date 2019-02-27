@@ -12,7 +12,7 @@ class RouteSelectionView: UIViewController {
     
     // Global Variables for selected route
     var routes = [Route]()
-    var desiredRoute = Route(name: "", description: "")
+    var desiredRoute = Route(id: 0, name: "", description: "")
     
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
@@ -52,9 +52,11 @@ class RouteSelectionView: UIViewController {
                     
                     // Adds routes to array of type Route
                     for (_,subJson):(String, JSON) in json {
-                        let newRoute = Route(name: subJson["route_name"].stringValue, description: subJson["route_description"].stringValue)
+                        let newRoute = Route(id: subJson["route_id"].intValue, name: subJson["route_name"].stringValue, description: subJson["route_description"].stringValue)
                         self.routes.append(newRoute)
                     }
+                    
+                    self.fillRouteTable()
                 }
             }
         }
@@ -63,11 +65,50 @@ class RouteSelectionView: UIViewController {
     }
     
     /*
-     Purpose: To set global variable of selected route
-     Notes: Does not work, finishes after segue
+     Purpose: To populate table with routes
+     Notes:
      */
-    @IBAction func scholarsWalkChosen(_ sender: Any) {
+    func fillRouteTable() {
+        // Fill table with routes
         
+        self.desiredRoute = routes[0]
+        getRouteInfo()
+    }
+    
+    /*
+     Purpose: Get all the landmarks of the chosen route
+     Notes:
+     */
+    func getRouteInfo() {
+        let routeID = self.desiredRoute.id
+        
+        dataTask?.cancel()
+        
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/oneRoute") {
+            urlComponents.query = "route=\(routeID)"
+            
+            guard let url = urlComponents.url else { return }
+            dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                defer { self.dataTask = nil }
+                
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                } else if let data = data,
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 {
+                    
+                    let json = JSON(data)
+                    
+                    // Adds landmarks to array of type Landmark in desiredRoute
+                    for (_,subJson):(String, JSON) in json {
+                        self.desiredRoute.landmarks.append(
+                            Landmark(title: subJson["landmark_name"].stringValue, latitude: subJson["landmark_latitude"].doubleValue, longitude: subJson["landmark_longitude"].doubleValue, description: subJson["landmark_description"].stringValue))
+                    }
+                }
+            }
+        }
+        
+        dataTask?.resume()
     }
     
     /*

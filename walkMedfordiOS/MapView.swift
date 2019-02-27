@@ -39,9 +39,9 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     // Global Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var desiredRoute = Route(name: "", description: "") // User's selected route
-    var routePolyline : MKPolyline?                     // Line for route that visits landmarks
-    var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
+    var desiredRoute = Route(id: 0, name: "", description: "")  // User's selected route
+    var routePolyline : MKPolyline?                             // Line for route that visits landmarks
+    var directionsToRoutePolyline : MKPolyline?                 // Line for user to follow to get to the start of the route
     
     /*
      Purpose: To call functions when view is loaded
