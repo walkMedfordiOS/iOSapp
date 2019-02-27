@@ -11,8 +11,8 @@ import CoreLocation
 class RouteSelectionView: UIViewController {
     
     // Global Variables for selected route
-    let routes = Routes()
-    var desiredRoute = [Landmark]()
+    var routes = [Route]()
+    var desiredRoute = Route(name: "", description: "")
     
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
@@ -48,8 +48,13 @@ class RouteSelectionView: UIViewController {
                     let response = response as? HTTPURLResponse,
                     response.statusCode == 200 {
                     
-                    // Do something with results
-                    print("Data: \(String(data: data, encoding: .utf8))")
+                    let json = JSON(data)
+                    
+                    // Adds routes to array of type Route
+                    for (_,subJson):(String, JSON) in json {
+                        let newRoute = Route(name: subJson["route_name"].stringValue, description: subJson["route_description"].stringValue)
+                        self.routes.append(newRoute)
+                    }
                 }
             }
         }
@@ -62,7 +67,7 @@ class RouteSelectionView: UIViewController {
      Notes: Does not work, finishes after segue
      */
     @IBAction func scholarsWalkChosen(_ sender: Any) {
-        desiredRoute = routes.ScholarsWalkRoute
+        
     }
     
     /*
@@ -74,7 +79,7 @@ class RouteSelectionView: UIViewController {
         if segue.destination is MapView
         {
             let vc = segue.destination as? MapView
-            vc?.desiredRoute = routes.ScholarsWalkRoute
+            vc?.desiredRoute = self.desiredRoute
         }
     }
     

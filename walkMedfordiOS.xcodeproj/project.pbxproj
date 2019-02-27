@@ -11,7 +11,6 @@
 		650DD94821AC8F0900AEBDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94621AC8F0900AEBDD7 /* Main.storyboard */; };
 		650DD94A21AC8F0A00AEBDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */; };
 		650DD94D21AC8F0A00AEBDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */; };
-		650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DD95621AF13C300AEBDD7 /* Routes.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
 		6584A33722245B980070D30E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A33622245B980070D30E /* MapKit.framework */; };
 		65B8CC6C2221E3C000B7C83E /* EventCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC6B2221E3C000B7C83E /* EventCreationView.swift */; };
@@ -22,6 +21,7 @@
 		65B8CC762221E4AD00B7C83E /* RouteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC752221E4AD00B7C83E /* RouteSelectionView.swift */; };
 		65B8CC782221E4EC00B7C83E /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC772221E4EC00B7C83E /* Workout.swift */; };
 		65B8CC7A2221E50B00B7C83E /* WorkoutDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC792221E50B00B7C83E /* WorkoutDataStore.swift */; };
+		65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +32,6 @@
 		650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		650DD94C21AC8F0A00AEBDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		650DD94E21AC8F0A00AEBDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		650DD95621AF13C300AEBDD7 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		6584A33622245B980070D30E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = walkMedfordiOS.entitlements; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		65B8CC752221E4AD00B7C83E /* RouteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectionView.swift; sourceTree = "<group>"; };
 		65B8CC772221E4EC00B7C83E /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		65B8CC792221E50B00B7C83E /* WorkoutDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDataStore.swift; sourceTree = "<group>"; };
+		65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,8 +89,8 @@
 				655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */,
 				65B8CC712221E45600B7C83E /* MapView.swift */,
 				65B8CC732221E49300B7C83E /* Route.swift */,
-				650DD95621AF13C300AEBDD7 /* Routes.swift */,
 				65B8CC752221E4AD00B7C83E /* RouteSelectionView.swift */,
+				65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */,
 				65B8CC772221E4EC00B7C83E /* Workout.swift */,
 				65B8CC792221E50B00B7C83E /* WorkoutDataStore.swift */,
 				650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */,
@@ -191,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65B8CC6C2221E3C000B7C83E /* EventCreationView.swift in Sources */,
-				650DD95721AF13C300AEBDD7 /* Routes.swift in Sources */,
 				65B8CC6E2221E3E100B7C83E /* HealthView.swift in Sources */,
 				65B8CC7A2221E50B00B7C83E /* WorkoutDataStore.swift in Sources */,
 				65B8CC742221E49300B7C83E /* Route.swift in Sources */,
@@ -201,6 +200,7 @@
 				650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */,
 				65B8CC762221E4AD00B7C83E /* RouteSelectionView.swift in Sources */,
 				65B8CC722221E45600B7C83E /* MapView.swift in Sources */,
+				65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */,
 				B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
