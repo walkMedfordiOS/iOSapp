@@ -160,27 +160,22 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
      Purpose: To return to MapView
      Notes:
      */
-    func returnToMap()
-    {
-        let vc = MapView()
-        vc.desiredRoute = self.desiredRoute
+    func returnToMap() {
+        let vc = self.navigationController?.viewControllers[0] as! MapView
+        vc.desiredRoute = desiredRoute
         self.navigationController?.popViewController(animated: true)
+
     }
     
     /*
      Purpose: To send selected route to ViewController so it can be plotted on route
      Notes: Figure out way to send selected route when there are multiple options
      */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is MapView
         {
             let vc = segue.destination as? MapView
             vc?.desiredRoute = self.desiredRoute
         }
     }
-    
-    
-    
-    
 }
