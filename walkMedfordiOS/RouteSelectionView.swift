@@ -27,7 +27,10 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set variables for routeTable
         routeTable.dataSource = self
+        routeTable.allowsSelection = true
+        routeTable.delegate = self
         
         getAllRoutes()
     }
@@ -71,17 +74,25 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     /*
-     Purpose: To set up table and populate with routes
+     Purpose: To specify the number of sections in the table
      Notes:
      */
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    /*
+     Purpose: To specify the number of rows in the table
+     Notes:
+     */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return routes.count
     }
     
+    /*
+     Purpose: To populate the table with routes and their descriptions
+     Notes:
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier")
         
@@ -95,14 +106,14 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
         return cell!
     }
     
+    /*
+     Purpose: To set desiredRoute when a route is chosen
+     Notes:
+     */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("Route selected")
         self.desiredRoute = routes[indexPath.row]
         
         getRouteInfo()
-        
-        
     }
     
     /*
@@ -134,11 +145,26 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
                         self.desiredRoute.landmarks.append(
                             Landmark(title: subJson["landmark_name"].stringValue, latitude: subJson["landmark_latitude"].doubleValue, longitude: subJson["landmark_longitude"].doubleValue, description: subJson["landmark_description"].stringValue))
                     }
+                    
+                    DispatchQueue.main.async {
+                        self.returnToMap()
+                    }
                 }
             }
         }
         
         dataTask?.resume()
+    }
+    
+    /*
+     Purpose: To return to MapView
+     Notes:
+     */
+    func returnToMap()
+    {
+        let vc = MapView()
+        vc.desiredRoute = self.desiredRoute
+        self.navigationController?.popViewController(animated: true)
     }
     
     /*
