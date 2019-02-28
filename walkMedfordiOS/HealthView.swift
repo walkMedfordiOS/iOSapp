@@ -36,7 +36,7 @@ class HealthView: UIViewController {
     
     @IBOutlet weak var stepsLabel: UILabel!
     
-    func retrieveStepCount(completion: @escaping (Double) -> Void) {
+    func retrieveStepCount(completion: @escaping (_ stepRetrieved: Double) -> Void) {
         
         //   Define the Step Quantity Type
         let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
@@ -59,14 +59,17 @@ class HealthView: UIViewController {
             if error != nil {
                 
                 //  Something went Wrong
+                print("wrong")
                 return
             }
             
             if let myResults = results{
+                print("1")
                 myResults.enumerateStatistics(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, to: Date()) {
                     statistics, stop in
                     
                     if let quantity = statistics.sumQuantity() {
+                        print("2")
                         
                         let steps = quantity.doubleValue(for: HKUnit.count())
                         
@@ -81,8 +84,13 @@ class HealthView: UIViewController {
     }
     
     @IBAction func showNumberSteps(_ sender: UIButton) {
+        //self.stepsLabel.text = "Hello1"
+        print("steps")
         retrieveStepCount(completion: {steps in
+            print("steps")
+            self.stepsLabel.text = "Hello!"
             self.stepsLabel.text = String(format: "%f", steps)
+            
         })
     }
     

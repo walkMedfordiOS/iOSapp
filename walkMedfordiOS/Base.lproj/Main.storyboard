@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uGw-9e-3XN">
-                                <rect key="frame" x="0.0" y="64" width="375" height="659"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="647" id="exO-hy-4N8"/>
                                 </constraints>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAf-fu-0ju">
-                                <rect key="frame" x="0.0" y="64" width="150" height="659"/>
+                                <rect key="frame" x="0.0" y="64" width="150" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z2l-as-Gdf">
                                         <rect key="frame" x="9" y="8" width="133" height="320"/>
@@ -345,6 +345,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Show Calories Burned"/>
                                 <connections>
+                                    <action selector="showNumberSteps:" destination="Awj-cx-ySX" eventType="touchUpInside" id="I5m-T7-K6X"/>
                                     <action selector="showNumberSteps:" destination="VIa-mg-aQ3" eventType="touchUpInside" id="XgI-0O-dn9"/>
                                 </connections>
                             </button>
@@ -360,7 +361,7 @@
                         <viewLayoutGuide key="safeArea" id="uoR-3Z-3tG"/>
                     </view>
                     <connections>
-                        <outlet property="stepsLabel" destination="FXU-fO-1Pc" id="jCd-eY-UFy"/>
+                        <outlet property="stepsLabel" destination="FXU-fO-1Pc" id="y9n-es-Jgg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w00-Lh-EJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
