@@ -8,8 +8,7 @@
 import UIKit
 import CoreLocation
 
-class RouteSelectionView: UIViewController {
-    
+class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // Global Variables for selected route
     var routes = [Route]()
     var desiredRoute = Route(id: 0, name: "", description: "")
@@ -18,6 +17,9 @@ class RouteSelectionView: UIViewController {
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
     
+    // Variables for table
+    @IBOutlet weak var routeTable: UITableView!
+    
     /*
      Purpose: To call any functions when view is loaded
      Notes:
@@ -25,14 +27,16 @@ class RouteSelectionView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getRoutes()
+        routeTable.dataSource = self
+        
+        getAllRoutes()
     }
     
     /*
      Purpose: To get all the walking routes
      Notes:
      */
-    func getRoutes() {
+    func getAllRoutes() {
         dataTask?.cancel()
         
         if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/allRoutes") {
@@ -55,8 +59,10 @@ class RouteSelectionView: UIViewController {
                         let newRoute = Route(id: subJson["route_id"].intValue, name: subJson["route_name"].stringValue, description: subJson["route_description"].stringValue)
                         self.routes.append(newRoute)
                     }
-                    
-                    self.fillRouteTable()
+                }
+                
+                DispatchQueue.main.async {
+                    self.routeTable.reloadData()
                 }
             }
         }
@@ -65,14 +71,38 @@ class RouteSelectionView: UIViewController {
     }
     
     /*
-     Purpose: To populate table with routes
+     Purpose: To set up table and populate with routes
      Notes:
      */
-    func fillRouteTable() {
-        // Fill table with routes
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return routes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier")
         
-        self.desiredRoute = routes[0]
+        if cell == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
+        }
+        
+        cell!.textLabel?.text = routes[indexPath.row].name
+        cell!.detailTextLabel?.text = routes[indexPath.row].description
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("Route selected")
+        self.desiredRoute = routes[indexPath.row]
+        
         getRouteInfo()
+        
+        
     }
     
     /*
