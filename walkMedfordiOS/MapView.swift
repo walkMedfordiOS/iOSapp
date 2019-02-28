@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapView.swift
 //  walkMedfordiOS
 //
 //  Created by Sam Hollingsworth on 11/26/18.
@@ -31,6 +31,9 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         })
         
     }
+    
+    // Variable for user information
+    var user: User?
     
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
