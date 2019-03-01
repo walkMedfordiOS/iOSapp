@@ -36,62 +36,56 @@ class HealthView: UIViewController {
     
     @IBOutlet weak var stepsLabel: UILabel!
     
-    func retrieveStepCount(completion: @escaping (_ stepRetrieved: Double) -> Void) {
-        
-        //   Define the Step Quantity Type
-        let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
-        
-        //   Get the start of the day
-        let date = Date()
-        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
-        let newDate = cal.startOfDay(for: date)
-        
-        //  Set the Predicates & Interval
-        let predicate = HKQuery.predicateForSamples(withStart: newDate, end: Date(), options: .strictStartDate)
-        var interval = DateComponents()
-        interval.day = 1
-        
-        //  Perform the Query
-        let query = HKStatisticsCollectionQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: newDate as Date, intervalComponents:interval)
-        
-        query.initialResultsHandler = { query, results, error in
-            
-            if error != nil {
-                
-                //  Something went Wrong
-                print("wrong")
-                return
-            }
-            
-            if let myResults = results{
-                print("1")
-                myResults.enumerateStatistics(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, to: Date()) {
-                    statistics, stop in
-                    
-                    if let quantity = statistics.sumQuantity() {
-                        print("2")
-                        
-                        let steps = quantity.doubleValue(for: HKUnit.count())
-                        
-                        print("Steps = \(steps)")
-                        completion(steps)
-                        
-                    }
-                }
+    let healthStore = HKHealthStore()
+    
+    @IBAction func authorizeHealthData(_ sender: UIButton) {
+        let healthKitTypes: Set = [
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
+        ]
+        healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (_, _) in
+            print("authorized?")
+        }
+        healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (bool, error) in
+            if let e = error {
+                print("oops something went wrong during authorisation \(e.localizedDescription)")
+            } else {
+                print("User has completed the authorization flow")
             }
         }
-        HKHealthStore().execute(query);
+    }
+    
+    func getTodaysSteps(completion: @escaping (Double) -> Void) {
+        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        let now = Date()
+        let startOfDay = Calendar.current.startOfDay(for: now)
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (_, result, error) in
+            var resultCount = 0.0
+            guard let result = result else {
+                print("Failed to fetch steps rate")
+                completion(resultCount)
+                return }
+            if let sum = result.sumQuantity() {
+                resultCount = sum.doubleValue(for: HKUnit.count()) }
+            DispatchQueue.main.async {
+                completion(resultCount) } }
+        healthStore.execute(query)
     }
     
     @IBAction func showNumberSteps(_ sender: UIButton) {
         //self.stepsLabel.text = "Hello1"
-        print("steps")
+        /*print("steps")
         retrieveStepCount(completion: {steps in
             print("steps")
             self.stepsLabel.text = "Hello!"
             self.stepsLabel.text = String(format: "%f", steps)
             
-        })
+        })*/
+        getTodaysSteps { (result) in
+            print("\(result)")
+            DispatchQueue.main.async {
+                self.stepsLabel.text = "\(result)" } }
     }
     
 }
