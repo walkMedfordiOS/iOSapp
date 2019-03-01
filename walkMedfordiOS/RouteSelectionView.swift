@@ -166,16 +166,4 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
         self.performSegue(withIdentifier: "segueFromRouteSelectionViewToMapView", sender: self)
 
     }
-    
-    /*
-     Purpose: To send selected route to ViewController so it can be plotted on route
-     Notes: Figure out way to send selected route when there are multiple options
-     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is MapView
-        {
-            let vc = segue.destination as? MapView
-            vc?.desiredRoute = self.desiredRoute
-        }
-    }
 }
