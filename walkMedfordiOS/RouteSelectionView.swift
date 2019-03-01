@@ -161,9 +161,9 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
      Notes:
      */
     func returnToMap() {
-        let vc = self.navigationController?.viewControllers[0] as! MapView
+        let vc = MapView()
         vc.desiredRoute = desiredRoute
-        self.navigationController?.popViewController(animated: true)
+        self.performSegue(withIdentifier: "segueFromRouteSelectionViewToMapView", sender: self)
 
     }
     

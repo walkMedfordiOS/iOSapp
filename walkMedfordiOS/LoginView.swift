@@ -5,9 +5,10 @@
 //  Created by Sam Hollingsworth on 2/28/19.
 //  Copyright © 2019 walkMedford. All rights reserved.
 //
+
 import UIKit
 
-class LoginView: UIViewController {
+class LoginView: UIViewController, UITextFieldDelegate {
     
     // Variable for user
     var user: User?
@@ -22,6 +23,34 @@ class LoginView: UIViewController {
     
     // Variable for incorrect username/password label
     @IBOutlet weak var incorrectLabel: UILabel!
+    
+    /*
+     Purpose: To set up everything when view is loaded
+     Notes:
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        wakeUpServer()
+        
+        self.usernameTextField.delegate = self
+        self.passwordTextField.delegate = self
+    }
+    
+    /*
+    Purpose: To hide the keyboard when the return key is pressed
+    Notes:
+    */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField == usernameTextField) {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if (textField == passwordTextField) {
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
     
     /*
      Purpose: To check if the user's credentials are correct
@@ -63,7 +92,7 @@ class LoginView: UIViewController {
                         }
                     } else {
                         self.user = User(id: json["user_id"].intValue, username: json["username"].stringValue, admin: json["admin"].boolValue)
-        
+                                                
                         DispatchQueue.main.async {
                             self.correctCredentials()
                         }
@@ -90,6 +119,34 @@ class LoginView: UIViewController {
     func correctCredentials() {
         let vc = MapView()
         vc.user = user
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.performSegue(withIdentifier: "segueFromLoginToMapView", sender: self)
+    }
+    
+    /*
+     Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView
+     Notes:
+     */
+    func wakeUpServer() {
+        dataTask?.cancel()
+        
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/") {
+            urlComponents.query = ""
+            
+            guard let url = urlComponents.url else { return }
+            dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                defer { self.dataTask = nil }
+                
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                } else if let _ = data,
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 {
+                    
+                    print("Server is woken up")
+                }
+            }
+        }
+        
+        dataTask?.resume()
     }
 }

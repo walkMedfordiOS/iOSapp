@@ -71,8 +71,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         if (desiredRoute != nil) {
             addRoute()
         }
-        
-        wakeUpServer()
     }
     
     /*
@@ -105,14 +103,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
-     Purpose: To reload the view when it will appear again
-     Notes:
-     */
-    override func viewWillAppear(_ animated: Bool) {
-        viewDidLoad()
-    }
-    
-    /*
      Purpose: To center the map on the user
      Notes:
      */
@@ -142,34 +132,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      */
     @IBAction func reCenter(_ sender: Any) {
         centerOnUser()
-    }
-    
-    /*
-     Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView
-     Notes:
-     */
-    func wakeUpServer() {
-        dataTask?.cancel()
-        
-        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/") {
-            urlComponents.query = ""
-            
-            guard let url = urlComponents.url else { return }
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil }
-                
-                if let error = error {
-                    print("DataTask error: " + error.localizedDescription + "\n")
-                } else if let _ = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    
-                    print("Server is woken up")
-                }
-            }
-        }
-        
-        dataTask?.resume()
     }
     
     /*

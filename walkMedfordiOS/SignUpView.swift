@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SignUpView: UIViewController {
+class SignUpView: UIViewController, UITextFieldDelegate {
     
     // Variable for user
     var user: User?
@@ -26,6 +26,36 @@ class SignUpView: UIViewController {
     // Variable for warning if credentials are incorrect
     @IBOutlet weak var incorrectUsernameLabel: UILabel!
     @IBOutlet weak var incorrectPasswordsLabel: UILabel!
+    
+    /*
+     Purpose: To load everything
+     Notes:
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.usernameTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.confirmedPasswordTextField.delegate = self
+    }
+    
+    /*
+     Purpose: To hide the keyboard when the return key is pressed
+     Notes:
+     */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField == usernameTextField) {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if (textField == passwordTextField) {
+            textField.resignFirstResponder()
+            confirmedPasswordTextField.becomeFirstResponder()
+        } else if (textField == confirmedPasswordTextField) {
+            textField.resignFirstResponder()
+        }
+        
+        return false
+    }
     
     /*
     Purpose: To check if username is available then create account if so
@@ -80,8 +110,8 @@ class SignUpView: UIViewController {
                     response.statusCode == 200 {
                     
                     let json = JSON(data)
-                    
-                    if (json.boolValue) {
+            
+                    if (json.isEmpty) {
                         DispatchQueue.main.async {
                             self.addUser(username: username, password: password)
                         }
@@ -105,7 +135,7 @@ class SignUpView: UIViewController {
     func addUser(username: String, password: String) {
         dataTask?.cancel()
         
-        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/usernameAvailable") {
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/addUser") {
             urlComponents.query = "username=\(username)&password=\(password)"
             
             guard let url = urlComponents.url else { return }
@@ -153,7 +183,9 @@ class SignUpView: UIViewController {
                     
                     // If user credentials are correct or not
                     if (json.isEmpty) {
-                        // Do something
+                        DispatchQueue.main.async {
+                            self.incorrectUsername()
+                        }
                     } else {
                         self.user = User(id: json["user_id"].intValue, username: json["username"].stringValue, admin: json["admin"].boolValue)
                         
@@ -175,7 +207,7 @@ class SignUpView: UIViewController {
     func toMapView() {
         let vc = MapView()
         vc.user = user
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.performSegue(withIdentifier: "segueFromSignUpToMapView", sender: self)
     }
     
     
