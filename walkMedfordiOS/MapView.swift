@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapView.swift
 //  walkMedfordiOS
 //
 //  Created by Sam Hollingsworth on 11/26/18.
@@ -32,6 +32,9 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
     }
     
+    // Variable for user information
+    var user: User?
+    
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
@@ -39,7 +42,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     // Global Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var desiredRoute = Route(id: 0, name: "", description: "")  // User's selected route
+    var desiredRoute: Route?
+    //var desiredRoute = Route(id: 0, name: "", description: "")  // User's selected route
     var routePolyline : MKPolyline?                             // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?                 // Line for user to follow to get to the start of the route
     
@@ -61,23 +65,41 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         centerOnUser()
         
         // Initialize polylines
-        var polyInit = [CLLocationCoordinate2D]()
-        for landmark in desiredRoute.landmarks {
-            polyInit.append(landmark.location)
-        }
-        
-        if desiredRoute.landmarks.isEmpty {
-            polyInit = [CLLocationCoordinate2D(latitude: 0, longitude: 0)]
-        }
-        routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
-        directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
+        initPolyline()
         
         // Show selected route on Map
-        if (!desiredRoute.landmarks.isEmpty) {
+        if (desiredRoute != nil) {
             addRoute()
         }
+    }
+    
+    /*
+     Purpose: To set up polyline
+     Notes:
+     */
+    func initPolyline() {
+        var polyInit = [CLLocationCoordinate2D]()
         
-        wakeUpServer()
+        if (desiredRoute == nil) {
+            polyInit = [CLLocationCoordinate2D(latitude: 0, longitude: 0)]
+        } else {
+            print(desiredRoute!.name)
+            for landmark in desiredRoute!.landmarks {
+                polyInit.append(landmark.location)
+            }
+        }
+        
+        routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
+        directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
+    }
+    
+    /*
+     Purpose: To hide the menu when the user navigates to another view
+     Notes:
+     */
+    override func viewWillDisappear(_ animated: Bool) {
+        hamburgerMenuView.isHidden = true
+        menuIsVisible = false
     }
     
     /*
@@ -113,47 +135,19 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
-     Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView
-     Notes:
-     */
-    func wakeUpServer() {
-        dataTask?.cancel()
-        
-        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/") {
-            urlComponents.query = ""
-            
-            guard let url = urlComponents.url else { return }
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil }
-                
-                if let error = error {
-                    print("DataTask error: " + error.localizedDescription + "\n")
-                } else if let _ = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    
-                    print("Server is woken up")
-                }
-            }
-        }
-        
-        dataTask?.resume()
-    }
-    
-    /*
      Purpose: To add the desired route to the map
      Notes:
      */
     func addRoute() {
-        if (desiredRoute.landmarks.count == 0) {
+        if (desiredRoute!.landmarks.count == 0) {
             return
         }
         
         // Create a walkable route, loop through and set walking paths between consecutive landmarks
-        for index in 0..<(desiredRoute.landmarks.count-1) {
+        for index in 0..<(desiredRoute!.landmarks.count-1) {
             
-            let sourceLocation = desiredRoute.landmarks[index].location
-            let destinationLocation = desiredRoute.landmarks[index + 1].location
+            let sourceLocation = desiredRoute!.landmarks[index].location
+            let destinationLocation = desiredRoute!.landmarks[index + 1].location
             
             let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
             let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
@@ -199,8 +193,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      Notes: Need to create a custom class for start/end annotations
      */
     func addStartEndAnnotations() {
-        let sourceLocation = desiredRoute.landmarks[0].location
-        let destinationLocation = desiredRoute.landmarks[desiredRoute.landmarks.count - 1].location
+        let sourceLocation = desiredRoute!.landmarks[0].location
+        let destinationLocation = desiredRoute!.landmarks[desiredRoute!.landmarks.count - 1].location
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
@@ -244,11 +238,10 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     /*
      Purpose: To add landmarks along the route
      Notes: Bad way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
-     Also loop to add landmarks from an array
      */
     func addLandmarkAnnotations() {
         
-        for landmark in desiredRoute.landmarks {
+        for landmark in desiredRoute!.landmarks {
             let landmarkAnnotation = LandmarkAnnotation(title: landmark.title,
                                                         coordinate: landmark.location)
             self.mapView.addAnnotation(landmarkAnnotation)
@@ -261,7 +254,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      */
     func addRouteFromUserToStart() {
         let sourceLocation = locationManager.location!.coordinate
-        let destinationLocation = desiredRoute.landmarks[0].location
+        let destinationLocation = desiredRoute!.landmarks[0].location
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
@@ -296,6 +289,4 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
     }
-    
-    // Added a comment to see if Macincloud works
 }
