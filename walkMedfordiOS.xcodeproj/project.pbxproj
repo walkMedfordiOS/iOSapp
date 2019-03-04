@@ -11,8 +11,8 @@
 		650DD94821AC8F0900AEBDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94621AC8F0900AEBDD7 /* Main.storyboard */; };
 		650DD94A21AC8F0A00AEBDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */; };
 		650DD94D21AC8F0A00AEBDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */; };
-		654DBA8B2229CA5400370B50 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654DBA892229CA5300370B50 /* Fabric.framework */; };
 		654DBA8C2229CA5400370B50 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654DBA8A2229CA5400370B50 /* Crashlytics.framework */; };
+		6553DDBF222CA7B3000A82A8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6553DDBE222CA7B3000A82A8 /* Fabric.framework */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
 		6584A33722245B980070D30E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A33622245B980070D30E /* MapKit.framework */; };
 		65972CCE222880EF00B2C005 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65972CCD222880EF00B2C005 /* LoginView.swift */; };
@@ -37,8 +37,8 @@
 		650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		650DD94C21AC8F0A00AEBDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		650DD94E21AC8F0A00AEBDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		654DBA892229CA5300370B50 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = "../../../../Downloads/com.crashlytics.ios-manual 2/Fabric.framework"; sourceTree = "<group>"; };
 		654DBA8A2229CA5400370B50 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		6553DDBE222CA7B3000A82A8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../../../../Downloads/Fabric.framework; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		6584A33622245B980070D30E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = walkMedfordiOS.entitlements; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 				654DBA8C2229CA5400370B50 /* Crashlytics.framework in Frameworks */,
 				6584A33722245B980070D30E /* MapKit.framework in Frameworks */,
 				65BCC5E422278EA60016CA58 /* HealthKit.framework in Frameworks */,
-				654DBA8B2229CA5400370B50 /* Fabric.framework in Frameworks */,
+				6553DDBF222CA7B3000A82A8 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				654DBA8A2229CA5400370B50 /* Crashlytics.framework */,
-				654DBA892229CA5300370B50 /* Fabric.framework */,
+				6553DDBE222CA7B3000A82A8 /* Fabric.framework */,
 				650DD94121AC8F0900AEBDD7 /* walkMedfordiOS */,
 				650DD94021AC8F0900AEBDD7 /* Products */,
 				6584A33322245B7B0070D30E /* Frameworks */,
