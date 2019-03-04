@@ -14,27 +14,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var hamburgerMenuView: UIView!
     var menuIsVisible = false
     
-    /*
-     Purpose: To shift the menuView when hamburger icon is tapped
-     Notes:
-     */
-    @IBAction func showMenu(_ sender: Any) {
-        if (!menuIsVisible) {
-            hamburgerMenuView.isHidden = false
-        } else {
-            hamburgerMenuView.isHidden = true
-        }
-        menuIsVisible = !menuIsVisible
-        
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:  {
-            self.view.layoutIfNeeded()
-        })
-        
-    }
-    
-    // Variable for user information
-    var user: User?
-    
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
@@ -42,10 +21,9 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     // Global Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var desiredRoute: Route?
-    //var desiredRoute = Route(id: 0, name: "", description: "")  // User's selected route
-    var routePolyline : MKPolyline?                             // Line for route that visits landmarks
-    var directionsToRoutePolyline : MKPolyline?                 // Line for user to follow to get to the start of the route
+    var desiredRoute: Route?                            // User's selected route
+    var routePolyline : MKPolyline?                     // Line for route that visits landmarks
+    var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
     /*
      Purpose: To call functions when view is loaded
@@ -53,6 +31,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        wakeUpServer()
         
         // Set menuView off screen
         hamburgerMenuView.isHidden = true
@@ -70,7 +50,35 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         // Show selected route on Map
         if (desiredRoute != nil) {
             addRoute()
+        } else {
+            print("DESIRED ROUTE NIL")
         }
+    }
+    
+    /*
+     Purpose: To hide the menu when the user navigates to another view
+     Notes:
+     */
+    override func viewWillDisappear(_ animated: Bool) {
+        hamburgerMenuView.isHidden = true
+        menuIsVisible = false
+    }
+    
+    /*
+     Purpose: To shift the menuView when hamburger icon is tapped
+     Notes:
+     */
+    @IBAction func showMenu(_ sender: Any) {
+        if (!menuIsVisible) {
+            hamburgerMenuView.isHidden = false
+        } else {
+            hamburgerMenuView.isHidden = true
+        }
+        menuIsVisible = !menuIsVisible
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:  {
+            self.view.layoutIfNeeded()
+        })
     }
     
     /*
@@ -91,15 +99,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
         directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
-    }
-    
-    /*
-     Purpose: To hide the menu when the user navigates to another view
-     Notes:
-     */
-    override func viewWillDisappear(_ animated: Bool) {
-        hamburgerMenuView.isHidden = true
-        menuIsVisible = false
     }
     
     /*
@@ -236,6 +235,32 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
+     Purpose: To format the landmark annotations
+     Notes:
+     */
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+        
+        guard let annotation = annotation as? LandmarkAnnotation else { return nil }
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+        }
+        
+        view.glyphImage = UIImage(named: annotation.imageName ?? "landmark")
+        view.markerTintColor = UIColor.red
+        view.subtitleVisibility = MKFeatureVisibility.visible
+        
+        return view
+    }
+    
+    /*
      Purpose: To add landmarks along the route
      Notes: Bad way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
      */
@@ -243,6 +268,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         for landmark in desiredRoute!.landmarks {
             let landmarkAnnotation = LandmarkAnnotation(title: landmark.title,
+                                                        subtitle: landmark.address,
                                                         coordinate: landmark.location)
             self.mapView.addAnnotation(landmarkAnnotation)
         }
@@ -288,5 +314,33 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
+    }
+    
+    /*
+     Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView
+     Notes:
+     */
+    func wakeUpServer() {
+        dataTask?.cancel()
+        
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/") {
+            urlComponents.query = ""
+            
+            guard let url = urlComponents.url else { return }
+            dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                defer { self.dataTask = nil }
+                
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                } else if let _ = data,
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 {
+                    
+                    print("Server is woken up")
+                }
+            }
+        }
+        
+        dataTask?.resume()
     }
 }

@@ -205,9 +205,7 @@ class SignUpView: UIViewController, UITextFieldDelegate {
      Notes:
      */
     func toMapView() {
-        let vc = MapView()
-        vc.user = user
-        self.performSegue(withIdentifier: "segueFromSignUpToMapView", sender: self)
+        
     }
     
     

@@ -31,8 +31,6 @@ class LoginView: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        wakeUpServer()
-        
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
     }
@@ -117,36 +115,8 @@ class LoginView: UIViewController, UITextFieldDelegate {
      Notes:
      */
     func correctCredentials() {
-        let vc = MapView()
-        vc.user = user
-        self.performSegue(withIdentifier: "segueFromLoginToMapView", sender: self)
-    }
-    
-    /*
-     Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView
-     Notes:
-     */
-    func wakeUpServer() {
-        dataTask?.cancel()
+        self.performSegue(withIdentifier: "segueLoginToEvent", sender: self)
         
-        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/") {
-            urlComponents.query = ""
-            
-            guard let url = urlComponents.url else { return }
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil }
-                
-                if let error = error {
-                    print("DataTask error: " + error.localizedDescription + "\n")
-                } else if let _ = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    
-                    print("Server is woken up")
-                }
-            }
-        }
-        
-        dataTask?.resume()
+        self.performSegue(withIdentifier: "segueLoginToRoute", sender: self)
     }
 }

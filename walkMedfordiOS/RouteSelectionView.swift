@@ -143,7 +143,11 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
                     // Adds landmarks to array of type Landmark in desiredRoute
                     for (_,subJson):(String, JSON) in json {
                         self.desiredRoute.landmarks.append(
-                            Landmark(title: subJson["landmark_name"].stringValue, latitude: subJson["landmark_latitude"].doubleValue, longitude: subJson["landmark_longitude"].doubleValue, description: subJson["landmark_description"].stringValue))
+                            Landmark(title: subJson["landmark_name"].stringValue,
+                                     latitude: subJson["landmark_latitude"].doubleValue,
+                                     longitude: subJson["landmark_longitude"].doubleValue,
+                                     address: subJson["landmark_address"].stringValue,
+                                     description: subJson["landmark_description"].stringValue))
                     }
                     
                     DispatchQueue.main.async {
@@ -163,7 +167,8 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
     func returnToMap() {
         let vc = MapView()
         vc.desiredRoute = desiredRoute
-        self.performSegue(withIdentifier: "segueFromRouteSelectionViewToMapView", sender: self)
-
+        //self.present(vc, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "segueRouteSelectionToMap", sender: self)
+        //navigationController?.pushViewController(vc, animated: true)
     }
 }
