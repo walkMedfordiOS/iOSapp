@@ -442,10 +442,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78n-Lq-GhM">
-                                <rect key="frame" x="112" y="318" width="151" height="31"/>
-                                <state key="normal" title="Show Calories Burned"/>
+                                <rect key="frame" x="120" y="318" width="135" height="31"/>
+                                <state key="normal" title="Show Steps Walked"/>
                                 <connections>
                                     <action selector="showNumberSteps:" destination="VIa-mg-aQ3" eventType="touchUpInside" id="XgI-0O-dn9"/>
+                                    <action selector="showNumberSteps:" destination="Awj-cx-ySX" eventType="touchUpInside" id="obN-K6-3m3"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps Walked Today: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXU-fO-1Pc">
@@ -454,6 +455,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqc-2w-kuH">
+                                <rect key="frame" x="85" y="168" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Authorize Health Data Access"/>
+                                <connections>
+                                    <action selector="authorizeHealthData:" destination="Awj-cx-ySX" eventType="touchUpInside" id="MH5-ND-BIO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -466,7 +475,7 @@
                         <viewLayoutGuide key="safeArea" id="uoR-3Z-3tG"/>
                     </view>
                     <connections>
-                        <outlet property="stepsLabel" destination="FXU-fO-1Pc" id="jCd-eY-UFy"/>
+                        <outlet property="stepsLabel" destination="FXU-fO-1Pc" id="FlB-YQ-7K3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w00-Lh-EJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -585,6 +594,6 @@
         <image name="logo" width="314" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ixS-A8-NDo"/>
+        <segue reference="dXi-nk-QKB"/>
     </inferredMetricsTieBreakers>
 </document>
