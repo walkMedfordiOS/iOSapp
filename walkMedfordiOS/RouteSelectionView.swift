@@ -9,7 +9,8 @@ import UIKit
 import CoreLocation
 
 class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    // Global Variables for selected route
+    
+    // Variables for selected route
     var routes = [Route]()
     var desiredRoute = Route(id: 0, name: "", description: "")
     
@@ -165,10 +166,9 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
      Notes:
      */
     func returnToMap() {
-        let vc = MapView()
+        
+        let vc = self.tabBarController?.viewControllers?[0] as! MapView
         vc.desiredRoute = desiredRoute
-        //self.present(vc, animated: true, completion: nil)
-        self.performSegue(withIdentifier: "segueRouteSelectionToMap", sender: self)
-        //navigationController?.pushViewController(vc, animated: true)
+        tabBarController?.selectedIndex = 0
     }
 }

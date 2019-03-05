@@ -10,10 +10,6 @@ import MapKit
 
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    // Global Variables for Hamburger Menu
-    @IBOutlet weak var hamburgerMenuView: UIView!
-    var menuIsVisible = false
-    
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
@@ -29,13 +25,10 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      Purpose: To call functions when view is loaded
      Notes:
      */
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         wakeUpServer()
-        
-        // Set menuView off screen
-        hamburgerMenuView.isHidden = true
         
         // Set up Map
         locationManager.delegate = self
@@ -53,32 +46,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         } else {
             print("DESIRED ROUTE NIL")
         }
-    }
-    
-    /*
-     Purpose: To hide the menu when the user navigates to another view
-     Notes:
-     */
-    override func viewWillDisappear(_ animated: Bool) {
-        hamburgerMenuView.isHidden = true
-        menuIsVisible = false
-    }
-    
-    /*
-     Purpose: To shift the menuView when hamburger icon is tapped
-     Notes:
-     */
-    @IBAction func showMenu(_ sender: Any) {
-        if (!menuIsVisible) {
-            hamburgerMenuView.isHidden = false
-        } else {
-            hamburgerMenuView.isHidden = true
-        }
-        menuIsVisible = !menuIsVisible
-        
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:  {
-            self.view.layoutIfNeeded()
-        })
     }
     
     /*

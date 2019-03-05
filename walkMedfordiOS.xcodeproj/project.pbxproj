@@ -18,7 +18,6 @@
 		6584A33722245B980070D30E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A33622245B980070D30E /* MapKit.framework */; };
 		65972CCE222880EF00B2C005 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65972CCD222880EF00B2C005 /* LoginView.swift */; };
 		65972CD02228885000B2C005 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65972CCF2228885000B2C005 /* User.swift */; };
-		65972CD222288C2600B2C005 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65972CD122288C2600B2C005 /* SignUpView.swift */; };
 		65972CD42228BD7800B2C005 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65972CD32228BD7800B2C005 /* AuthenticationServices.framework */; };
 		65B8CC6C2221E3C000B7C83E /* EventCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC6B2221E3C000B7C83E /* EventCreationView.swift */; };
 		65B8CC6E2221E3E100B7C83E /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC6D2221E3E100B7C83E /* HealthView.swift */; };
@@ -46,7 +45,6 @@
 		6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = walkMedfordiOS.entitlements; sourceTree = "<group>"; };
 		65972CCD222880EF00B2C005 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		65972CCF2228885000B2C005 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		65972CD122288C2600B2C005 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		65972CD32228BD7800B2C005 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		65B8CC6B2221E3C000B7C83E /* EventCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCreationView.swift; sourceTree = "<group>"; };
 		65B8CC6D2221E3E100B7C83E /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				65B8CC732221E49300B7C83E /* Route.swift */,
 				6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */,
 				65B8CC752221E4AD00B7C83E /* RouteSelectionView.swift */,
-				65972CD122288C2600B2C005 /* SignUpView.swift */,
 				65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */,
 				65972CCF2228885000B2C005 /* User.swift */,
 				650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */,
@@ -249,7 +246,6 @@
 				650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */,
 				65B8CC762221E4AD00B7C83E /* RouteSelectionView.swift in Sources */,
 				65B8CC722221E45600B7C83E /* MapView.swift in Sources */,
-				65972CD222288C2600B2C005 /* SignUpView.swift in Sources */,
 				65972CD02228885000B2C005 /* User.swift in Sources */,
 				65972CCE222880EF00B2C005 /* LoginView.swift in Sources */,
 				65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */,
