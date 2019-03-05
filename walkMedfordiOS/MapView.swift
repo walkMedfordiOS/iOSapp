@@ -188,7 +188,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.lineWidth = 4.0
+        renderer.lineWidth = 6.0
         
         if overlay is MKPolyline {
             if overlay as? MKPolyline == routePolyline {

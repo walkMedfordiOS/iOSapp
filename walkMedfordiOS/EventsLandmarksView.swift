@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EventsLandmarksView: UIViewController {
+class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
@@ -25,6 +25,14 @@ class EventsLandmarksView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set variables for events and landmarks tables
+        eventsTable.dataSource = self
+        eventsTable.allowsSelection = true
+        eventsTable.delegate = self
+        landmarksTable.dataSource = self
+        landmarksTable.allowsSelection = true
+        landmarksTable.delegate = self
         
         getAllEvents()
         getAllLandmarks()
@@ -61,10 +69,10 @@ class EventsLandmarksView: UIViewController {
                                              description: subJson["event_description"].stringValue)
                         self.events.append(newEvent)
                     }
-                }
-                
-                DispatchQueue.main.async {
-                    self.eventsTable.reloadData()
+                    
+                    DispatchQueue.main.async {
+                        self.eventsTable.reloadData()
+                    }
                 }
             }
         }
@@ -103,10 +111,10 @@ class EventsLandmarksView: UIViewController {
                                                    description: subJson["landmark_description"].stringValue)
                         self.landmarks.append(newLandmark)
                     }
-                }
-                
-                DispatchQueue.main.async {
-                    self.landmarksTable.reloadData()
+                    
+                    DispatchQueue.main.async {
+                        self.landmarksTable.reloadData()
+                    }
                 }
             }
         }
@@ -146,11 +154,9 @@ class EventsLandmarksView: UIViewController {
         }
         
         if tableView == eventsTable {
-            print("EVENTS TABLE")
             cell!.textLabel?.text = events[indexPath.row].title
             cell!.detailTextLabel?.text = events[indexPath.row].description
         } else {
-            print("LANDMARKS TABLE")
             cell!.textLabel?.text = landmarks[indexPath.row].title
             cell!.detailTextLabel?.text = landmarks[indexPath.row].description
         }
