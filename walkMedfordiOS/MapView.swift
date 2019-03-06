@@ -81,6 +81,15 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
+     Purpose: To center the map on the user when the center button is tapped
+     Notes:
+     */
+    @IBAction func centerButtonTapped(_ sender: Any) {
+        centerOnUser()
+    }
+    
+    
+    /*
      Purpose: To update the user's location while moving around the map
      Notes:
      */
@@ -277,6 +286,11 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             let route = response.routes[0]
             self.directionsToRoutePolyline = route.polyline
             self.mapView.addOverlay((self.directionsToRoutePolyline!), level: MKOverlayLevel.aboveRoads)
+            
+            // Print directions from user to start
+            for step in route.steps {
+                print(step.instructions)
+            }
             
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)

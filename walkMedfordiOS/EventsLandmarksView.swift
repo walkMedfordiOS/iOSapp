@@ -35,7 +35,6 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
         landmarksTable.delegate = self
         
         getAllEvents()
-        getAllLandmarks()
     }
     
     /*
@@ -69,10 +68,15 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
                                              description: subJson["event_description"].stringValue)
                         self.events.append(newEvent)
                     }
-                    
-                    DispatchQueue.main.async {
-                        self.eventsTable.reloadData()
+
+                    if (self.events.count == 0) {
+                        self.events.append(Event(title: "No events are currently posted", startTime: 0, endTime: 0, landmarkID: 0, description: ""))
                     }
+                }
+                
+                DispatchQueue.main.async {
+                    self.eventsTable.reloadData()
+                    self.getAllLandmarks()
                 }
             }
         }
@@ -111,10 +115,10 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
                                                    description: subJson["landmark_description"].stringValue)
                         self.landmarks.append(newLandmark)
                     }
-                    
-                    DispatchQueue.main.async {
-                        self.landmarksTable.reloadData()
-                    }
+                }
+                
+                DispatchQueue.main.async {
+                    self.landmarksTable.reloadData()
                 }
             }
         }
@@ -149,11 +153,11 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier")
         
-        if cell == nil {
+        if (cell == nil) {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
         }
         
-        if tableView == eventsTable {
+        if (tableView == eventsTable) {
             cell!.textLabel?.text = events[indexPath.row].title
             cell!.detailTextLabel?.text = events[indexPath.row].description
         } else {
@@ -162,6 +166,21 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         return cell!
+    }
+    
+    /*
+     Purpose: To show landmark information when a landmark is chosen
+     Notes:
+     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (tableView == landmarksTable) {
+            let vc = LandmarkView()
+            vc.landmark = landmarks[indexPath.row]
+            print(landmarks[indexPath.row].title)
+            print(vc.landmark!.title)
+            present(vc, animated: true)
+        }
     }
 
 }
