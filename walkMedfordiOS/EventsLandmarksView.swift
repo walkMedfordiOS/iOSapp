@@ -18,6 +18,7 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
     // Variables for Events and Landmarks
     var events = [Event]()
     var landmarks = [Landmark]()
+    var desiredLandmark: Landmark!
     
     // Vraiables for Tables
     @IBOutlet weak var eventsTable: UITableView!
@@ -175,11 +176,16 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if (tableView == landmarksTable) {
-            let vc = LandmarkView()
-            vc.landmark = landmarks[indexPath.row]
-            print(landmarks[indexPath.row].title)
-            print(vc.landmark!.title)
-            present(vc, animated: true)
+            desiredLandmark = landmarks[indexPath.row]
+            performSegue(withIdentifier: "segueEventsLandmarksToLandmark", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueEventsLandmarksToLandmark") {
+            if let destinationVC = segue.destination as? LandmarkView {
+                destinationVC.landmark = desiredLandmark
+            }
         }
     }
 
