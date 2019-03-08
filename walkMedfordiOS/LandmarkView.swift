@@ -15,8 +15,13 @@ class LandmarkView: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    // Selected landmark variable
     var landmark: Landmark!
     
+    /*
+     Purpose: To load variables when view has loaded
+     Notes:
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,5 +29,14 @@ class LandmarkView: UIViewController {
         addressLabel.text = landmark.address
         descriptionLabel.text = landmark.description
     }
+    
+    /*
+     Purpose: To send the user back
+     Notes:
+    */
+    @IBAction func backButton(_ sender: Any) {
 
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
