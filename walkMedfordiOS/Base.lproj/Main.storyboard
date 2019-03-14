@@ -126,6 +126,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="7zj-H2-IDP"/>
                     <connections>
                         <outlet property="mapView" destination="LTc-qe-TRr" id="o5T-28-IER"/>
+                        <segue destination="SKM-wi-3gV" kind="show" identifier="segueMapToLandmark" id="ico-7s-g3i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -601,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBP-Dc-eVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="-1447.8260869565217"/>
+            <point key="canvasLocation" x="2241" y="-1114"/>
         </scene>
     </scenes>
     <resources>
@@ -613,4 +614,7 @@
         <image name="route" width="22.5" height="22.5"/>
         <image name="user" width="22.5" height="22.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ico-7s-g3i"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,9 @@ import MapKit
 
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    // Variable for selected landmark
+    var desiredLandmark: Landmark!
+    
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
@@ -102,14 +105,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
-     Purpose: To recenter the map on the user when crosshairs button is tapped
-     Notes:
-     */
-    @IBAction func reCenter(_ sender: Any) {
-        centerOnUser()
-    }
-    
-    /*
      Purpose: To add the desired route to the map
      Notes:
      */
@@ -156,6 +151,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                 self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
         }
+        
+        centerOnUser()
         
         // Add annotations, landmarks, and directions to start
         //addStartEndAnnotations()
@@ -237,6 +234,33 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
+     Purpose: To show more information when landmark is selected
+     Notes:
+     */
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        for landmark in desiredRoute!.landmarks {
+            if (landmark.title == view.annotation?.title) {
+                desiredLandmark = landmark
+            }
+        }
+        
+        performSegue(withIdentifier: "segueMapToLandmark", sender: self)
+    }
+    
+    /*
+     Purpose: To pass data to next view
+     Notes:
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueMapToLandmark") {
+            if let destinationVC = segue.destination as? LandmarkView {
+                destinationVC.landmark = desiredLandmark
+            }
+        }
+    }
+    
+    /*
      Purpose: To add landmarks along the route
      Notes: Bad way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
      */
@@ -248,6 +272,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                                                         coordinate: landmark.location)
             self.mapView.addAnnotation(landmarkAnnotation)
         }
+        
+        centerOnUser()
     }
     
     /*
