@@ -10,9 +10,6 @@ import MapKit
 
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    // Variable for selected landmark
-    var desiredLandmark: Landmark!
-    
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
@@ -24,6 +21,14 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var routePolyline : MKPolyline?                     // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
+    // Variable for selected landmark
+    var desiredLandmark: Landmark!
+    
+    // Variables for directions
+    @IBOutlet weak var directionsView: UIView!
+    @IBOutlet weak var directionsTextView: UITextView!
+    @IBOutlet weak var directionsButton: UIButton!
+    
     /*
      Purpose: To call functions when view is loaded
      Notes:
@@ -32,6 +37,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         super.viewWillAppear(true)
         
         wakeUpServer()
+        directionsView.isHidden = true
+        directionsButton.isHidden = true
         
         // Set up Map
         locationManager.delegate = self
@@ -314,14 +321,37 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.mapView.addOverlay((self.directionsToRoutePolyline!), level: MKOverlayLevel.aboveRoads)
             
             // Print directions from user to start
+            self.directionsView.isHidden = false
+            self.directionsButton.isHidden = false
+            
             for step in route.steps {
                 print(step.instructions)
+                if (step.instructions != "") {
+                    self.directionsTextView.text += "\(step.instructions) \n"
+                }
             }
             
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
     }
+    
+    /*
+    Purpose: Close directions view
+    Notes:
+    */
+    @IBAction func closeDirectionsButton(_ sender: Any) {
+        directionsView.isHidden = true
+    }
+    
+    /*
+     Purpose: Open directions view
+     Notes:
+     */
+    @IBAction func openDirectionsButton(_ sender: Any) {
+        directionsView.isHidden = false
+    }
+    
     
     /*
      Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView
