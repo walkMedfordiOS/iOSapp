@@ -226,9 +226,9 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             view = dequeuedView
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
         }
         
+        view.canShowCallout = true
         view.glyphImage = UIImage(named: annotation.imageName ?? "landmark")
         view.markerTintColor = UIColor.red
         view.subtitleVisibility = MKFeatureVisibility.visible
