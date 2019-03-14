@@ -59,26 +59,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
-     Purpose: To set up polyline
-     Notes:
-     */
-    func initPolyline() {
-        var polyInit = [CLLocationCoordinate2D]()
-        
-        if (desiredRoute == nil) {
-            polyInit = [CLLocationCoordinate2D(latitude: 0, longitude: 0)]
-        } else {
-            print(desiredRoute!.name)
-            for landmark in desiredRoute!.landmarks {
-                polyInit.append(landmark.location)
-            }
-        }
-        
-        routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
-        directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
-    }
-    
-    /*
      Purpose: To center the map on the user
      Notes:
      */
@@ -109,6 +89,26 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         mapView.setRegion(coordinateRegion, animated: true)
         
         locationManager.stopUpdatingLocation()
+    }
+    
+    /*
+     Purpose: To set up polyline
+     Notes:
+     */
+    func initPolyline() {
+        var polyInit = [CLLocationCoordinate2D]()
+        
+        if (desiredRoute == nil) {
+            polyInit = [CLLocationCoordinate2D(latitude: 0, longitude: 0)]
+        } else {
+            print(desiredRoute!.name)
+            for landmark in desiredRoute!.landmarks {
+                polyInit.append(landmark.location)
+            }
+        }
+        
+        routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
+        directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
     }
     
     /*
@@ -334,6 +334,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
+        
+        centerOnUser()
     }
     
     /*
