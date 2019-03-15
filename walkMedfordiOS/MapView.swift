@@ -78,7 +78,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         centerOnUser()
     }
     
-    
     /*
      Purpose: To update the user's location while moving around the map
      Notes:
@@ -91,6 +90,15 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         locationManager.stopUpdatingLocation()
     }
     
+    /*
+     Purpose: To clear the map of overlays or annotations
+     Notes:
+     */
+    func clearMap() {
+        mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
+    }
+ 
     /*
      Purpose: To set up polyline
      Notes:

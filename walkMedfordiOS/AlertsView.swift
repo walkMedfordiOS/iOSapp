@@ -7,20 +7,19 @@
 //
 
 import UIKit
+import WebKit
 
 class AlertsView: UIViewController {
     
+    // Variable for webView
+    @IBOutlet weak var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    /*
-     Purpose: To send user to snow removal website
-     Notes:
-    */
-    @IBAction func websiteButton(_ sender: Any) {
-        guard let url = URL(string: "http://www.medfordma.org/2018/12/04/reminder-snow-removal-regulations/") else { return }
-        UIApplication.shared.open(url)
+        
+        let url = URL(string:"https://www.medfordma.org/2018/12/04/reminder-snow-removal-regulations/")
+        let request = URLRequest(url: url!)
+        webView.load(request)
     }
     
 }
