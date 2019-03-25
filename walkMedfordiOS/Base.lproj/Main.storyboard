@@ -374,39 +374,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcS-ui-YFV">
+                            <arskView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4F-MR-NI3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </arscnView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Move camera around to detect images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GF1-mE-746">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="fOb-p7-Dor"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </arskView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="KcS-ui-YFV" firstAttribute="top" secondItem="Tvy-Vu-SNs" secondAttribute="top" id="Nbj-dm-jlU"/>
-                            <constraint firstItem="KcS-ui-YFV" firstAttribute="leading" secondItem="Tvy-Vu-SNs" secondAttribute="leading" id="RB9-UB-rhG"/>
-                            <constraint firstAttribute="trailing" secondItem="GF1-mE-746" secondAttribute="trailing" id="WBZ-vv-f3f"/>
-                            <constraint firstItem="GF1-mE-746" firstAttribute="leading" secondItem="Tvy-Vu-SNs" secondAttribute="leading" id="byQ-Uh-BfH"/>
-                            <constraint firstAttribute="bottom" secondItem="KcS-ui-YFV" secondAttribute="bottom" id="lcc-M3-mIC"/>
-                            <constraint firstAttribute="trailing" secondItem="KcS-ui-YFV" secondAttribute="trailing" id="sgK-Dt-e2N"/>
+                            <constraint firstAttribute="trailing" secondItem="a4F-MR-NI3" secondAttribute="trailing" id="6dZ-PO-3Zh"/>
+                            <constraint firstItem="a4F-MR-NI3" firstAttribute="top" secondItem="Tvy-Vu-SNs" secondAttribute="top" id="FfI-0Z-SVt"/>
+                            <constraint firstItem="a4F-MR-NI3" firstAttribute="leading" secondItem="Tvy-Vu-SNs" secondAttribute="leading" id="SUC-NS-m12"/>
+                            <constraint firstItem="a4F-MR-NI3" firstAttribute="bottom" secondItem="ecd-90-67i" secondAttribute="bottom" id="bYq-mD-7Pu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ecd-90-67i"/>
                     </view>
                     <connections>
-                        <outlet property="label" destination="GF1-mE-746" id="mye-Ul-TXo"/>
-                        <outlet property="sceneView" destination="KcS-ui-YFV" id="lyi-pp-rGw"/>
+                        <outlet property="sceneView" destination="a4F-MR-NI3" id="dSY-LU-faP"/>
+                        <segue destination="AZx-4O-Rjo" kind="modal" identifier="showImageInformation" id="fMe-k4-eOb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZW-Zh-ITW" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="99"/>
+            <point key="canvasLocation" x="2240.8000000000002" y="98.50074962518741"/>
+        </scene>
+        <!--Image Information View Controller-->
+        <scene sceneID="5Jr-Jh-7E5">
+            <objects>
+                <viewController id="AZx-4O-Rjo" customClass="ImageInformationViewController" customModule="walkMedfordiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zmv-4s-Xjb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12j-ax-L1B">
+                                <rect key="frame" x="20" y="20" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnC-ah-izr">
+                                <rect key="frame" x="119" y="80" width="136" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOQ-bR-nkx">
+                                <rect key="frame" x="67" y="190" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jbe-65-0Re">
+                                <rect key="frame" x="67" y="475" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bF3-82-Olb"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionText" destination="jbe-65-0Re" id="CFO-xx-2sV"/>
+                        <outlet property="imageView" destination="GOQ-bR-nkx" id="1qd-Ge-HuW"/>
+                        <outlet property="nameLabel" destination="UnC-ah-izr" id="hhS-gQ-2bH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZOy-kI-158" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3052" y="95.802098950524751"/>
         </scene>
         <!--Profile-->
         <scene sceneID="a7N-3x-O4y">
