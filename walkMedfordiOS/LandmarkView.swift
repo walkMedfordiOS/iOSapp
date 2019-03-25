@@ -39,4 +39,25 @@ class LandmarkView: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    /*
+     Purpose: To show the landmark on the map
+     Notes:
+     */
+    @IBAction func mapViewButton(_ sender: Any) {
+
+        performSegue(withIdentifier: "segueLandmarktoMap", sender: self)
+    }
+    
+    /*
+     Purpose: To pass data to next view
+     Notes:
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if (segue.identifier == "segueLandmarktoMap") {
+            if let destinationVC = segue.destination as? MapView {
+                destinationVC.desiredLandmark = landmark
+            }
+        }
+    }
 }

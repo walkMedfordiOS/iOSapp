@@ -21,8 +21,11 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var routePolyline : MKPolyline?                     // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
-    // Variable for selected landmark
+    // Variable for desired landmark from LandmarkView page
     var desiredLandmark: Landmark!
+    
+    // Variable for selected landmark
+    var selectedLandmark: Landmark!
     
     // Variables for directions
     @IBOutlet weak var directionsView: UIView!
@@ -53,6 +56,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         // Show selected route on Map
         if (desiredRoute != nil) {
             addRoute()
+        } else if (desiredLandmark != nil) {
+            addDesiredLandmark()
         } else {
             print("DESIRED ROUTE NIL")
         }
@@ -256,7 +261,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         for landmark in desiredRoute!.landmarks {
             if (landmark.title == view.annotation?.title) {
-                desiredLandmark = landmark
+                selectedLandmark = landmark
             }
         }
         
@@ -270,7 +275,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "segueMapToLandmark") {
             if let destinationVC = segue.destination as? LandmarkView {
-                destinationVC.landmark = desiredLandmark
+                destinationVC.landmark = selectedLandmark
             }
         }
     }
@@ -289,6 +294,14 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         }
         
         centerOnUser()
+    }
+    
+    func addDesiredLandmark() {
+        
+        let landmarkAnnotation = LandmarkAnnotation(title: desiredLandmark.title,
+                                                    subtitle: desiredLandmark.address,
+                                                    coordinate: desiredLandmark.location)
+        self.mapView.addAnnotation(landmarkAnnotation)
     }
     
     /*
