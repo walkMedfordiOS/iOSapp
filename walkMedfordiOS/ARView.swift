@@ -7,13 +7,51 @@
 //
 
 import UIKit
+import SceneKit
 import ARKit
 
-class ARView: UIViewController {
+class ARView: UIViewController, ARSCNViewDelegate{
     
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var label: UILabel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sceneView.delegate = self
+        sceneView.autoenablesDefaultLighting = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let configuration = ARImageTrackingConfiguration()
+        
+        if let trackingImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: Bundle.main) {
+            configuration.trackingImages = trackingImages
+            configuration.maximumNumberOfTrackedImages = 1
+        }
+        
+        sceneView.session.run(configuration)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sceneView.session.pause()
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        let node = SCNNode()
+        if let imageAnchor = anchor as? ARImageAnchor {
+            let size = imageAnchor.referenceImage.physicalSize
+            let plane = SCNPlane(width: size.width, height: size.height)
+            plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.5)
+            plane.cornerRadius = 0.005
+            let planeNode = SCNNode(geometry: plane)
+            node.addChildNode(planeNode)
+        }
+        
+        return node
+    }
+    /*
     let fadeDuration: TimeInterval = 0.3
     let rotateDuration: TimeInterval = 3
     let waitDuration: TimeInterval = 0.5
@@ -143,6 +181,6 @@ extension ARView: ARSCNViewDelegate {
             break
         }
         return node
-    }
+    }*/
     
 }

@@ -11,7 +11,6 @@
 		650DD94821AC8F0900AEBDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94621AC8F0900AEBDD7 /* Main.storyboard */; };
 		650DD94A21AC8F0A00AEBDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */; };
 		650DD94D21AC8F0A00AEBDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */; };
-		654DBA8C2229CA5400370B50 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654DBA8A2229CA5400370B50 /* Crashlytics.framework */; };
 		6553DDC3222CAC8C000A82A8 /* RouteCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
 		6584A33722245B980070D30E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A33622245B980070D30E /* MapKit.framework */; };
@@ -39,7 +38,6 @@
 		650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		650DD94C21AC8F0A00AEBDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		650DD94E21AC8F0A00AEBDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		654DBA8A2229CA5400370B50 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCreationView.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		6584A33622245B980070D30E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -67,7 +65,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65972CD42228BD7800B2C005 /* AuthenticationServices.framework in Frameworks */,
-				654DBA8C2229CA5400370B50 /* Crashlytics.framework in Frameworks */,
 				6584A33722245B980070D30E /* MapKit.framework in Frameworks */,
 				65BCC5E422278EA60016CA58 /* HealthKit.framework in Frameworks */,
 			);
@@ -79,7 +76,6 @@
 		650DD93621AC8F0900AEBDD7 = {
 			isa = PBXGroup;
 			children = (
-				654DBA8A2229CA5400370B50 /* Crashlytics.framework */,
 				650DD94121AC8F0900AEBDD7 /* walkMedfordiOS */,
 				6584A33322245B7B0070D30E /* Frameworks */,
 			);
