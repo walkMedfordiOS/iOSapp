@@ -181,6 +181,10 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    /*
+     Purpose: To pass data to next view
+     Notes:
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "segueEventsLandmarksToLandmark") {
             if let destinationVC = segue.destination as? LandmarkView {

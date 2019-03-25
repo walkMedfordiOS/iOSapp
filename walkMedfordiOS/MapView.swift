@@ -21,6 +21,14 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var routePolyline : MKPolyline?                     // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
+    // Variable for selected landmark
+    var desiredLandmark: Landmark!
+    
+    // Variables for directions
+    @IBOutlet weak var directionsView: UIView!
+    @IBOutlet weak var directionsTextView: UITextView!
+    @IBOutlet weak var directionsButton: UIButton!
+    
     /*
      Purpose: To call functions when view is loaded
      Notes:
@@ -29,6 +37,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         super.viewWillAppear(true)
         
         wakeUpServer()
+        directionsView.isHidden = true
+        directionsButton.isHidden = true
         
         // Set up Map
         locationManager.delegate = self
@@ -46,26 +56,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         } else {
             print("DESIRED ROUTE NIL")
         }
-    }
-    
-    /*
-     Purpose: To set up polyline
-     Notes:
-     */
-    func initPolyline() {
-        var polyInit = [CLLocationCoordinate2D]()
-        
-        if (desiredRoute == nil) {
-            polyInit = [CLLocationCoordinate2D(latitude: 0, longitude: 0)]
-        } else {
-            print(desiredRoute!.name)
-            for landmark in desiredRoute!.landmarks {
-                polyInit.append(landmark.location)
-            }
-        }
-        
-        routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
-        directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
     }
     
     /*
@@ -88,7 +78,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         centerOnUser()
     }
     
-    
     /*
      Purpose: To update the user's location while moving around the map
      Notes:
@@ -102,11 +91,32 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
-     Purpose: To recenter the map on the user when crosshairs button is tapped
+     Purpose: To clear the map of overlays or annotations
      Notes:
      */
-    @IBAction func reCenter(_ sender: Any) {
-        centerOnUser()
+    func clearMap() {
+        mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
+    }
+ 
+    /*
+     Purpose: To set up polyline
+     Notes:
+     */
+    func initPolyline() {
+        var polyInit = [CLLocationCoordinate2D]()
+        
+        if (desiredRoute == nil) {
+            polyInit = [CLLocationCoordinate2D(latitude: 0, longitude: 0)]
+        } else {
+            print(desiredRoute!.name)
+            for landmark in desiredRoute!.landmarks {
+                polyInit.append(landmark.location)
+            }
+        }
+        
+        routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
+        directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
     }
     
     /*
@@ -156,6 +166,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                 self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
         }
+        
+        centerOnUser()
         
         // Add annotations, landmarks, and directions to start
         //addStartEndAnnotations()
@@ -226,14 +238,41 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             view = dequeuedView
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
         }
         
+        view.canShowCallout = true
         view.glyphImage = UIImage(named: annotation.imageName ?? "landmark")
         view.markerTintColor = UIColor.red
         view.subtitleVisibility = MKFeatureVisibility.visible
         
         return view
+    }
+    
+    /*
+     Purpose: To show more information when landmark is selected
+     Notes:
+     */
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        for landmark in desiredRoute!.landmarks {
+            if (landmark.title == view.annotation?.title) {
+                desiredLandmark = landmark
+            }
+        }
+        
+        performSegue(withIdentifier: "segueMapToLandmark", sender: self)
+    }
+    
+    /*
+     Purpose: To pass data to next view
+     Notes:
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueMapToLandmark") {
+            if let destinationVC = segue.destination as? LandmarkView {
+                destinationVC.landmark = desiredLandmark
+            }
+        }
     }
     
     /*
@@ -248,6 +287,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                                                         coordinate: landmark.location)
             self.mapView.addAnnotation(landmarkAnnotation)
         }
+        
+        centerOnUser()
     }
     
     /*
@@ -288,14 +329,39 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.mapView.addOverlay((self.directionsToRoutePolyline!), level: MKOverlayLevel.aboveRoads)
             
             // Print directions from user to start
+            self.directionsView.isHidden = false
+            self.directionsButton.isHidden = false
+            
             for step in route.steps {
                 print(step.instructions)
+                if (step.instructions != "") {
+                    self.directionsTextView.text += "\(step.instructions) \n"
+                }
             }
             
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
+        
+        centerOnUser()
     }
+    
+    /*
+    Purpose: Close directions view
+    Notes:
+    */
+    @IBAction func closeDirectionsButton(_ sender: Any) {
+        directionsView.isHidden = true
+    }
+    
+    /*
+     Purpose: Open directions view
+     Notes:
+     */
+    @IBAction func openDirectionsButton(_ sender: Any) {
+        directionsView.isHidden = false
+    }
+    
     
     /*
      Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView
