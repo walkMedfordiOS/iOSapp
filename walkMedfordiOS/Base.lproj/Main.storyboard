@@ -326,14 +326,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="323" height="129.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1I5-Pm-ky3">
-                                                    <rect key="frame" x="15" y="45" width="33.5" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1I5-Pm-ky3">
+                                                    <rect key="frame" x="15" y="45" width="36.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7so-NH-IIp">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7so-NH-IIp">
                                                     <rect key="frame" x="15" y="68.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -654,13 +654,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="alert" width="22.5" height="22.5"/>
-        <image name="building" width="22.5" height="22.5"/>
+        <image name="alert" width="45" height="45"/>
+        <image name="building" width="45" height="45"/>
         <image name="direction" width="37.5" height="37.5"/>
-        <image name="home" width="22.5" height="22.5"/>
+        <image name="home" width="48" height="48"/>
         <image name="logo" width="314" height="320"/>
-        <image name="route" width="22.5" height="22.5"/>
-        <image name="user" width="22.5" height="22.5"/>
+        <image name="route" width="48" height="48"/>
+        <image name="user" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ico-7s-g3i"/>
