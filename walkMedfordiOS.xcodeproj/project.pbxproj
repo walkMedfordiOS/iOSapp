@@ -26,7 +26,6 @@
 		65B8CC762221E4AD00B7C83E /* RouteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC752221E4AD00B7C83E /* RouteSelectionView.swift */; };
 		65BCC5E422278EA60016CA58 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BCC5E322278EA60016CA58 /* HealthKit.framework */; };
 		65BF3832224B10D6007106F6 /* StartEndAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */; };
-		65BF3834224B2F95007106F6 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BF3833224B2F95007106F6 /* Mapbox.framework */; };
 		65E077E62231C0B1006DDD2F /* LandmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E077E52231C0B1006DDD2F /* LandmarkView.swift */; };
 		65EFF334222E143F00966FA1 /* EventsLandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */; };
 		65EFF336222E158D00966FA1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFF335222E158D00966FA1 /* Event.swift */; };
@@ -58,7 +57,6 @@
 		65B8CC752221E4AD00B7C83E /* RouteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectionView.swift; sourceTree = "<group>"; };
 		65BCC5E322278EA60016CA58 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndAnnotation.swift; sourceTree = "<group>"; };
-		65BF3833224B2F95007106F6 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Carthage/Build/iOS/Mapbox.framework; sourceTree = "<group>"; };
 		65E077E52231C0B1006DDD2F /* LandmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkView.swift; sourceTree = "<group>"; };
 		65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsLandmarksView.swift; sourceTree = "<group>"; };
 		65EFF335222E158D00966FA1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65972CD42228BD7800B2C005 /* AuthenticationServices.framework in Frameworks */,
-				65BF3834224B2F95007106F6 /* Mapbox.framework in Frameworks */,
 				6584A33722245B980070D30E /* MapKit.framework in Frameworks */,
 				65BCC5E422278EA60016CA58 /* HealthKit.framework in Frameworks */,
 			);
@@ -134,7 +131,6 @@
 		6584A33322245B7B0070D30E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65BF3833224B2F95007106F6 /* Mapbox.framework */,
 				65972CD32228BD7800B2C005 /* AuthenticationServices.framework */,
 				65BCC5E322278EA60016CA58 /* HealthKit.framework */,
 				6584A33622245B980070D30E /* MapKit.framework */,
@@ -152,7 +148,6 @@
 				650DD93B21AC8F0900AEBDD7 /* Sources */,
 				650DD93C21AC8F0900AEBDD7 /* Frameworks */,
 				650DD93D21AC8F0900AEBDD7 /* Resources */,
-				654DBA8D2229CA6300370B50 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -226,27 +221,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		654DBA8D2229CA6300370B50 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Mapbox.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		650DD93B21AC8F0900AEBDD7 /* Sources */ = {
