@@ -10,6 +10,11 @@ import MapKit
 
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    // Variables for color of elements
+    var red = UIColor(red: 200, green: 0, blue: 0, alpha: 1)
+    var green = UIColor(red: 0, green: 200, blue: 0, alpha: 1)
+    var blue = UIColor(red: 0, green: 0, blue: 200, alpha: 1)
+    
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
@@ -175,133 +180,24 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         centerOnUser()
         
         // Add annotations, landmarks, and directions to start
-        addStartEndAnnotations()
+        //addStartEndAnnotations()
         addRouteFromUserToStart()
         addLandmarkAnnotations()
     }
     
     /*
      Purpose: To add annotations to the start and end of the desired route
-     Notes: Need to create a custom class for start/end annotations
+     Notes:
      */
     func addStartEndAnnotations() {
         let sourceLocation = desiredRoute!.landmarks[0].location
         let destinationLocation = desiredRoute!.landmarks[desiredRoute!.landmarks.count - 1].location
         
-        let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
-        let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
+        let startAnnotation = StartEndAnnotation(title: "Start of Route", coordinate: sourceLocation)
+        let endAnnotation = StartEndAnnotation(title: "End of Route", coordinate: destinationLocation)
         
-        let sourceAnnotation = MKPointAnnotation()
-        sourceAnnotation.title = "Start"
-        
-        if let location = sourcePlacemark.location {
-            sourceAnnotation.coordinate = location.coordinate
-        }
-        
-        let destinationAnnotation = MKPointAnnotation()
-        destinationAnnotation.title = "End"
-        
-        if let location = destinationPlacemark.location {
-            destinationAnnotation.coordinate = location.coordinate
-        }
-        
-        self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
-    }
-    
-    /*
-     Purpose: To format the route lines
-     Notes:
-     */
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.lineWidth = 6.0
-        
-        if overlay is MKPolyline {
-            if overlay as? MKPolyline == routePolyline {
-                renderer.strokeColor = UIColor.red
-            } else if overlay as? MKPolyline == directionsToRoutePolyline {
-                renderer.strokeColor = UIColor.blue
-            }
-        }
-        
-        return renderer
-    }
-    
-    /*
-     Purpose: To format the landmark annotations
-     Notes:
-     */
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "marker"
-        var view: MKMarkerAnnotationView
-        
-        guard let annotation = annotation as? LandmarkAnnotation else { return nil }
-        
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else {
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        }
-        
-        view.canShowCallout = true
-        view.glyphImage = UIImage(named: annotation.imageName ?? "landmark")
-        view.markerTintColor = UIColor.red
-        view.subtitleVisibility = MKFeatureVisibility.visible
-        
-        return view
-    }
-    
-    /*
-     Purpose: To show more information when landmark is selected
-     Notes:
-     */
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        for landmark in desiredRoute!.landmarks {
-            if (landmark.title == view.annotation?.title) {
-                selectedLandmark = landmark
-            }
-        }
-        
-        performSegue(withIdentifier: "segueMapToLandmark", sender: self)
-    }
-    
-    /*
-     Purpose: To pass data to next view
-     Notes:
-     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "segueMapToLandmark") {
-            if let destinationVC = segue.destination as? LandmarkView {
-                destinationVC.landmark = selectedLandmark
-            }
-        }
-    }
-    
-    /*
-     Purpose: To add landmarks along the route
-     Notes: Bad way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
-     */
-    func addLandmarkAnnotations() {
-        
-        for landmark in desiredRoute!.landmarks {
-            let landmarkAnnotation = LandmarkAnnotation(title: landmark.title,
-                                                        subtitle: landmark.address,
-                                                        coordinate: landmark.location)
-            self.mapView.addAnnotation(landmarkAnnotation)
-        }
-        
-        centerOnUser()
-    }
-    
-    func addDesiredLandmark() {
-        
-        let landmarkAnnotation = LandmarkAnnotation(title: desiredLandmark.title,
-                                                    subtitle: desiredLandmark.address,
-                                                    coordinate: desiredLandmark.location)
-        self.mapView.addAnnotation(landmarkAnnotation)
+        self.mapView.addAnnotation(startAnnotation)
+        self.mapView.addAnnotation(endAnnotation)
     }
     
     /*
@@ -358,6 +254,113 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         centerOnUser()
     }
+    
+    /*
+     Purpose: To add landmarks along the route
+     Notes: Bad way to add landmarks, need to add custom classes for separate annotations for landmarks and start and end of route
+     */
+    func addLandmarkAnnotations() {
+        
+        for landmark in desiredRoute!.landmarks {
+            let landmarkAnnotation = LandmarkAnnotation(title: landmark.title,
+                                                        subtitle: landmark.address,
+                                                        coordinate: landmark.location)
+            self.mapView.addAnnotation(landmarkAnnotation)
+        }
+        
+        centerOnUser()
+    }
+    
+    /*
+     Purpose: To format the route lines
+     Notes:
+     */
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.lineWidth = 6.0
+        
+        if overlay is MKPolyline {
+            if overlay as? MKPolyline == routePolyline {
+                renderer.strokeColor = red
+            } else if overlay as? MKPolyline == directionsToRoutePolyline {
+                renderer.strokeColor = blue
+            }
+        }
+        
+        return renderer
+    }
+    
+    /*
+     Purpose: To format the landmark annotations
+     Notes:
+     */
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+        
+        if let annotation = annotation as? LandmarkAnnotation {
+            
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+                as? MKMarkerAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            }
+            
+            view.canShowCallout = true
+            view.glyphImage = UIImage(named: annotation.imageName ?? "landmark")
+            view.markerTintColor = red
+            view.subtitleVisibility = MKFeatureVisibility.visible
+            
+        } else if let annotation = annotation as? StartEndAnnotation {
+            
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.markerTintColor = green
+            
+        } else {
+            return nil
+        }
+        
+        return view
+    }
+    
+    /*
+     Purpose: To show more information when landmark is selected
+     Notes:
+     */
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        for landmark in desiredRoute!.landmarks {
+            if (landmark.title == view.annotation?.title) {
+                selectedLandmark = landmark
+            }
+        }
+        
+        performSegue(withIdentifier: "segueMapToLandmark", sender: self)
+    }
+    
+    /*
+     Purpose: To pass data to next view
+     Notes:
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueMapToLandmark") {
+            if let destinationVC = segue.destination as? LandmarkView {
+                destinationVC.landmark = selectedLandmark
+            }
+        }
+    }
+    
+    func addDesiredLandmark() {
+        
+        let landmarkAnnotation = LandmarkAnnotation(title: desiredLandmark.title,
+                                                    subtitle: desiredLandmark.address,
+                                                    coordinate: desiredLandmark.location)
+        self.mapView.addAnnotation(landmarkAnnotation)
+    }
+    
+   
     
     /*
     Purpose: Close directions view
