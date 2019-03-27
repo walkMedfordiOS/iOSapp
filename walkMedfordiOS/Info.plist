@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>NSLocationWhenInUseDescription</key>
 	<string>Shows your location on the map and helps improve OpenStreetMap.</string>
 	<key>CFBundleDevelopmentRegion</key>
