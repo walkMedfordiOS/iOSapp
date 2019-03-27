@@ -19,17 +19,17 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
     
-    // Global Variables for Map, User Location, and Route
+    // Variables for Map, User Location, and Route
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var desiredRoute: Route?                            // User's selected route
+    var desiredRoute: Route?                            // User's chosen route
     var routePolyline : MKPolyline?                     // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
     // Variable for desired landmark from LandmarkView page
     var desiredLandmark: Landmark!
     
-    // Variable for selected landmark
+    // Variable for selected landmark by user
     var selectedLandmark: Landmark!
     
     // Variables for directions
@@ -57,6 +57,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         mapView.showsScale = true
         centerOnUser()
         
+        setUpUserTrackingButton()
+        
         // Initialize polylines
         initPolyline()
         
@@ -71,6 +73,25 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     /*
+     Purpose: To set up user tracking button
+     Notes:
+     */
+    func setUpUserTrackingButton() {
+        
+        let button = MKUserTrackingButton(mapView: mapView)
+        button.layer.backgroundColor = UIColor(white: 1, alpha: 0.9).cgColor
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        
+        view.addSubview(button)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -60).isActive = true
+        button.leadingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -50).isActive = true
+    }
+    
+    /*
      Purpose: To center the map on the user
      Notes:
      */
@@ -81,15 +102,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             locationManager.requestWhenInUseAuthorization()
         }
     }
-    
-    /*
-     Purpose: To center the map on the user when the center button is tapped
-     Notes:
-     */
-    @IBAction func centerButtonTapped(_ sender: Any) {
-        centerOnUser()
-    }
-    
+
     /*
      Purpose: To update the user's location while moving around the map
      Notes:
