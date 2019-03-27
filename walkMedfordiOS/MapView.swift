@@ -36,6 +36,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var directionsView: UIView!
     @IBOutlet weak var directionsTextView: UITextView!
     @IBOutlet weak var directionsButton: UIButton!
+    @IBOutlet weak var directionsInMapsButton: UIButton!
     
     /*
      Purpose: To call functions when view is loaded
@@ -47,6 +48,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         wakeUpServer()
         directionsView.isHidden = true
         directionsButton.isHidden = true
+        directionsInMapsButton.isHidden = true
         
         // Set up Map
         locationManager.delegate = self
@@ -238,8 +240,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.mapView.addOverlay((self.directionsToRoutePolyline!), level: MKOverlayLevel.aboveRoads)
             
             // Print directions from user to start
-            self.directionsView.isHidden = false
             self.directionsButton.isHidden = false
+            self.directionsInMapsButton.isHidden = false
             
             for step in route.steps {
                 print(step.instructions)
@@ -360,7 +362,19 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         self.mapView.addAnnotation(landmarkAnnotation)
     }
     
-   
+    /*
+     Purpose: To open Apple Maps with directions to route
+     Notes:
+     */
+    @IBAction func directionsInMapsButton(_ sender: Any) {
+        
+        let placemark = MKPlacemark(coordinate: desiredRoute!.landmarks[0].location, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "Start of Route"
+        
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+        mapItem.openInMaps(launchOptions: launchOptions)
+    }
     
     /*
     Purpose: Close directions view
