@@ -260,12 +260,17 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="T8u-Bb-nxw">
+                                <rect key="frame" x="179" y="311" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xNO-gf-Q0f"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Alerts" image="alert" selectedImage="alert" id="HAd-Mc-SFG"/>
                     <connections>
+                        <outlet property="activity" destination="T8u-Bb-nxw" id="gcK-n6-Lhh"/>
                         <outlet property="webView" destination="z2z-wS-Afj" id="xP2-4R-hSq"/>
                     </connections>
                 </viewController>
@@ -345,6 +350,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qp0-Dg-2U5">
+                                <rect key="frame" x="177" y="366" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -360,6 +369,7 @@
                     <tabBarItem key="tabBarItem" title="Routes" image="route" selectedImage="route" id="eLP-DW-L6C"/>
                     <connections>
                         <outlet property="routeTable" destination="109-WS-3l4" id="qLA-Sd-ENs"/>
+                        <outlet property="webActivity" destination="qp0-Dg-2U5" id="MIV-f3-AC7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scO-8a-Dwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -585,6 +595,10 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VpI-qX-2j4">
+                                <rect key="frame" x="191" y="223" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Gqn-zp-QFc"/>
@@ -593,6 +607,7 @@
                     <connections>
                         <outlet property="eventsTable" destination="cm5-lZ-2Mt" id="a2a-ls-Viw"/>
                         <outlet property="landmarksTable" destination="nJE-oZ-xu8" id="Egs-z7-KRp"/>
+                        <outlet property="webActivity" destination="VpI-qX-2j4" id="kge-i0-Mp4"/>
                         <segue destination="SKM-wi-3gV" kind="show" identifier="segueEventsLandmarksToLandmark" id="UlS-T0-V2D"/>
                     </connections>
                 </viewController>
@@ -663,6 +678,6 @@
         <image name="user" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ico-7s-g3i"/>
+        <segue reference="UlS-T0-V2D"/>
     </inferredMetricsTieBreakers>
 </document>

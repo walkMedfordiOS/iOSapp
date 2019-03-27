@@ -17,6 +17,7 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
+    @IBOutlet weak var webActivity: UIActivityIndicatorView!
     
     // Variables for table
     @IBOutlet weak var routeTable: UITableView!
@@ -32,6 +33,9 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
         routeTable.dataSource = self
         routeTable.allowsSelection = true
         routeTable.delegate = self
+        
+        webActivity.startAnimating()
+        webActivity.hidesWhenStopped = true
         
         getAllRoutes()
     }
@@ -66,6 +70,7 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 
                 DispatchQueue.main.async {
+                    self.webActivity.stopAnimating()
                     self.routeTable.reloadData()
                 }
             }

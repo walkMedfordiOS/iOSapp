@@ -14,6 +14,7 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
+    @IBOutlet weak var webActivity: UIActivityIndicatorView!
     
     // Variables for Events and Landmarks
     var events = [Event]()
@@ -34,6 +35,9 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
         landmarksTable.dataSource = self
         landmarksTable.allowsSelection = true
         landmarksTable.delegate = self
+        
+        webActivity.startAnimating()
+        webActivity.hidesWhenStopped = true
         
         getAllEvents()
     }
@@ -119,6 +123,7 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
                 }
                 
                 DispatchQueue.main.async {
+                    self.webActivity.stopAnimating()
                     self.landmarksTable.reloadData()
                 }
             }

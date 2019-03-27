@@ -175,7 +175,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         centerOnUser()
         
         // Add annotations, landmarks, and directions to start
-        //addStartEndAnnotations()
+        addStartEndAnnotations()
         addRouteFromUserToStart()
         addLandmarkAnnotations()
     }
