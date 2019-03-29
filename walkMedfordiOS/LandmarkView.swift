@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import MapKit
 
-class LandmarkView: UIViewController {
+class LandmarkView: UIViewController, MKMapViewDelegate {
 
+    // Variables for color of elements
+    var red = UIColor(red: 200, green: 0, blue: 0, alpha: 1)
+    var green = UIColor(red: 0, green: 200, blue: 0, alpha: 1)
+    var blue = UIColor(red: 0, green: 0, blue: 200, alpha: 1)
+    
     // Landmark information labels
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    // Landmark location and image
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
     
     // Selected landmark variable
     var landmark: Landmark!
@@ -24,10 +34,67 @@ class LandmarkView: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        mapView.delegate = self
+        
         titleLabel.text = landmark.title
         addressLabel.text = landmark.address
         descriptionLabel.text = landmark.description
+        
+        centerOnLandmark()
+        setUpMap()
+    }
+    
+    /*
+     Purpose: To center the map on the landmark
+     Notes:
+     */
+    func centerOnLandmark() {
+        let coordinateRegion = MKCoordinateRegion.init(center: landmark.location, latitudinalMeters: 2000, longitudinalMeters: 2000)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    /*
+     Purpose: To set up the map
+     Notes:
+     */
+    func setUpMap() {
+        let landmarkAnnotation = LandmarkAnnotation(title: landmark.title,
+                                                    subtitle: landmark.address,
+                                                    coordinate: landmark.location)
+        self.mapView.addAnnotation(landmarkAnnotation)
+        
+        
+    }
+    
+    /*
+     Purpose: To format the landmark annotations
+     Notes:
+     */
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+        
+        if let annotation = annotation as? LandmarkAnnotation {
+            
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+                as? MKMarkerAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            }
+            
+            view.canShowCallout = false
+            view.glyphImage = UIImage(named: annotation.imageName ?? "landmark")
+            view.markerTintColor = red
+            view.subtitleVisibility = MKFeatureVisibility.visible
+            
+        } else {
+            return nil
+        }
+        
+        return view
     }
     
     /*
@@ -37,27 +104,5 @@ class LandmarkView: UIViewController {
     @IBAction func backButton(_ sender: Any) {
 
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    /*
-     Purpose: To show the landmark on the map
-     Notes:
-     */
-    @IBAction func mapViewButton(_ sender: Any) {
-
-        performSegue(withIdentifier: "segueLandmarktoMap", sender: self)
-    }
-    
-    /*
-     Purpose: To pass data to next view
-     Notes:
-     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-        if (segue.identifier == "segueLandmarktoMap") {
-            if let destinationVC = segue.destination as? MapView {
-                destinationVC.desiredLandmark = landmark
-            }
-        }
     }
 }

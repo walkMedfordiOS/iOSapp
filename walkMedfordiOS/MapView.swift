@@ -26,9 +26,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var routePolyline : MKPolyline?                     // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
     
-    // Variable for desired landmark from LandmarkView page
-    var desiredLandmark: Landmark!
-    
     // Variable for selected landmark by user
     var selectedLandmark: Landmark!
     
@@ -59,8 +56,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         // Show selected route on Map
         if (desiredRoute != nil) {
             addRoute()
-        } else if (desiredLandmark != nil) {
-            addDesiredLandmark()
         } else {
             print("DESIRED ROUTE NIL")
         }
@@ -349,14 +344,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                 destinationVC.landmark = selectedLandmark
             }
         }
-    }
-    
-    func addDesiredLandmark() {
-        
-        let landmarkAnnotation = LandmarkAnnotation(title: desiredLandmark.title,
-                                                    subtitle: desiredLandmark.address,
-                                                    coordinate: desiredLandmark.location)
-        self.mapView.addAnnotation(landmarkAnnotation)
     }
     
     /*
