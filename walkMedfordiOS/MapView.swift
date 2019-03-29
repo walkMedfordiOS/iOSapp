@@ -32,10 +32,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     // Variable for selected landmark by user
     var selectedLandmark: Landmark!
     
-    // Variables for directions
-    @IBOutlet weak var directionsView: UIView!
-    @IBOutlet weak var directionsTextView: UITextView!
-    @IBOutlet weak var directionsButton: UIButton!
+    // Variable for directions
     @IBOutlet weak var directionsInMapsButton: UIButton!
     
     /*
@@ -46,9 +43,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         super.viewWillAppear(true)
         
         wakeUpServer()
-        directionsView.isHidden = true
-        directionsButton.isHidden = true
-        directionsInMapsButton.isHidden = true
         
         // Set up Map
         locationManager.delegate = self
@@ -252,17 +246,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.directionsToRoutePolyline = route.polyline
             self.mapView.addOverlay((self.directionsToRoutePolyline!), level: MKOverlayLevel.aboveRoads)
             
-            // Print directions from user to start
-            self.directionsButton.isHidden = false
-            self.directionsInMapsButton.isHidden = false
-            
-            for step in route.steps {
-                print(step.instructions)
-                if (step.instructions != "") {
-                    self.directionsTextView.text += "\(step.instructions) \n"
-                }
-            }
-            
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
@@ -388,23 +371,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
         mapItem.openInMaps(launchOptions: launchOptions)
     }
-    
-    /*
-    Purpose: Close directions view
-    Notes:
-    */
-    @IBAction func closeDirectionsButton(_ sender: Any) {
-        directionsView.isHidden = true
-    }
-    
-    /*
-     Purpose: Open directions view
-     Notes:
-     */
-    @IBAction func openDirectionsButton(_ sender: Any) {
-        directionsView.isHidden = false
-    }
-    
     
     /*
      Purpose: To wake up the Heroku server so it is prepared for requests in RouteSelectionView

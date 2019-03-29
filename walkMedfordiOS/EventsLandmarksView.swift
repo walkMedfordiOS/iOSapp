@@ -21,17 +21,16 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
     var landmarks = [Landmark]()
     var desiredLandmark: Landmark!
     
-    // Vraiables for Tables
-    @IBOutlet weak var eventsTable: UITableView!
+    // Variable for Table
     @IBOutlet weak var landmarksTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set variables for events and landmarks tables
-        eventsTable.dataSource = self
-        eventsTable.allowsSelection = true
-        eventsTable.delegate = self
+//        eventsTable.dataSource = self
+//        eventsTable.allowsSelection = true
+//        eventsTable.delegate = self
         landmarksTable.dataSource = self
         landmarksTable.allowsSelection = true
         landmarksTable.delegate = self
@@ -80,7 +79,7 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
                 }
                 
                 DispatchQueue.main.async {
-                    self.eventsTable.reloadData()
+                    //self.eventsTable.reloadData()
                     self.getAllLandmarks()
                 }
             }
@@ -145,11 +144,11 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
      Notes:
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == eventsTable {
-            return events.count
-        } else {
-            return landmarks.count
-        }
+//        if tableView == eventsTable {
+//            return events.count
+//        }
+        
+        return landmarks.count
     }
     
     /*
@@ -163,12 +162,12 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
         }
         
-        if (tableView == eventsTable) {
-            cell!.textLabel?.text = events[indexPath.row].title
-            cell!.detailTextLabel?.text = events[indexPath.row].description
-        } else {
+        if (tableView == landmarksTable) {
             cell!.textLabel?.text = landmarks[indexPath.row].title
             cell!.detailTextLabel?.text = landmarks[indexPath.row].description
+        } else {
+//            cell!.textLabel?.text = events[indexPath.row].title
+//            cell!.detailTextLabel?.text = events[indexPath.row].description
         }
         
         return cell!
