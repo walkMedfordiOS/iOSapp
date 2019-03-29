@@ -12,6 +12,8 @@
 		650DD94A21AC8F0A00AEBDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */; };
 		650DD94D21AC8F0A00AEBDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */; };
 		652BD6DD223AD754004F01AF /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BD6DC223AD754004F01AF /* AlertsView.swift */; };
+		652FB9E9224EC823000C0ECD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652FB9E8224EC823000C0ECD /* WebKit.framework */; };
+		652FB9EB224ECA02000C0ECD /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652FB9EA224ECA02000C0ECD /* WebView.swift */; };
 		6553DDC3222CAC8C000A82A8 /* RouteCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
 		6584A33722245B980070D30E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A33622245B980070D30E /* MapKit.framework */; };
@@ -42,6 +44,8 @@
 		650DD94C21AC8F0A00AEBDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		650DD94E21AC8F0A00AEBDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652BD6DC223AD754004F01AF /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		652FB9E8224EC823000C0ECD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		652FB9EA224ECA02000C0ECD /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCreationView.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		6584A33622245B980070D30E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -70,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652FB9E9224EC823000C0ECD /* WebKit.framework in Frameworks */,
 				65972CD42228BD7800B2C005 /* AuthenticationServices.framework in Frameworks */,
 				6584A33722245B980070D30E /* MapKit.framework in Frameworks */,
 				65BCC5E422278EA60016CA58 /* HealthKit.framework in Frameworks */,
@@ -120,6 +125,7 @@
 				65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */,
 				65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */,
 				65972CCF2228885000B2C005 /* User.swift */,
+				652FB9EA224ECA02000C0ECD /* WebView.swift */,
 				650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */,
 				650DD94021AC8F0900AEBDD7 /* Products */,
 				650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */,
@@ -131,6 +137,7 @@
 		6584A33322245B7B0070D30E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				652FB9E8224EC823000C0ECD /* WebKit.framework */,
 				65972CD32228BD7800B2C005 /* AuthenticationServices.framework */,
 				65BCC5E322278EA60016CA58 /* HealthKit.framework */,
 				6584A33622245B980070D30E /* MapKit.framework */,
@@ -228,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65B8CC6C2221E3C000B7C83E /* EventCreationView.swift in Sources */,
+				652FB9EB224ECA02000C0ECD /* WebView.swift in Sources */,
 				B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */,
 				6553DDC3222CAC8C000A82A8 /* RouteCreationView.swift in Sources */,
 				65E077E62231C0B1006DDD2F /* LandmarkView.swift in Sources */,

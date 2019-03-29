@@ -49,11 +49,11 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsScale = true
+        directionsInMapsButton.isHidden = true
         centerOnUser()
         
         setUpUserTrackingButton()
         
-        // Initialize polylines
         initPolyline()
         
         // Show selected route on Map
@@ -248,6 +248,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+            self.directionsInMapsButton.isHidden = false
         }
         
         centerOnUser()
