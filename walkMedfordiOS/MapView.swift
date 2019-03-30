@@ -45,7 +45,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         locationManager.delegate = self
         mapView.delegate = self
         mapView.showsUserLocation = true
-        mapView.showsScale = true
         directionsInMapsButton.isHidden = true
         centerOnUser()
         

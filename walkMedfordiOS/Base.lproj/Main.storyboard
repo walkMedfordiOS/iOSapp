@@ -118,16 +118,29 @@
                                     <action selector="directionsInMapsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qrg-XX-Tsj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caR-On-58y">
+                                <rect key="frame" x="16" y="44" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cG1-ck-c1S"/>
+                                </constraints>
+                                <state key="normal" image="logo"/>
+                                <connections>
+                                    <segue destination="gDw-2h-faM" kind="show" id="63s-4J-Hj6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LTc-qe-TRr" secondAttribute="trailing" id="5ZX-eC-qlY"/>
+                            <constraint firstItem="caR-On-58y" firstAttribute="leading" secondItem="bd5-hO-Z3A" secondAttribute="leading" id="7TP-hM-Ym3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bd5-hO-Z3A" secondAttribute="trailing" constant="199" id="BtI-NJ-eVs"/>
                             <constraint firstItem="LTc-qe-TRr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="C4T-ub-z4q"/>
                             <constraint firstItem="bd5-hO-Z3A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NyZ-WA-MwS"/>
                             <constraint firstItem="LTc-qe-TRr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="49" id="P0L-Il-ia6"/>
+                            <constraint firstItem="caR-On-58y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VXy-7Y-Xn7"/>
                             <constraint firstItem="LTc-qe-TRr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dQg-YR-pU6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bd5-hO-Z3A" secondAttribute="bottom" constant="15" id="qho-as-mko"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="caR-On-58y" secondAttribute="trailing" constant="309" id="sxy-0y-pRW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -274,11 +287,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Z3E-RP-ahN">
-                                <rect key="frame" x="112" y="44" width="150" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Z3E-RP-ahN">
+                                <rect key="frame" x="137.66666666666666" y="44" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="fBt-F3-Ej5"/>
+                                    <constraint firstAttribute="width" constant="100" id="q8a-K8-rzw"/>
+                                </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QnA-AA-fgS">
-                                <rect key="frame" x="24" y="378" width="326" height="325"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QnA-AA-fgS">
+                                <rect key="frame" x="24" y="363" width="326" height="340"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2w-w9-LMq">
                                         <rect key="frame" x="0.0" y="0.0" width="326" height="70"/>
@@ -293,7 +310,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ti0-yC-o6h">
-                                        <rect key="frame" x="0.0" y="85" width="326" height="70"/>
+                                        <rect key="frame" x="0.0" y="90" width="326" height="70"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="fmX-5g-4LX"/>
@@ -304,20 +321,8 @@
                                             <segue destination="gDw-2h-faM" kind="show" identifier="cityMedfordSegue" id="seY-OD-n6O"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-ci-IaJ">
-                                        <rect key="frame" x="0.0" y="170" width="326" height="70"/>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="ykX-DJ-CU7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <state key="normal" title="Snow Removal Regulations"/>
-                                        <connections>
-                                            <segue destination="gDw-2h-faM" kind="show" identifier="snowRemovalSegue" id="yf1-FQ-AIc"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9U7-e5-evl">
-                                        <rect key="frame" x="0.0" y="255" width="326" height="70"/>
+                                        <rect key="frame" x="0.0" y="180" width="326" height="70"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="aRL-l6-DQj"/>
@@ -328,10 +333,22 @@
                                             <segue destination="gDw-2h-faM" kind="show" identifier="reportIssueSegue" id="aQX-fv-8AF"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-ci-IaJ">
+                                        <rect key="frame" x="0.0" y="270" width="326" height="70"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="ykX-DJ-CU7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <state key="normal" title="Snow Removal Regulations"/>
+                                        <connections>
+                                            <segue destination="gDw-2h-faM" kind="show" identifier="snowRemovalSegue" id="yf1-FQ-AIc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="More Information About the City of Medford" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6n-3b-0LZ">
-                                <rect key="frame" x="26" y="202" width="323" height="80"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Additional Information" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6n-3b-0LZ">
+                                <rect key="frame" x="27" y="152" width="323" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="nSD-3F-SEh"/>
                                 </constraints>
@@ -342,12 +359,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Z3E-RP-ahN" firstAttribute="centerX" secondItem="Q6n-3b-0LZ" secondAttribute="centerX" id="5tF-hP-j6q"/>
+                            <constraint firstItem="Z3E-RP-ahN" firstAttribute="centerX" secondItem="Q6n-3b-0LZ" secondAttribute="centerX" constant="-1.5" id="5tF-hP-j6q"/>
                             <constraint firstItem="Q6n-3b-0LZ" firstAttribute="top" secondItem="Z3E-RP-ahN" secondAttribute="bottom" constant="8" symbolic="YES" id="ANG-ux-uyP"/>
                             <constraint firstItem="Z3E-RP-ahN" firstAttribute="top" secondItem="xNO-gf-Q0f" secondAttribute="top" id="AxK-bp-92K"/>
                             <constraint firstItem="QnA-AA-fgS" firstAttribute="leading" secondItem="xNO-gf-Q0f" secondAttribute="leading" constant="24" id="OKy-oE-iov"/>
                             <constraint firstItem="Z3E-RP-ahN" firstAttribute="centerX" secondItem="B3d-Fg-0gI" secondAttribute="centerX" id="Uuf-s7-RCw"/>
-                            <constraint firstItem="Q6n-3b-0LZ" firstAttribute="leading" secondItem="xNO-gf-Q0f" secondAttribute="leading" constant="26" id="ceI-SA-Zf6"/>
+                            <constraint firstItem="Q6n-3b-0LZ" firstAttribute="leading" secondItem="xNO-gf-Q0f" secondAttribute="leading" constant="27" id="ceI-SA-Zf6"/>
                             <constraint firstItem="xNO-gf-Q0f" firstAttribute="trailing" secondItem="QnA-AA-fgS" secondAttribute="trailing" constant="25" id="rrh-12-dqf"/>
                             <constraint firstItem="xNO-gf-Q0f" firstAttribute="bottom" secondItem="QnA-AA-fgS" secondAttribute="bottom" constant="26" id="uqY-Mk-55T"/>
                         </constraints>
@@ -807,7 +824,7 @@
         <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UlS-T0-V2D"/>
-        <segue reference="yf1-FQ-AIc"/>
+        <segue reference="ico-7s-g3i"/>
+        <segue reference="HRh-ym-we0"/>
     </inferredMetricsTieBreakers>
 </document>
