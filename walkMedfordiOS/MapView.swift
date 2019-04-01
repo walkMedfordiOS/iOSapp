@@ -36,8 +36,8 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      Purpose: To call functions when view is loaded
      Notes:
      */
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         wakeUpServer()
         
@@ -47,12 +47,17 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         mapView.showsUserLocation = true
         directionsInMapsButton.isHidden = true
         centerOnUser()
-        
         setUpUserTrackingButton()
+    }
+    
+    /*
+     Purpose: To set up the route on the map
+     Notes:
+     */
+    func setUpRoute() {
         
         initPolyline()
         
-        // Show selected route on Map
         if (desiredRoute != nil) {
             addRoute()
         } else {

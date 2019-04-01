@@ -175,6 +175,7 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
         let vc = self.tabBarController?.viewControllers?[0] as! MapView
         vc.desiredRoute = desiredRoute
         vc.clearMap()
+        vc.setUpRoute()
         tabBarController?.selectedIndex = 0
     }
 }
