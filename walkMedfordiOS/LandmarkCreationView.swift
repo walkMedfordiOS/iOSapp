@@ -20,8 +20,14 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
     var imagePickerController : UIImagePickerController!
     var createdLandmark: Landmark!
     
+    // Variables to show errors
+    @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        errorView.isHidden = true
     }
     
     /*
@@ -88,6 +94,8 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
                                        address: landmarkAddress.text!,
                                        description: landmarkDescription.text!)
             self.dismiss(animated: true, completion: nil)
+        } else {
+            errorView.isHidden = false
         }
     }
     
@@ -98,27 +106,41 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
     func allFieldsFilled() -> Bool {
         var filled = true
         
+        errorLabel.text = ""
+        
         if (landmarkName.text == "") {
             print("Landmark Name Required")
+            errorLabel.text = errorLabel.text! + "Landmark Name Required \n"
             filled = false
         }
         
         if (landmarkDescription.text == "") {
             print("Landmark Description Required")
+            errorLabel.text = errorLabel.text! + "Landmark Description Required \n"
             filled = false
         }
         
         if (landmarkAddress.text == "") {
             print("Landmark Address Required")
+            errorLabel.text = errorLabel.text! + "Landmark Address Required \n"
             filled = false
         }
         
         if (landmarkImage.image == nil) {
             print("Landmark Image Required")
+            errorLabel.text = errorLabel.text! + "Landmark Image Required \n"
             filled = false
         }
         
         return filled
+    }
+    
+    /*
+     Purpose: To hide the errorView if button is pressed
+     Notes:
+     */
+    @IBAction func cancelErrorView(_ sender: Any) {
+        errorView.isHidden = true
     }
     
     /*

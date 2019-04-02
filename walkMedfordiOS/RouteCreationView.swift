@@ -127,8 +127,4 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         
         return filled
     }
-    
-    
-    
-    
 }
