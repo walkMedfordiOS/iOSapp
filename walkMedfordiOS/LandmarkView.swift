@@ -50,10 +50,11 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
      Notes:
      */
     func setUpImage() {
-        var image = landmark.title.replacingOccurrences(of: " ", with: "_")
-        image = image.replacingOccurrences(of: "/", with: "_")
-        print("Image name: \(image)")
-        imageView.image = UIImage(named: image)
+        var imageName = landmark.title.replacingOccurrences(of: " ", with: "_")
+        imageName = imageName.replacingOccurrences(of: "/", with: "_")
+        let image = UIImage(named: imageName)
+        
+        imageView.image = image
     }
     
     /*
