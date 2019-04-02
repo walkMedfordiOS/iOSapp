@@ -33,6 +33,8 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
         
         webActivity.startAnimating()
         webActivity.hidesWhenStopped = true
+        
+        getAllLandmarks()
     }
 
     /*
@@ -91,9 +93,6 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
      Notes:
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if tableView == eventsTable {
-//            return events.count
-//        }
         
         return landmarks.count
     }
@@ -112,9 +111,6 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
         if (tableView == landmarksTable) {
             cell!.textLabel?.text = landmarks[indexPath.row].title
             cell!.detailTextLabel?.text = landmarks[indexPath.row].description
-        } else {
-//            cell!.textLabel?.text = events[indexPath.row].title
-//            cell!.detailTextLabel?.text = events[indexPath.row].description
         }
         
         return cell!

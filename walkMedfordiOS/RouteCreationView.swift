@@ -11,7 +11,13 @@ import UIKit
 
 class RouteCreationView: UIViewController {
     
+    // Variables for input information
+    @IBOutlet weak var routeNameText: UITextField!
+    @IBOutlet weak var routeDescriptionText: UITextField!
+    @IBOutlet weak var landmarksTable: UITableView!
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
         
     }
     

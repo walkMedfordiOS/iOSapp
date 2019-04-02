@@ -16,6 +16,7 @@
 		652FB9EB224ECA02000C0ECD /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652FB9EA224ECA02000C0ECD /* WebView.swift */; };
 		6553DDC3222CAC8C000A82A8 /* RouteCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
+		657BA4222253E2B300799A3A /* LandmarkCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BA4212253E2B300799A3A /* LandmarkCreationView.swift */; };
 		6584A33722245B980070D30E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A33622245B980070D30E /* MapKit.framework */; };
 		65972CCE222880EF00B2C005 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65972CCD222880EF00B2C005 /* LoginView.swift */; };
 		65972CD02228885000B2C005 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65972CCF2228885000B2C005 /* User.swift */; };
@@ -46,6 +47,7 @@
 		652FB9EA224ECA02000C0ECD /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCreationView.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
+		657BA4212253E2B300799A3A /* LandmarkCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkCreationView.swift; sourceTree = "<group>"; };
 		6584A33622245B980070D30E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = walkMedfordiOS.entitlements; sourceTree = "<group>"; };
 		65972CCD222880EF00B2C005 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				65B8CC6D2221E3E100B7C83E /* HealthView.swift */,
 				65B8CC6F2221E41A00B7C83E /* Landmark.swift */,
 				655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */,
+				657BA4212253E2B300799A3A /* LandmarkCreationView.swift */,
 				65E077E52231C0B1006DDD2F /* LandmarkView.swift */,
 				65972CCD222880EF00B2C005 /* LoginView.swift */,
 				65B8CC712221E45600B7C83E /* MapView.swift */,
@@ -232,6 +235,7 @@
 				B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */,
 				6553DDC3222CAC8C000A82A8 /* RouteCreationView.swift in Sources */,
 				65E077E62231C0B1006DDD2F /* LandmarkView.swift in Sources */,
+				657BA4222253E2B300799A3A /* LandmarkCreationView.swift in Sources */,
 				65BF3832224B10D6007106F6 /* StartEndAnnotation.swift in Sources */,
 				65B8CC6E2221E3E100B7C83E /* HealthView.swift in Sources */,
 				65B8CC742221E49300B7C83E /* Route.swift in Sources */,
