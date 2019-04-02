@@ -179,9 +179,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                 let route = response.routes[0]
                 self.routePolyline = route.polyline
                 self.mapView.addOverlay((self.routePolyline!), level: MKOverlayLevel.aboveRoads)
-                
-                let rect = route.polyline.boundingMapRect
-                self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
         }
         
@@ -245,8 +242,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.directionsToRoutePolyline = route.polyline
             self.mapView.addOverlay((self.directionsToRoutePolyline!), level: MKOverlayLevel.aboveRoads)
             
-            let rect = route.polyline.boundingMapRect
-            self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             self.directionsInMapsButton.isHidden = false
         }
         
@@ -275,14 +270,13 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.lineWidth = 6.0
+        renderer.lineWidth = 5.0
         
-        if overlay is MKPolyline {
-            if overlay as? MKPolyline == routePolyline {
-                renderer.strokeColor = red
-            } else if overlay as? MKPolyline == directionsToRoutePolyline {
-                renderer.strokeColor = blue
-            }
+        if overlay as? MKPolyline == routePolyline {
+            renderer.strokeColor = red
+        } else if overlay as? MKPolyline == directionsToRoutePolyline {
+            renderer.strokeColor = blue
+            renderer.lineDashPattern = [NSNumber(value: 1), NSNumber(value: 10)]
         }
         
         return renderer
