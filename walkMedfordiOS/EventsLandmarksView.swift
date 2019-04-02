@@ -17,7 +17,6 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var webActivity: UIActivityIndicatorView!
     
     // Variables for Events and Landmarks
-    var events = [Event]()
     var landmarks = [Landmark]()
     var desiredLandmark: Landmark!
     
@@ -27,65 +26,13 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set variables for events and landmarks tables
-//        eventsTable.dataSource = self
-//        eventsTable.allowsSelection = true
-//        eventsTable.delegate = self
+        // Set variables for landmarks tables
         landmarksTable.dataSource = self
         landmarksTable.allowsSelection = true
         landmarksTable.delegate = self
         
         webActivity.startAnimating()
         webActivity.hidesWhenStopped = true
-        
-        getAllEvents()
-    }
-    
-    /*
-     Purpose: To get all the events
-     Notes:
-     */
-    func getAllEvents() {
-        dataTask?.cancel()
-        
-        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/allEvents") {
-            urlComponents.query = ""
-            
-            guard let url = urlComponents.url else { return }
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil }
-                
-                if let error = error {
-                    print("DataTask error: " + error.localizedDescription + "\n")
-                } else if let data = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    
-                    let json = JSON(data)
-                    
-                    // Adds events to array of type Event
-                    for (_,subJson):(String, JSON) in json {
-                        let newEvent = Event(title: subJson["event_title"].stringValue,
-                                             startTime: subJson["start_time"].intValue,
-                                             endTime: subJson["end_time"].intValue,
-                                             landmarkID: subJson["landmark_id"].intValue,
-                                             description: subJson["event_description"].stringValue)
-                        self.events.append(newEvent)
-                    }
-
-                    if (self.events.count == 0) {
-                        self.events.append(Event(title: "No events are currently posted", startTime: 0, endTime: 0, landmarkID: 0, description: ""))
-                    }
-                }
-                
-                DispatchQueue.main.async {
-                    //self.eventsTable.reloadData()
-                    self.getAllLandmarks()
-                }
-            }
-        }
-        
-        dataTask?.resume()
     }
 
     /*

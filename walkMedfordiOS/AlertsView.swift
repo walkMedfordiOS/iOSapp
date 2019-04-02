@@ -7,40 +7,31 @@
 //
 
 import UIKit
-import WebKit
 
-class AlertsView: UIViewController, WKNavigationDelegate {
-    
-    // Variable for webView
-    @IBOutlet weak var webView: WKWebView!
-    @IBOutlet weak var activity: UIActivityIndicatorView!
+class AlertsView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let url = URL(string:"https://www.medfordma.org/2018/12/04/reminder-snow-removal-regulations/")
-        let request = URLRequest(url: url!)
-        webView.load(request)
-        webView.navigationDelegate = self
-        
-        // Add activity
-        activity.startAnimating()
-        activity.hidesWhenStopped = true
     }
     
     /*
-     Purpose: To stop web activity indicator when finished
-     Notes:
-    */
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        activity.stopAnimating()
-    }
-    
-    /*
-     Purpose: To stop web activity indicator if failed
+     Purpose: To pass data to next view
      Notes:
      */
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        activity.stopAnimating()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "snowRemovalSegue") {
+            if let destinationVC = segue.destination as? WebView {
+                destinationVC.website = "https://www.medfordma.org/2018/12/04/reminder-snow-removal-regulations/"
+            }
+        } else if (segue.identifier == "reportIssueSegue") {
+            if let destinationVC = segue.destination as? WebView {
+                destinationVC.website = "https://en.seeclickfix.com/medford_3"
+            }
+        } else if (segue.identifier == "cityMedfordSegue") {
+            if let destinationVC = segue.destination as? WebView {
+                destinationVC.website = "https://www.medfordma.org/"
+            }
+        }
     }
+   
 }
