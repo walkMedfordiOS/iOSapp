@@ -18,12 +18,18 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
     var landmarks = [Landmark]()
     var images = [UIImage]()
     
+    // Variables to show errors
+    @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
+    
     /*
      Purpose: To load the variables initially
      Notes:
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        errorView.isHidden = true
         
         // Set variables for landmarks tables
         landmarksTable.dataSource = self
@@ -39,6 +45,13 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         landmarksTable.reloadData()
     }
     
+    /*
+     Purpose: To cancel route creation
+     Notes:
+     */
+    @IBAction func cancelRouteCreation(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     /*
      Purpose: To specify the number of sections in the table
@@ -95,6 +108,8 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         
         if (allFieldsFilled()) {
             print("Creating Route")
+        } else {
+            errorView.isHidden = false
         }
     }
     
@@ -104,27 +119,41 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
      */
     func allFieldsFilled() -> Bool {
         var filled = true
+        errorLabel.text = ""
         
         if (routeName.text == "") {
             print("Route Name Required")
+            errorLabel.text = errorLabel.text! + "Route Name Required \n"
             filled = false
         }
         
         if (routeDescription.text == "") {
             print("Route Description Required")
+            errorLabel.text = errorLabel.text! + "Route Description Required \n"
             filled = false
         }
         
         if (landmarks.count < 2) {
             print("Not Enough Landmarks in Route")
+            errorLabel.text = errorLabel.text! + "Not Enough Landmarks in Route \n"
             filled = false
         }
         
         if (landmarks.count != images.count) {
             print("Unequal number of landmarks and landmark images")
+            errorLabel.text = errorLabel.text! + "Unequal number of landmarks and landmark images \n"
             filled = false
         }
         
         return filled
     }
+    
+    /*
+     Purpose: To close errorView
+     Notes:
+     */
+    @IBAction func cancelErrorView(_ sender: Any) {
+        errorView.isHidden = true
+    }
+    
 }

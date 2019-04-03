@@ -333,7 +333,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             image = "racetrack"
         } else if (name.contains("Garden")) {
             image = "garden"
-        } else if (name.contains("House") || name.contains("Home") || name.contains("Estates")) {
+        } else if (name.contains("House") || name.contains("Home") || name.contains("Estates") || name.contains("Farmhouse")) {
             image = "home"
         }
         

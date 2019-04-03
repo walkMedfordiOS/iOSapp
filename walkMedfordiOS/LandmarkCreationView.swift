@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -16,6 +17,7 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var landmarkDescription: UITextField!
     @IBOutlet weak var landmarkAddress: UITextField!
     @IBOutlet weak var landmarkImage: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
     var coordinates: CLLocationCoordinate2D!
     var imagePickerController : UIImagePickerController!
     var createdLandmark: Landmark!
@@ -24,10 +26,22 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
+    /*
+     Purpose: To load the view
+     Notes:
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
         errorView.isHidden = true
+    }
+    
+    /*
+     Purpose: To return to previous page
+     Notes:
+     */
+    @IBAction func cancelLandmarkCreation(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*
@@ -45,7 +59,7 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
      Notes:
     */
     func convertAddress() {
-        let streetAddress = landmarkAddress.text as! String
+        let streetAddress = landmarkAddress.text!
         let address = "\(streetAddress) Medford, MA, USA"
         let geocoder = CLGeocoder()
         

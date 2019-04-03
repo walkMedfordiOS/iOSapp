@@ -98,7 +98,7 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
             }
             
             view.canShowCallout = false
-            view.glyphImage = UIImage(named: annotation.imageName ?? "landmark")
+            view.glyphImage = selectGlyph(name: annotation.title!)
             view.markerTintColor = red
             view.subtitleVisibility = MKFeatureVisibility.visible
             
@@ -107,6 +107,29 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
         }
         
         return view
+    }
+    
+    /*
+     Purpose: To choose the correct type of glyph image based on the landmark title
+     Notes:
+     */
+    func selectGlyph(name: String) -> UIImage{
+        
+        var image = "building"
+        
+        if (name.contains("Park") || name.contains("Tree") || name.contains("Forest")) {
+            image = "park"
+        } else if (name.contains("School") || name.contains("College") || name.contains("University")) {
+            image = "college"
+        } else if (name.contains("Race Tracks") || name.contains("Race")) {
+            image = "racetrack"
+        } else if (name.contains("Garden")) {
+            image = "garden"
+        } else if (name.contains("House") || name.contains("Home") || name.contains("Estates") || name.contains("Farmhouse")) {
+            image = "home"
+        }
+        
+        return UIImage(named: image)!
     }
     
     /*
