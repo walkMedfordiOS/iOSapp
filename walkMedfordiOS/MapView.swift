@@ -11,9 +11,9 @@ import MapKit
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // Variables for color of elements
-    var red = UIColor(red: 200, green: 0, blue: 0, alpha: 1)
-    var green = UIColor(red: 0, green: 200, blue: 0, alpha: 1)
-    var blue = UIColor(red: 0, green: 0, blue: 200, alpha: 1)
+    var red = UIColor(red: 150, green: 0, blue: 0, alpha: 1)
+    var green = UIColor(red: 0, green: 150, blue: 0, alpha: 1)
+    var blue = UIColor(red: 0, green: 0, blue: 150, alpha: 1)
     
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
@@ -301,7 +301,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             }
             
             view.canShowCallout = true
-            view.glyphImage = UIImage(named: annotation.imageName ?? "landmark")
+            view.glyphImage = selectGlyph(name: annotation.title!)
             view.markerTintColor = red
             view.subtitleVisibility = MKFeatureVisibility.visible
             
@@ -315,6 +315,29 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         }
         
         return view
+    }
+    
+    /*
+     Purpose: To choose the correct type of glyph image based on the landmark title
+     Notes:
+     */
+    func selectGlyph(name: String) -> UIImage{
+        
+        var image = "building"
+        
+        if (name.contains("Park") || name.contains("Tree") || name.contains("Forest")) {
+            image = "park"
+        } else if (name.contains("School") || name.contains("College") || name.contains("University")) {
+            image = "college"
+        } else if (name.contains("Race Tracks") || name.contains("Race")) {
+            image = "racetrack"
+        } else if (name.contains("Garden")) {
+            image = "garden"
+        } else if (name.contains("House") || name.contains("Home") || name.contains("Estates")) {
+            image = "home"
+        }
+        
+        return UIImage(named: image)!
     }
     
     /*
