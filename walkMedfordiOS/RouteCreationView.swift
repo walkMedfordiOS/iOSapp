@@ -11,12 +11,19 @@ import UIKit
 
 class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // Variables for HTTP Requests
+    let defaultSession = URLSession(configuration: .default)
+    var dataTask: URLSessionDataTask?
+    
     // Variables for input information
     @IBOutlet weak var routeName: UITextField!
     @IBOutlet weak var routeDescription: UITextField!
     @IBOutlet weak var landmarksTable: UITableView!
     var landmarks = [Landmark]()
     var images = [UIImage]()
+    var route_id = 0
+    var landmark_ids = [Int]()
+    var stop_ids = [Int]()
     
     // Variables to show errors
     @IBOutlet weak var errorView: UIView!
@@ -108,6 +115,8 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         
         if (allFieldsFilled()) {
             print("Creating Route")
+            
+            sendRoute()
         } else {
             errorView.isHidden = false
         }
@@ -156,4 +165,117 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         errorView.isHidden = true
     }
     
+    /*
+     Purpose: To send the route to the database
+     Notes:
+     */
+    func sendRoute() {
+        let name = routeName.text!
+        let description = routeDescription.text!
+        
+        dataTask?.cancel()
+        
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createRoute") {
+            urlComponents.query = "name=\(name)&description=\(description)"
+            
+            guard let url = urlComponents.url else { return }
+            dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                defer { self.dataTask = nil }
+                
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                } else if let data = data,
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 {
+                    
+                    let json = JSON(data)
+                    
+                    self.route_id = json["route_id"].intValue
+                }
+            }
+        }
+        
+        dataTask?.resume()
+    }
+    
+    /*
+     Purpose: To send the landmarks to the database
+     Notes:
+     */
+    func sendLandmarks() {
+        
+        for landmark in landmarks {
+            
+            dataTask?.cancel()
+            
+            let name = landmark.title
+            let latitude = landmark.location.latitude
+            let longitude = landmark.location.longitude
+            let address = landmark.address
+            let description = landmark.description
+            
+            if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createRoute") {
+                urlComponents.query = "name=\(name)&latitude=\(latitude)&longitude=\(longitude)&address=\(address)&description=\(description)"
+                
+                guard let url = urlComponents.url else { return }
+                dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                    defer { self.dataTask = nil }
+                    
+                    if let error = error {
+                        print("DataTask error: " + error.localizedDescription + "\n")
+                    } else if let data = data,
+                        let response = response as? HTTPURLResponse,
+                        response.statusCode == 200 {
+                        
+                        let json = JSON(data)
+                        
+                        self.landmark_ids.append(json["landmark_id"].intValue)
+                    }
+                }
+            }
+            
+            dataTask?.resume()
+        }
+        
+        sendStops()
+    }
+    
+    /*
+     Purpose: To send the stops to the database
+     Notes:
+     */
+    func sendStops() {
+        var stop_number = 1
+        
+        for landmark in landmark_ids {
+            
+            dataTask?.cancel()
+            
+            let landmark_id = landmark + 1
+            
+            if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createRoute") {
+                urlComponents.query = "landmark_id=\(landmark_id)&route_id=\(route_id)&stop_number=\(stop_number)"
+                
+                guard let url = urlComponents.url else { return }
+                dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                    defer { self.dataTask = nil }
+                    
+                    if let error = error {
+                        print("DataTask error: " + error.localizedDescription + "\n")
+                    } else if let data = data,
+                        let response = response as? HTTPURLResponse,
+                        response.statusCode == 200 {
+                        
+                        let json = JSON(data)
+                        
+                        self.stop_ids.append(json["stop_id"].intValue)
+                    }
+                }
+            }
+            
+            dataTask?.resume()
+            
+            stop_number += 1
+        }
+    }
 }

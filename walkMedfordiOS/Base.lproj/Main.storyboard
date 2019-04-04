@@ -477,7 +477,7 @@
                                     <action selector="addressCompleted:" destination="4ld-I0-Cvg" eventType="editingDidEnd" id="xll-17-hKg"/>
                                 </connections>
                             </textField>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KMk-lM-2hi">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KMk-lM-2hi">
                                 <rect key="frame" x="16" y="260" width="343" height="175"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="dpo-lK-BX1"/>

@@ -92,8 +92,13 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            
             if((error) != nil){
                 print("Error", error as Any)
+                self.errorLabel.text = "Make sure the street address is a valid address in Medford"
+                self.errorLabel.isHidden = false
+                return
             }
             if let placemark = placemarks?.first {
                 self.coordinates = placemark.location!.coordinate
