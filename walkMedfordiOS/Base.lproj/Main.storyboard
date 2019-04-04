@@ -1147,14 +1147,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0D-Xn-UKw">
-                                <rect key="frame" x="16" y="44" width="40" height="22"/>
+                                <rect key="frame" x="16" y="44" width="40" height="30"/>
                                 <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="SKM-wi-3gV" eventType="touchUpInside" id="gP3-Rz-YnY"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-px-vIO">
-                                <rect key="frame" x="16" y="76" width="343" height="727"/>
+                                <rect key="frame" x="16" y="84" width="343" height="719"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqc-SF-sfw">
                                         <rect key="frame" x="0.0" y="393.33333333333331" width="343" height="24"/>
@@ -1252,6 +1252,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="ico-7s-g3i"/>
         <segue reference="63s-4J-Hj6"/>
-        <segue reference="xMk-d4-L9k"/>
+        <segue reference="1WB-qz-wZq"/>
     </inferredMetricsTieBreakers>
 </document>
