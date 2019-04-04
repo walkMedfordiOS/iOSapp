@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sKI-N9-LVG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sKI-N9-LVG">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -289,7 +289,7 @@
                                 <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3J-dp-jEh">
-                                        <rect key="frame" x="237" y="8" width="55" height="30"/>
+                                        <rect key="frame" x="237" y="8" width="55" height="67"/>
                                         <state key="normal" image="cancel"/>
                                         <connections>
                                             <action selector="cancelErrorView:" destination="4ld-I0-Cvg" eventType="touchUpInside" id="7ir-8F-b78"/>
@@ -988,71 +988,95 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78n-Lq-GhM">
-                                <rect key="frame" x="120" y="298" width="135" height="216"/>
-                                <state key="normal" title="Show Steps Walked"/>
+                                <rect key="frame" x="224" y="82" width="135" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="YZ7-cj-8SK"/>
+                                </constraints>
+                                <state key="normal" title="Update Health Data"/>
                                 <connections>
                                     <action selector="showNumberSteps:" destination="VIa-mg-aQ3" eventType="touchUpInside" id="XgI-0O-dn9"/>
                                     <action selector="showNumberSteps:" destination="Awj-cx-ySX" eventType="touchUpInside" id="obN-K6-3m3"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps Walked Today: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXU-fO-1Pc">
-                                <rect key="frame" x="16" y="612" width="164" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Steps Walked Today: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXU-fO-1Pc">
+                                <rect key="frame" x="14" y="110" width="345" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqc-2w-kuH">
-                                <rect key="frame" x="85" y="192" width="205" height="30"/>
+                                <rect key="frame" x="85" y="44" width="205" height="30"/>
                                 <state key="normal" title="Authorize Health Data Access"/>
                                 <connections>
                                     <action selector="authorizeHealthData:" destination="Awj-cx-ySX" eventType="touchUpInside" id="MH5-ND-BIO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-QY-U6I">
-                                <rect key="frame" x="240" y="602" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="3oR-Ah-iwQ"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="120" y="271" width="135" height="30"/>
+                                <state key="normal" title="Attempted AR"/>
                                 <connections>
                                     <segue destination="IvW-FT-ysc" kind="show" id="dwA-94-ueD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wwk-Ze-MKM">
-                                <rect key="frame" x="151.66666666666666" y="670" width="72" height="30"/>
+                                <rect key="frame" x="152" y="670" width="71" height="30"/>
                                 <state key="normal" title="Add Route"/>
                                 <connections>
                                     <segue destination="098-wx-E0B" kind="show" id="xMk-d4-L9k"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calories Burned Today:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja6-Zt-MV0">
+                                <rect key="frame" x="14" y="138" width="345" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Steps:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKz-AB-W03">
+                                <rect key="frame" x="16" y="167" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Calories:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UV1-D4-e2s">
+                                <rect key="frame" x="16" y="196" width="109" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="top" secondItem="uoR-3Z-3tG" secondAttribute="top" constant="148" id="1a2-nJ-iFb"/>
-                            <constraint firstItem="Wwk-Ze-MKM" firstAttribute="centerX" secondItem="74f-Ys-g5w" secondAttribute="centerX" id="1dB-5c-qYQ"/>
-                            <constraint firstItem="FXU-fO-1Pc" firstAttribute="leading" secondItem="74f-Ys-g5w" secondAttribute="leadingMargin" id="DVQ-oD-hrY"/>
-                            <constraint firstItem="uoR-3Z-3tG" firstAttribute="bottom" secondItem="Wwk-Ze-MKM" secondAttribute="bottom" constant="29" id="Gmb-lg-ePX"/>
-                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="85" id="Gng-gg-yE8"/>
-                            <constraint firstItem="FXU-fO-1Pc" firstAttribute="top" secondItem="78n-Lq-GhM" secondAttribute="bottom" constant="98" id="jHn-Vd-8uk"/>
-                            <constraint firstItem="uoR-3Z-3tG" firstAttribute="bottom" secondItem="0mh-QY-U6I" secondAttribute="bottom" constant="97" id="kaZ-VU-jKG"/>
-                            <constraint firstItem="78n-Lq-GhM" firstAttribute="centerY" secondItem="74f-Ys-g5w" secondAttribute="centerY" id="l7r-J5-FM4"/>
-                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="centerX" secondItem="78n-Lq-GhM" secondAttribute="centerX" id="lYs-UD-2sc"/>
-                            <constraint firstItem="78n-Lq-GhM" firstAttribute="top" secondItem="uoR-3Z-3tG" secondAttribute="top" constant="254" id="m50-Lv-LZC"/>
-                            <constraint firstItem="78n-Lq-GhM" firstAttribute="centerX" secondItem="74f-Ys-g5w" secondAttribute="centerX" id="nzw-Av-Qz4"/>
-                            <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" secondItem="0mh-QY-U6I" secondAttribute="trailing" constant="89" id="qHh-Ei-VAu"/>
-                            <constraint firstItem="0mh-QY-U6I" firstAttribute="leading" secondItem="FXU-fO-1Pc" secondAttribute="trailing" constant="60" id="vsR-lL-ZeQ"/>
+                            <constraint firstItem="0mh-QY-U6I" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="120" id="7ff-L2-lvk"/>
+                            <constraint firstItem="Wwk-Ze-MKM" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="152" id="9rw-q9-NLT"/>
+                            <constraint firstItem="uoR-3Z-3tG" firstAttribute="bottom" secondItem="Wwk-Ze-MKM" secondAttribute="bottom" constant="29" id="FaZ-E2-IGF"/>
+                            <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FXU-fO-1Pc" secondAttribute="trailing" symbolic="YES" id="GhR-2L-6Za"/>
+                            <constraint firstItem="78n-Lq-GhM" firstAttribute="top" secondItem="Cqc-2w-kuH" secondAttribute="bottom" constant="8" symbolic="YES" id="P4X-Ln-HIM"/>
+                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="centerX" secondItem="Wwk-Ze-MKM" secondAttribute="centerX" id="Xxp-iE-mEZ"/>
+                            <constraint firstItem="FXU-fO-1Pc" firstAttribute="top" secondItem="Cqc-2w-kuH" secondAttribute="bottom" constant="36" id="dQx-L3-X8f"/>
+                            <constraint firstItem="78n-Lq-GhM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uoR-3Z-3tG" secondAttribute="leading" symbolic="YES" id="gB7-Kv-sAu"/>
+                            <constraint firstItem="0mh-QY-U6I" firstAttribute="centerX" secondItem="74f-Ys-g5w" secondAttribute="centerX" id="iMS-wl-T80"/>
+                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="centerX" secondItem="0mh-QY-U6I" secondAttribute="centerX" id="iVa-cc-5Pe"/>
+                            <constraint firstItem="0mh-QY-U6I" firstAttribute="top" secondItem="74f-Ys-g5w" secondAttribute="top" constant="271" id="j0h-wg-XgT"/>
+                            <constraint firstItem="FXU-fO-1Pc" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="14" id="qGf-zD-hxk"/>
+                            <constraint firstItem="78n-Lq-GhM" firstAttribute="trailing" secondItem="74f-Ys-g5w" secondAttribute="trailingMargin" id="rBS-Di-LIm"/>
+                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="top" secondItem="uoR-3Z-3tG" secondAttribute="top" id="t9s-cy-EUz"/>
+                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="85" id="wcP-5F-F4Q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uoR-3Z-3tG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="user" id="WO9-w0-5NV"/>
                     <connections>
+                        <outlet property="caloriesLabel" destination="Ja6-Zt-MV0" id="pgQ-tb-alh"/>
                         <outlet property="stepsLabel" destination="FXU-fO-1Pc" id="FlB-YQ-7K3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w00-Lh-EJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VIa-mg-aQ3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="993" y="866"/>
+            <point key="canvasLocation" x="992.79999999999995" y="865.27093596059115"/>
         </scene>
         <!--Landmarks-->
         <scene sceneID="a6i-qV-ym0">
@@ -1240,14 +1264,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="30" height="30"/>
-        <image name="building" width="30" height="30"/>
-        <image name="cancel" width="30" height="30"/>
-        <image name="home" width="30" height="30"/>
-        <image name="info" width="30" height="30"/>
-        <image name="logo" width="104.66666412353516" height="106.66666412353516"/>
-        <image name="route" width="30" height="30"/>
-        <image name="user" width="30" height="30"/>
+        <image name="back" width="72" height="72"/>
+        <image name="building" width="67.5" height="67.5"/>
+        <image name="cancel" width="67.5" height="67.5"/>
+        <image name="home" width="72" height="72"/>
+        <image name="info" width="67.5" height="67.5"/>
+        <image name="logo" width="314" height="320"/>
+        <image name="route" width="72" height="72"/>
+        <image name="user" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ico-7s-g3i"/>

@@ -34,6 +34,7 @@ import HealthKit
 class HealthView: UIViewController {
     
     
+    @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
     
     let healthStore = HKHealthStore()
@@ -79,6 +80,30 @@ class HealthView: UIViewController {
         }
     }
     
+    func getTodaysCalories(completion: @escaping (Double) -> Void) {
+        let caloriesQuantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        let now = Date()
+        //let startOfDay = Calendar.current.startOfDay(for: now)
+        if let date = UserDefaults.standard.object(forKey: "date") as? Date {
+            print(date)
+            let predicate = HKQuery.predicateForSamples(withStart: date, end: now, options: .strictStartDate)
+            let query = HKStatisticsQuery(quantityType: caloriesQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (_, result, error) in
+                var resultCount = 0.0
+                guard let result = result else {
+                    print("Failed to fetch calories rate")
+                    completion(resultCount)
+                    return }
+                if let sum = result.sumQuantity() {
+                    resultCount = sum.doubleValue(for: HKUnit.count()) }
+                DispatchQueue.main.async {
+                    completion(resultCount) } }
+            healthStore.execute(query)
+        }
+        else {
+            self.caloriesLabel.text = "You haven't started a route yet."
+        }
+    }
+    
     @IBAction func showNumberSteps(_ sender: UIButton) {
         //self.stepsLabel.text = "Hello1"
         /*print("steps")
@@ -92,6 +117,10 @@ class HealthView: UIViewController {
             print("\(result)")
             DispatchQueue.main.async {
                 self.stepsLabel.text = "\(result)" } }
+        getTodaysCalories { (result) in
+            print("\(result)")
+            DispatchQueue.main.async {
+                self.caloriesLabel.text = "\(result)" } }
     }
     
 }
