@@ -30,9 +30,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1Ijoid2Fsa21lZGZvcmQiLCJhIjoiY2p0b3VoNmsxMGMzZTRibWVwZnF2NDdrdyJ9.1ed4n1_vAqlyrggSuvmYqA</string>
 	<key>MKDirectionsApplicationSupportedModes</key>
 	<array>
 		<string>MKDirectionsModePedestrian</string>
@@ -43,6 +47,8 @@
 	<string>We will use your health information to track your workouts</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>We will use your health information to track your workouts</string>
+	<key>NSLocationWhenInUseDescription</key>
+	<string>Shows your location on the map and helps improve OpenStreetMap.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow us to access your location while using this app</string>
 	<key>UILaunchStoryboardName</key>
@@ -53,6 +59,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

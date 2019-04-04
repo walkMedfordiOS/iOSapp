@@ -7,19 +7,31 @@
 //
 
 import UIKit
-import WebKit
 
 class AlertsView: UIViewController {
     
-    // Variable for webView
-    @IBOutlet weak var webView: WKWebView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let url = URL(string:"https://www.medfordma.org/2018/12/04/reminder-snow-removal-regulations/")
-        let request = URLRequest(url: url!)
-        webView.load(request)
     }
     
+    /*
+     Purpose: To pass data to next view
+     Notes:
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "snowRemovalSegue") {
+            if let destinationVC = segue.destination as? WebView {
+                destinationVC.website = "https://www.medfordma.org/2018/12/04/reminder-snow-removal-regulations/"
+            }
+        } else if (segue.identifier == "reportIssueSegue") {
+            if let destinationVC = segue.destination as? WebView {
+                destinationVC.website = "https://en.seeclickfix.com/medford_3"
+            }
+        } else if (segue.identifier == "cityMedfordSegue") {
+            if let destinationVC = segue.destination as? WebView {
+                destinationVC.website = "https://www.medfordma.org/"
+            }
+        }
+    }
+   
 }

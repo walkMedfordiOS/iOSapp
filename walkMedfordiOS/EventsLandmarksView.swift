@@ -14,75 +14,27 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
+    @IBOutlet weak var webActivity: UIActivityIndicatorView!
     
     // Variables for Events and Landmarks
-    var events = [Event]()
     var landmarks = [Landmark]()
     var desiredLandmark: Landmark!
     
-    // Vraiables for Tables
-    @IBOutlet weak var eventsTable: UITableView!
+    // Variable for Table
     @IBOutlet weak var landmarksTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set variables for events and landmarks tables
-        eventsTable.dataSource = self
-        eventsTable.allowsSelection = true
-        eventsTable.delegate = self
+        // Set variables for landmarks tables
         landmarksTable.dataSource = self
         landmarksTable.allowsSelection = true
         landmarksTable.delegate = self
         
-        getAllEvents()
-    }
-    
-    /*
-     Purpose: To get all the events
-     Notes:
-     */
-    func getAllEvents() {
-        dataTask?.cancel()
+        webActivity.startAnimating()
+        webActivity.hidesWhenStopped = true
         
-        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/allEvents") {
-            urlComponents.query = ""
-            
-            guard let url = urlComponents.url else { return }
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil }
-                
-                if let error = error {
-                    print("DataTask error: " + error.localizedDescription + "\n")
-                } else if let data = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    
-                    let json = JSON(data)
-                    
-                    // Adds events to array of type Event
-                    for (_,subJson):(String, JSON) in json {
-                        let newEvent = Event(title: subJson["event_title"].stringValue,
-                                             startTime: subJson["start_time"].intValue,
-                                             endTime: subJson["end_time"].intValue,
-                                             landmarkID: subJson["landmark_id"].intValue,
-                                             description: subJson["event_description"].stringValue)
-                        self.events.append(newEvent)
-                    }
-
-                    if (self.events.count == 0) {
-                        self.events.append(Event(title: "No events are currently posted", startTime: 0, endTime: 0, landmarkID: 0, description: ""))
-                    }
-                }
-                
-                DispatchQueue.main.async {
-                    self.eventsTable.reloadData()
-                    self.getAllLandmarks()
-                }
-            }
-        }
-        
-        dataTask?.resume()
+        getAllLandmarks()
     }
 
     /*
@@ -119,6 +71,7 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
                 }
                 
                 DispatchQueue.main.async {
+                    self.webActivity.stopAnimating()
                     self.landmarksTable.reloadData()
                 }
             }
@@ -140,11 +93,8 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
      Notes:
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == eventsTable {
-            return events.count
-        } else {
-            return landmarks.count
-        }
+        
+        return landmarks.count
     }
     
     /*
@@ -158,10 +108,7 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
         }
         
-        if (tableView == eventsTable) {
-            cell!.textLabel?.text = events[indexPath.row].title
-            cell!.detailTextLabel?.text = events[indexPath.row].description
-        } else {
+        if (tableView == landmarksTable) {
             cell!.textLabel?.text = landmarks[indexPath.row].title
             cell!.detailTextLabel?.text = landmarks[indexPath.row].description
         }
