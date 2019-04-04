@@ -177,5 +177,7 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
         vc.clearMap()
         vc.setUpRoute()
         tabBarController?.selectedIndex = 0
+        let date = Date()
+        UserDefaults.standard.set(date, forKey: "date")
     }
 }
