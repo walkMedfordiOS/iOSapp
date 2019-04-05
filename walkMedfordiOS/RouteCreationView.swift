@@ -277,5 +277,7 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
             
             stop_number += 1
         }
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }
