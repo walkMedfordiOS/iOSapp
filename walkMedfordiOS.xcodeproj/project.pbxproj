@@ -33,7 +33,7 @@
 		65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 		B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F93682249747000FDD264 /* ImageInformationViewController.swift */; };
-		B8E27D5B2256EBFD00BD622E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D592256EBFD00BD622E /* Model.xcdatamodeld */; };
+		B8E27D5B2256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */; };
 		B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */; };
 		B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */; };
 		B8E27DA22256F5B700BD622E /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27DA12256F5B700BD622E /* PersistenceService.swift */; };
@@ -120,7 +120,7 @@
 				B84F93682249747000FDD264 /* ImageInformationViewController.swift */,
 				65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */,
 				65B8CC6D2221E3E100B7C83E /* HealthView.swift */,
-				B8E27D592256EBFD00BD622E /* Model.xcdatamodeld */,
+				B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */,
 				65B8CC6F2221E41A00B7C83E /* Landmark.swift */,
 				B8E27DA12256F5B700BD622E /* PersistenceService.swift */,
 				655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */,
@@ -250,7 +250,7 @@
 				657BA4222253E2B300799A3A /* LandmarkCreationView.swift in Sources */,
 				65BF3832224B10D6007106F6 /* StartEndAnnotation.swift in Sources */,
 				65B8CC6E2221E3E100B7C83E /* HealthView.swift in Sources */,
-				B8E27D5B2256EBFD00BD622E /* Model.xcdatamodeld in Sources */,
+				B8E27D5B2256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld in Sources */,
 				B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */,
 				65B8CC742221E49300B7C83E /* Route.swift in Sources */,
 				65B8CC702221E41A00B7C83E /* Landmark.swift in Sources */,
@@ -479,13 +479,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B8E27D592256EBFD00BD622E /* Model.xcdatamodeld */ = {
+		B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */,
 			);
 			currentVersion = B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			path = walkMedfordiOS.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
