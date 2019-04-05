@@ -6,6 +6,7 @@
 //  Copyright © 2018 walkMedford. All rights reserved.
 //
 import UIKit
+import CoreData
 //import Fabric
 //import Crashlytics
 

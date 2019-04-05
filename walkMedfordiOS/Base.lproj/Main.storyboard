@@ -988,11 +988,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78n-Lq-GhM">
-                                <rect key="frame" x="224" y="82" width="135" height="20"/>
+                                <rect key="frame" x="283" y="82" width="76" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="YZ7-cj-8SK"/>
                                 </constraints>
-                                <state key="normal" title="Update Health Data"/>
+                                <state key="normal" title="Stop Route"/>
                                 <connections>
                                     <action selector="showNumberSteps:" destination="VIa-mg-aQ3" eventType="touchUpInside" id="XgI-0O-dn9"/>
                                     <action selector="showNumberSteps:" destination="Awj-cx-ySX" eventType="touchUpInside" id="obN-K6-3m3"/>
@@ -1071,6 +1071,8 @@
                     <connections>
                         <outlet property="caloriesLabel" destination="Ja6-Zt-MV0" id="pgQ-tb-alh"/>
                         <outlet property="stepsLabel" destination="FXU-fO-1Pc" id="FlB-YQ-7K3"/>
+                        <outlet property="totalCaloriesLabel" destination="UV1-D4-e2s" id="jQe-QJ-suf"/>
+                        <outlet property="totalStepsLabel" destination="WKz-AB-W03" id="ClE-fo-uTr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w00-Lh-EJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1171,17 +1173,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0D-Xn-UKw">
-                                <rect key="frame" x="16" y="44" width="40" height="30"/>
+                                <rect key="frame" x="16" y="44" width="40" height="72"/>
                                 <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="SKM-wi-3gV" eventType="touchUpInside" id="gP3-Rz-YnY"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-px-vIO">
-                                <rect key="frame" x="16" y="84" width="343" height="719"/>
+                                <rect key="frame" x="16" y="126" width="343" height="677"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqc-SF-sfw">
-                                        <rect key="frame" x="0.0" y="393.33333333333331" width="343" height="24"/>
+                                        <rect key="frame" x="0.0" y="393.33333333333337" width="343" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1205,7 +1207,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEL-RP-tYX">
-                                        <rect key="frame" x="0.0" y="425.33333333333326" width="343" height="300"/>
+                                        <rect key="frame" x="0.0" y="425.33333333333337" width="343" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="Dl1-47-sfF"/>
                                         </constraints>

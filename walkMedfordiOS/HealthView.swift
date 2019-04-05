@@ -28,6 +28,7 @@
  * THE SOFTWARE.
  */
 
+import CoreData
 import UIKit
 import HealthKit
 
@@ -36,6 +37,8 @@ class HealthView: UIViewController {
     
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var totalCaloriesLabel: UILabel!
+    @IBOutlet weak var totalStepsLabel: UILabel!
     
     let healthStore = HKHealthStore()
     
@@ -113,14 +116,22 @@ class HealthView: UIViewController {
             self.stepsLabel.text = String(format: "%f", steps)
             
         })*/
+        let total = Total(context: PersistenceService.context)
         getTodaysSteps { (result) in
             print("\(result)")
             DispatchQueue.main.async {
-                self.stepsLabel.text = "\(result)" } }
+                self.stepsLabel.text = "Steps Walked Today: \(result)" }
+            total.steps = total.steps + result
+            self.totalStepsLabel.text = "Total Steps: \(total.steps)"
+        }
         getTodaysCalories { (result) in
             print("\(result)")
             DispatchQueue.main.async {
-                self.caloriesLabel.text = "\(result)" } }
+                self.caloriesLabel.text = "Calories Burned Today: \(result)" }
+            total.calories = total.calories + result
+            self.totalCaloriesLabel.text = "Total Calories: \(total.calories)"
+        }
+        PersistenceService.saveContext()
     }
     
 }
