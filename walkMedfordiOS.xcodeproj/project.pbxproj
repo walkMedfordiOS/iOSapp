@@ -33,6 +33,10 @@
 		65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 		B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F93682249747000FDD264 /* ImageInformationViewController.swift */; };
+		B8E27D5B2256EBFD00BD622E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D592256EBFD00BD622E /* Model.xcdatamodeld */; };
+		B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */; };
+		B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */; };
+		B8E27DA22256F5B700BD622E /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27DA12256F5B700BD622E /* PersistenceService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +69,10 @@
 		65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		B84F93682249747000FDD264 /* ImageInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInformationViewController.swift; sourceTree = "<group>"; };
+		B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B8E27DA12256F5B700BD622E /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,8 @@
 		650DD94121AC8F0900AEBDD7 /* walkMedfordiOS */ = {
 			isa = PBXGroup;
 			children = (
+				B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */,
+				B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */,
 				6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */,
 				650DD94E21AC8F0A00AEBDD7 /* Info.plist */,
 				652BD6DC223AD754004F01AF /* AlertsView.swift */,
@@ -110,7 +120,9 @@
 				B84F93682249747000FDD264 /* ImageInformationViewController.swift */,
 				65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */,
 				65B8CC6D2221E3E100B7C83E /* HealthView.swift */,
+				B8E27D592256EBFD00BD622E /* Model.xcdatamodeld */,
 				65B8CC6F2221E41A00B7C83E /* Landmark.swift */,
+				B8E27DA12256F5B700BD622E /* PersistenceService.swift */,
 				655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */,
 				657BA4212253E2B300799A3A /* LandmarkCreationView.swift */,
 				65E077E52231C0B1006DDD2F /* LandmarkView.swift */,
@@ -238,11 +250,15 @@
 				657BA4222253E2B300799A3A /* LandmarkCreationView.swift in Sources */,
 				65BF3832224B10D6007106F6 /* StartEndAnnotation.swift in Sources */,
 				65B8CC6E2221E3E100B7C83E /* HealthView.swift in Sources */,
+				B8E27D5B2256EBFD00BD622E /* Model.xcdatamodeld in Sources */,
+				B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */,
 				65B8CC742221E49300B7C83E /* Route.swift in Sources */,
 				65B8CC702221E41A00B7C83E /* Landmark.swift in Sources */,
 				65EFF334222E143F00966FA1 /* EventsLandmarksView.swift in Sources */,
 				655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */,
+				B8E27DA22256F5B700BD622E /* PersistenceService.swift in Sources */,
 				650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */,
+				B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */,
 				65B8CC762221E4AD00B7C83E /* RouteSelectionView.swift in Sources */,
 				65B8CC722221E45600B7C83E /* MapView.swift in Sources */,
 				65972CD02228885000B2C005 /* User.swift in Sources */,
@@ -461,6 +477,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B8E27D592256EBFD00BD622E /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */,
+			);
+			currentVersion = B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 650DD93721AC8F0900AEBDD7 /* Project object */;
 }
