@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sKI-N9-LVG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sKI-N9-LVG">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -289,7 +289,7 @@
                                 <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3J-dp-jEh">
-                                        <rect key="frame" x="237" y="8" width="55" height="67"/>
+                                        <rect key="frame" x="237" y="8" width="55" height="30"/>
                                         <state key="normal" image="cancel"/>
                                         <connections>
                                             <action selector="cancelErrorView:" destination="4ld-I0-Cvg" eventType="touchUpInside" id="7ir-8F-b78"/>
@@ -1005,21 +1005,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqc-2w-kuH">
-                                <rect key="frame" x="85" y="44" width="205" height="30"/>
+                                <rect key="frame" x="85" y="44" width="219" height="30"/>
                                 <state key="normal" title="Authorize Health Data Access"/>
                                 <connections>
                                     <action selector="authorizeHealthData:" destination="Awj-cx-ySX" eventType="touchUpInside" id="MH5-ND-BIO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-QY-U6I">
-                                <rect key="frame" x="120" y="271" width="135" height="30"/>
+                                <rect key="frame" x="120" y="271" width="149" height="30"/>
                                 <state key="normal" title="Attempted AR"/>
                                 <connections>
                                     <segue destination="IvW-FT-ysc" kind="show" id="dwA-94-ueD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wwk-Ze-MKM">
-                                <rect key="frame" x="152" y="670" width="71" height="30"/>
+                                <rect key="frame" x="14" y="670" width="345" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="345" id="7am-Lq-pWv"/>
+                                </constraints>
                                 <state key="normal" title="Add Route"/>
                                 <connections>
                                     <segue destination="098-wx-E0B" kind="show" id="xMk-d4-L9k"/>
@@ -1050,11 +1053,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0mh-QY-U6I" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="120" id="7ff-L2-lvk"/>
-                            <constraint firstItem="Wwk-Ze-MKM" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="152" id="9rw-q9-NLT"/>
+                            <constraint firstItem="Wwk-Ze-MKM" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="14" id="9rw-q9-NLT"/>
                             <constraint firstItem="uoR-3Z-3tG" firstAttribute="bottom" secondItem="Wwk-Ze-MKM" secondAttribute="bottom" constant="29" id="FaZ-E2-IGF"/>
                             <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FXU-fO-1Pc" secondAttribute="trailing" symbolic="YES" id="GhR-2L-6Za"/>
                             <constraint firstItem="78n-Lq-GhM" firstAttribute="top" secondItem="Cqc-2w-kuH" secondAttribute="bottom" constant="8" symbolic="YES" id="P4X-Ln-HIM"/>
-                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="centerX" secondItem="Wwk-Ze-MKM" secondAttribute="centerX" id="Xxp-iE-mEZ"/>
+                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="centerX" secondItem="Wwk-Ze-MKM" secondAttribute="centerX" constant="8" id="Xxp-iE-mEZ"/>
                             <constraint firstItem="FXU-fO-1Pc" firstAttribute="top" secondItem="Cqc-2w-kuH" secondAttribute="bottom" constant="36" id="dQx-L3-X8f"/>
                             <constraint firstItem="78n-Lq-GhM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uoR-3Z-3tG" secondAttribute="leading" symbolic="YES" id="gB7-Kv-sAu"/>
                             <constraint firstItem="0mh-QY-U6I" firstAttribute="centerX" secondItem="74f-Ys-g5w" secondAttribute="centerX" id="iMS-wl-T80"/>
@@ -1173,17 +1176,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0D-Xn-UKw">
-                                <rect key="frame" x="16" y="44" width="40" height="72"/>
+                                <rect key="frame" x="16" y="44" width="40" height="30"/>
                                 <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="SKM-wi-3gV" eventType="touchUpInside" id="gP3-Rz-YnY"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-px-vIO">
-                                <rect key="frame" x="16" y="126" width="343" height="677"/>
+                                <rect key="frame" x="16" y="84" width="343" height="719"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqc-SF-sfw">
-                                        <rect key="frame" x="0.0" y="393.33333333333337" width="343" height="24"/>
+                                        <rect key="frame" x="0.0" y="393.33333333333331" width="343" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1207,7 +1210,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEL-RP-tYX">
-                                        <rect key="frame" x="0.0" y="425.33333333333337" width="343" height="300"/>
+                                        <rect key="frame" x="0.0" y="425.33333333333326" width="343" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="Dl1-47-sfF"/>
                                         </constraints>
@@ -1266,18 +1269,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="72" height="72"/>
-        <image name="building" width="67.5" height="67.5"/>
-        <image name="cancel" width="67.5" height="67.5"/>
-        <image name="home" width="72" height="72"/>
-        <image name="info" width="67.5" height="67.5"/>
-        <image name="logo" width="314" height="320"/>
-        <image name="route" width="72" height="72"/>
-        <image name="user" width="72" height="72"/>
+        <image name="back" width="30" height="30"/>
+        <image name="building" width="30" height="30"/>
+        <image name="cancel" width="30" height="30"/>
+        <image name="home" width="30" height="30"/>
+        <image name="info" width="30" height="30"/>
+        <image name="logo" width="104.66666412353516" height="106.66666412353516"/>
+        <image name="route" width="30" height="30"/>
+        <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ico-7s-g3i"/>
         <segue reference="63s-4J-Hj6"/>
-        <segue reference="1WB-qz-wZq"/>
+        <segue reference="xMk-d4-L9k"/>
     </inferredMetricsTieBreakers>
 </document>
