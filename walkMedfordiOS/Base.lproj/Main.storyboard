@@ -1033,14 +1033,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Steps:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKz-AB-W03">
-                                <rect key="frame" x="16" y="167" width="91" height="21"/>
+                                <rect key="frame" x="16" y="167" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Calories:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UV1-D4-e2s">
-                                <rect key="frame" x="16" y="196" width="109" height="21"/>
+                                <rect key="frame" x="16" y="196" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1278,6 +1278,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="ico-7s-g3i"/>
         <segue reference="63s-4J-Hj6"/>
-        <segue reference="1WB-qz-wZq"/>
+        <segue reference="xMk-d4-L9k"/>
     </inferredMetricsTieBreakers>
 </document>

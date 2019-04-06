@@ -97,7 +97,7 @@ class HealthView: UIViewController {
                     completion(resultCount)
                     return }
                 if let sum = result.sumQuantity() {
-                    resultCount = sum.doubleValue(for: HKUnit.count()) }
+                    resultCount = sum.doubleValue(for: HKUnit.largeCalorie()) }
                 DispatchQueue.main.async {
                     completion(resultCount) } }
             healthStore.execute(query)
@@ -121,6 +121,7 @@ class HealthView: UIViewController {
             print("\(result)")
             DispatchQueue.main.async {
                 self.stepsLabel.text = "Steps Walked Today: \(result)" }
+            print(total.steps)
             total.steps = total.steps + result
             self.totalStepsLabel.text = "Total Steps: \(total.steps)"
         }
