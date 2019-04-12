@@ -269,11 +269,9 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
     func sendStops() {
         var stop_number = 1
         
-        for landmark in landmark_ids {
+        for landmark_id in landmark_ids {
             
             dataTask?.cancel()
-            
-            let landmark_id = landmark + 1
             
             if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createRoute") {
                 urlComponents.query = "landmark_id=\(landmark_id)&route_id=\(route_id)&stop_number=\(stop_number)"
@@ -303,14 +301,19 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
+    /*
+     Purpose: To allow the user to delete a row
+     Notes:
+     */
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
         return true
     }
     
+    /*
+     Purpose: To allow the user to delete a row
+     Notes:
+     */
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete
