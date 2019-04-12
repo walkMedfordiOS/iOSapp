@@ -302,4 +302,22 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            landmarks.remove(at: indexPath.row)
+            images.remove(at: indexPath.row)
+            landmarksTable.reloadData()
+        }
+    }
 }
