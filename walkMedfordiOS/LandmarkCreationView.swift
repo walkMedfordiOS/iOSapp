@@ -31,6 +31,11 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
+    // Variables to edit landmark
+    var editLandmark: Landmark!
+    var editImage: UIImage!
+    var editIndex: Int!
+    
     /*
      Purpose: To load the view
      Notes:
@@ -44,6 +49,25 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
         landmarkAddress.delegate = self
         
         mapView.delegate = self
+        
+        // If editing an existing landmark
+        if (editLandmark != nil && editImage != nil) {
+            fillLandmarkInfo()
+        }
+    }
+    
+    /*
+     Purpose: To fill in the information if editing a landmark
+     Notes:
+     */
+    func fillLandmarkInfo() {
+        
+        landmarkName.text = editLandmark.title
+        landmarkDescription.text = editLandmark.description
+        landmarkAddress.text = editLandmark.address
+        landmarkImage.image = editImage
+        
+        convertAddress()
     }
     
     /*
@@ -217,9 +241,21 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
                                        address: landmarkAddress.text!,
                                        description: landmarkDescription.text!)
             
-            if let presenter = presentingViewController as? RouteCreationView {
-                presenter.landmarks.append(createdLandmark)
-                presenter.images.append(landmarkImage.image!)
+            // If editing a landmark
+            if (editLandmark != nil && editImage != nil) {
+                if let presenter = presentingViewController as? RouteCreationView {
+                    
+                    presenter.landmarks[editIndex] = createdLandmark
+                    presenter.images[editIndex] = landmarkImage.image!
+                    
+                }
+            } else {
+                if let presenter = presentingViewController as? RouteCreationView {
+                    
+                    presenter.landmarks.append(createdLandmark)
+                    presenter.images.append(landmarkImage.image!)
+                    
+                }
             }
             
             self.dismiss(animated: true, completion: nil)

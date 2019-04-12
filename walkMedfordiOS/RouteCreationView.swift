@@ -29,6 +29,11 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
+    // Variables to edit landmark
+    var editLandmark: Landmark!
+    var editImage: UIImage!
+    var editIndex: Int!
+    
     /*
      Purpose: To load the variables initially
      Notes:
@@ -103,7 +108,24 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if (tableView == landmarksTable) {
-            
+            editLandmark = landmarks[indexPath.row]
+            editImage = images[indexPath.row]
+            editIndex = indexPath.row
+            performSegue(withIdentifier: "segueEditLandmark", sender: self)
+        }
+    }
+
+    /*
+     Purpose: To pass landmark to next view to be edited
+     Notes:
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueEditLandmark") {
+            if let destinationVC = segue.destination as? LandmarkCreationView {
+                destinationVC.editLandmark = editLandmark
+                destinationVC.editImage = editImage
+                destinationVC.editIndex = editIndex
+            }
         }
     }
     

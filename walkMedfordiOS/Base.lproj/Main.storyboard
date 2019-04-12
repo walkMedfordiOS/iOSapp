@@ -394,6 +394,7 @@
                         <outlet property="landmarksTable" destination="Jc4-8x-Ykf" id="wV0-FR-lEe"/>
                         <outlet property="routeDescription" destination="Cr5-4Y-zP9" id="ub5-Wo-m0m"/>
                         <outlet property="routeName" destination="npJ-F7-V8L" id="kpB-YJ-iPw"/>
+                        <segue destination="4ld-I0-Cvg" kind="show" identifier="segueEditLandmark" id="hn4-lb-BNo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kbm-kh-yt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1279,8 +1280,9 @@
         <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ico-7s-g3i"/>
+        <segue reference="UlS-T0-V2D"/>
         <segue reference="63s-4J-Hj6"/>
+        <segue reference="hn4-lb-BNo"/>
         <segue reference="xMk-d4-L9k"/>
     </inferredMetricsTieBreakers>
 </document>
