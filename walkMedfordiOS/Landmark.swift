@@ -9,12 +9,14 @@ import Foundation
 import MapKit
 
 class Landmark {
+    let id: Int
     let title: String
     let location: CLLocationCoordinate2D
     let address: String
     let description: String
     
-    init(title: String, latitude: Double, longitude: Double, address: String, description: String) {
+    init(id: Int, title: String, latitude: Double, longitude: Double, address: String, description: String) {
+        self.id = id
         self.title = title
         self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.address = address

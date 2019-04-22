@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Contentful
 
 class LandmarkView: UIViewController, MKMapViewDelegate {
 
@@ -50,11 +51,64 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
      Notes:
      */
     func setUpImage() {
-        var imageName = landmark.title.replacingOccurrences(of: " ", with: "_")
-        imageName = imageName.replacingOccurrences(of: "/", with: "_")
-        let image = UIImage(named: imageName)
-        
-        imageView.image = image
+//        let client = Client(spaceId: "urftpcg5uxr0",
+//                            environmentId: "master", // Defaults to "master" if omitted
+//                            accessToken: "ccd5a8e00b5769c955a2daced519f9fc995d45d84f6496b29b0dd4e935ebc6ef")
+//
+////        let query = QueryOn<ContentfulLandmark>.where(field: .landmarkId, .exists(true))
+////
+////        // Note the type in the asynchronously returned result: An `ArrayResponse` with `Cat` as the item type.
+////        client.fetchArray(of: ContentfulLandmark.self, matching: query) { (result: Result<ArrayResponse<ContentfulLandmark>>) in
+////            switch result {
+////            case .success(let catsResponse):
+////                guard let cat = catsResponse.items.first else { return }
+////                print(cat.landmarkName!) // Prints "gray" to console.
+////
+////            case .error(let error):
+////                print("Oh no something went wrong: \(error)")
+////            }
+////        }
+//
+//
+//
+//
+//        let query = Query.where(contentTypeId: "landmark").include(2)
+//
+//        client.fetchArray(of: Entry.self, matching: query) { (result: Result<ArrayResponse<Entry>>) in
+//            switch result {
+//            case .success(let entriesArrayResponse):
+//                let landmarks = entriesArrayResponse.items
+//
+//                print("success")
+//                print(landmarks)
+//                print(landmarks[0])
+//                print(landmarks[0].fields)
+//                print(landmarks[0].fields["landmarkImage"])
+//
+//
+//
+//                //let asset: Asset = landmarks[0].fields["landmarkImage"]
+//
+//                // Type passed into callback will be a UIImage or NSImage depending on the current platform.
+////                client.fetchImage(for: asset) { (image: Result<UIImage>) in
+////                    switch result {
+////                    case .success(let image):
+////                        print("scues")
+////                    case .error(let error):
+////                        print(error)
+////                    }
+////                }
+//
+//            case .error(let error):
+                //print("Oh no something went wrong: \(error)")
+
+                var imageName = self.landmark.title.replacingOccurrences(of: " ", with: "_")
+                imageName = imageName.replacingOccurrences(of: "/", with: "_")
+                let image = UIImage(named: imageName)
+
+                self.imageView.image = image
+            //}
+        //}
     }
     
     /*

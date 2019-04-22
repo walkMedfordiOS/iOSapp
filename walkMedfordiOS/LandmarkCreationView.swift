@@ -235,7 +235,8 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
         
         if (allFieldsFilled()) {
             
-            createdLandmark = Landmark(title: landmarkName.text!,
+            createdLandmark = Landmark(id: 0,
+                                       title: landmarkName.text!,
                                        latitude: coordinates.latitude,
                                        longitude: coordinates.longitude,
                                        address: landmarkAddress.text!,

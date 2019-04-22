@@ -1,0 +1,11 @@
+framework module Contentful {
+  umbrella header "Contentful.h"
+
+  export *
+  module * { export * }
+}
+
+module Contentful.Swift {
+    header "Contentful-Swift.h"
+    requires objc
+}

@@ -1,0 +1,52 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1459711091.300466,
+      "response" : {
+        "body" : {
+          "json" : null,
+          "origin" : "104.153.125.238",
+          "url" : "https:\/\/httpbin.org\/post",
+          "data" : "",
+          "headers" : {
+            "Accept" : "*\/*",
+            "Accept-Encoding" : "gzip, deflate",
+            "Content-Type" : "multipart\/form-data; boundary=<2d2d2d2d 2d2d2d2d 2d2d2d2d 2d2d2d2d 2d2d2d2d 2d2d2d2d 2d2d2d33 6b6c6665 6e616c6b 736a666c 6b6a6f69 39617566 38396573 68616a73 6e6c336b 6a6e7761 6c>",
+            "Host" : "httpbin.org",
+            "Content-Length" : "365",
+            "User-Agent" : "xctest (unknown version) CFNetwork\/758.3.15 Darwin\/15.3.0",
+            "Accept-Language" : "en-us"
+          },
+          "args" : {
+
+          },
+          "files" : {
+
+          },
+          "form" : {
+            "file" : "test file\n"
+          }
+        },
+        "status" : 200,
+        "url" : "https:\/\/httpbin.org\/post",
+        "headers" : {
+          "access-control-allow-credentials" : "true",
+          "Date" : "Sun, 03 Apr 2016 19:17:16 GMT",
+          "Content-Type" : "application\/json",
+          "Content-Length" : "635",
+          "Server" : "nginx",
+          "Access-Control-Allow-Origin" : "*"
+        }
+      },
+      "request" : {
+        "method" : "POST",
+        "body" : "LS02NSBieXRlcw0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIg0KDQp0ZXN0IGZpbGUKDQotLTY1IGJ5dGVzLS0NCg==",
+        "url" : "https:\/\/httpbin.org\/post",
+        "headers" : {
+          "Content-Type" : "multipart\/form-data; boundary=<2d2d2d2d 2d2d2d2d 2d2d2d2d 2d2d2d2d 2d2d2d2d 2d2d2d2d 2d2d2d33 6b6c6665 6e616c6b 736a666c 6b6a6f69 39617566 38396573 68616a73 6e6c336b 6a6e7761 6c>"
+        }
+      }
+    }
+  ],
+  "name" : "upload-file"
+}

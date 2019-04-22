@@ -149,7 +149,8 @@ class RouteSelectionView: UIViewController, UITableViewDataSource, UITableViewDe
                     // Adds landmarks to array of type Landmark in desiredRoute
                     for (_,subJson):(String, JSON) in json {
                         self.desiredRoute.landmarks.append(
-                            Landmark(title: subJson["landmark_name"].stringValue,
+                            Landmark(id: subJson["landmark_name"].intValue,
+                                     title: subJson["landmark_name"].stringValue,
                                      latitude: subJson["landmark_latitude"].doubleValue,
                                      longitude: subJson["landmark_longitude"].doubleValue,
                                      address: subJson["landmark_address"].stringValue,
