@@ -35,9 +35,9 @@
 		65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 		B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F93682249747000FDD264 /* ImageInformationViewController.swift */; };
-		B853DD3D226FC34D00E72270 /* Total+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B853DD3B226FC34D00E72270 /* Total+CoreDataClass.swift */; };
-		B853DD3E226FC34D00E72270 /* Total+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B853DD3C226FC34D00E72270 /* Total+CoreDataProperties.swift */; };
 		B8E27D5B2256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */; };
+		B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */; };
+		B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */; };
 		B8E27DA22256F5B700BD622E /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27DA12256F5B700BD622E /* PersistenceService.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,9 +73,9 @@
 		65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		B84F93682249747000FDD264 /* ImageInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInformationViewController.swift; sourceTree = "<group>"; };
-		B853DD3B226FC34D00E72270 /* Total+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B853DD3C226FC34D00E72270 /* Total+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B8E27DA12256F5B700BD622E /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,8 +115,6 @@
 		650DD94121AC8F0900AEBDD7 /* walkMedfordiOS */ = {
 			isa = PBXGroup;
 			children = (
-				B853DD3B226FC34D00E72270 /* Total+CoreDataClass.swift */,
-				B853DD3C226FC34D00E72270 /* Total+CoreDataProperties.swift */,
 				652BD6DC223AD754004F01AF /* AlertsView.swift */,
 				650DD94221AC8F0900AEBDD7 /* AppDelegate.swift */,
 				B8393BF62204D7FB006A2F66 /* ARView.swift */,
@@ -141,6 +139,8 @@
 				65B8CC752221E4AD00B7C83E /* RouteSelectionView.swift */,
 				65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */,
 				65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */,
+				B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */,
+				B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */,
 				65972CCF2228885000B2C005 /* User.swift */,
 				6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */,
 				B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */,
@@ -272,9 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B853DD3E226FC34D00E72270 /* Total+CoreDataProperties.swift in Sources */,
 				652FB9EB224ECA02000C0ECD /* WebView.swift in Sources */,
-				B853DD3D226FC34D00E72270 /* Total+CoreDataClass.swift in Sources */,
 				B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */,
 				6553DDC3222CAC8C000A82A8 /* RouteCreationView.swift in Sources */,
 				65E077E62231C0B1006DDD2F /* LandmarkView.swift in Sources */,
@@ -282,6 +280,7 @@
 				65BF3832224B10D6007106F6 /* StartEndAnnotation.swift in Sources */,
 				65B8CC6E2221E3E100B7C83E /* HealthView.swift in Sources */,
 				B8E27D5B2256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld in Sources */,
+				B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */,
 				65B8CC742221E49300B7C83E /* Route.swift in Sources */,
 				65B8CC702221E41A00B7C83E /* Landmark.swift in Sources */,
 				65EFF334222E143F00966FA1 /* EventsLandmarksView.swift in Sources */,
@@ -289,6 +288,7 @@
 				B8E27DA22256F5B700BD622E /* PersistenceService.swift in Sources */,
 				650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */,
 				659EBC0C226E586600EABE39 /* ContentfulLandmark.swift in Sources */,
+				B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */,
 				65B8CC762221E4AD00B7C83E /* RouteSelectionView.swift in Sources */,
 				65B8CC722221E45600B7C83E /* MapView.swift in Sources */,
 				65972CD02228885000B2C005 /* User.swift in Sources */,

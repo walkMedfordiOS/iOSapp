@@ -79,7 +79,7 @@ class HealthView: UIViewController {
         healthStore.execute(query)
         }
         else {
-            self.stepsLabel.text = "Steps Walked Today: 0.0"
+            self.stepsLabel.text = "You haven't started a route yet."
         }
     }
     
@@ -103,7 +103,7 @@ class HealthView: UIViewController {
             healthStore.execute(query)
         }
         else {
-            self.caloriesLabel.text = "Calories Burned Today: 0.0"
+            self.caloriesLabel.text = "You haven't started a route yet."
         }
     }
     

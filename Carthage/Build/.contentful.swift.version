@@ -1,0 +1,9 @@
+{
+  "commitish" : "4.2.4",
+  "iOS" : [
+    {
+      "name" : "Contentful",
+      "hash" : "e4dbe77fe3f504abdf3383ff0a8b05f8cc5c84ebb0c60c119d143b37d3159592"
+    }
+  ]
+}
