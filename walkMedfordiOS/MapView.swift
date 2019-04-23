@@ -425,4 +425,15 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         dataTask?.resume()
     }
+    
+    @IBAction func stopRoute(_ sender: Any) {
+        desiredRoute = nil
+        routePolyline = nil
+        directionsToRoutePolyline = nil
+        self.mapView.overlays.forEach {
+            if !($0 is MKUserLocation) {
+                self.mapView.removeOverlay($0)
+            }
+        }
+    }
 }
