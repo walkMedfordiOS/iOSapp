@@ -6,7 +6,6 @@
 //  Copyright © 2019 walkMedford. All rights reserved.
 //
 
-import Foundation
 import Contentful
 
 final class ContentfulLandmark: EntryDecodable, FieldKeysQueryable {
@@ -21,6 +20,7 @@ final class ContentfulLandmark: EntryDecodable, FieldKeysQueryable {
     
     let landmarkId: Int?
     let landmarkName: String?
+    
     var landmarkImage: Asset?
     
     public required init(from decoder: Decoder) throws {
@@ -36,8 +36,8 @@ final class ContentfulLandmark: EntryDecodable, FieldKeysQueryable {
         self.landmarkId       = try fields.decodeIfPresent(Int.self, forKey: .landmarkId)
         self.landmarkName      = try fields.decodeIfPresent(String.self, forKey: .landmarkName)
         
-        try fields.resolveLink(forKey: .landmarkImage, decoder: decoder) { [weak self] image in
-            self?.landmarkImage = image as? Asset
+        try fields.resolveLink(forKey: .landmarkImage, decoder: decoder) { [weak self] landmarkImage in
+            self?.landmarkImage = landmarkImage as? Asset
         }
     }
     
