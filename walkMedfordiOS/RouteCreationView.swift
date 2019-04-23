@@ -29,6 +29,11 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
+    // Variables to edit landmark
+    var editLandmark: Landmark!
+    var editImage: UIImage!
+    var editIndex: Int!
+    
     /*
      Purpose: To load the variables initially
      Notes:
@@ -103,7 +108,24 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if (tableView == landmarksTable) {
-            
+            editLandmark = landmarks[indexPath.row]
+            editImage = images[indexPath.row]
+            editIndex = indexPath.row
+            performSegue(withIdentifier: "segueEditLandmark", sender: self)
+        }
+    }
+
+    /*
+     Purpose: To pass landmark to next view to be edited
+     Notes:
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueEditLandmark") {
+            if let destinationVC = segue.destination as? LandmarkCreationView {
+                destinationVC.editLandmark = editLandmark
+                destinationVC.editImage = editImage
+                destinationVC.editIndex = editIndex
+            }
         }
     }
     
@@ -247,11 +269,9 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
     func sendStops() {
         var stop_number = 1
         
-        for landmark in landmark_ids {
+        for landmark_id in landmark_ids {
             
             dataTask?.cancel()
-            
-            let landmark_id = landmark + 1
             
             if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createRoute") {
                 urlComponents.query = "landmark_id=\(landmark_id)&route_id=\(route_id)&stop_number=\(stop_number)"
@@ -279,5 +299,28 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         }
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    /*
+     Purpose: To allow the user to delete a row
+     Notes:
+     */
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    /*
+     Purpose: To allow the user to delete a row
+     Notes:
+     */
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            landmarks.remove(at: indexPath.row)
+            images.remove(at: indexPath.row)
+            landmarksTable.reloadData()
+        }
     }
 }

@@ -21,6 +21,8 @@
 		65972CCE222880EF00B2C005 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65972CCD222880EF00B2C005 /* LoginView.swift */; };
 		65972CD02228885000B2C005 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65972CCF2228885000B2C005 /* User.swift */; };
 		65972CD42228BD7800B2C005 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65972CD32228BD7800B2C005 /* AuthenticationServices.framework */; };
+		659EBC09226D4FF200EABE39 /* Contentful.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659EBC08226D4FF200EABE39 /* Contentful.framework */; };
+		659EBC0C226E586600EABE39 /* ContentfulLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659EBC0B226E586600EABE39 /* ContentfulLandmark.swift */; };
 		65B8CC6E2221E3E100B7C83E /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC6D2221E3E100B7C83E /* HealthView.swift */; };
 		65B8CC702221E41A00B7C83E /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC6F2221E41A00B7C83E /* Landmark.swift */; };
 		65B8CC722221E45600B7C83E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8CC712221E45600B7C83E /* MapView.swift */; };
@@ -33,9 +35,9 @@
 		65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 		B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F93682249747000FDD264 /* ImageInformationViewController.swift */; };
+		B853DD3D226FC34D00E72270 /* Total+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B853DD3B226FC34D00E72270 /* Total+CoreDataClass.swift */; };
+		B853DD3E226FC34D00E72270 /* Total+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B853DD3C226FC34D00E72270 /* Total+CoreDataProperties.swift */; };
 		B8E27D5B2256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */; };
-		B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */; };
-		B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */; };
 		B8E27DA22256F5B700BD622E /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27DA12256F5B700BD622E /* PersistenceService.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		65972CCD222880EF00B2C005 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		65972CCF2228885000B2C005 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		65972CD32228BD7800B2C005 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		659EBC08226D4FF200EABE39 /* Contentful.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contentful.framework; path = Carthage/Build/iOS/Contentful.framework; sourceTree = "<group>"; };
+		659EBC0B226E586600EABE39 /* ContentfulLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentfulLandmark.swift; sourceTree = "<group>"; };
 		65B8CC6D2221E3E100B7C83E /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
 		65B8CC6F2221E41A00B7C83E /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		65B8CC712221E45600B7C83E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -69,9 +73,9 @@
 		65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		B84F93682249747000FDD264 /* ImageInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInformationViewController.swift; sourceTree = "<group>"; };
+		B853DD3B226FC34D00E72270 /* Total+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B853DD3C226FC34D00E72270 /* Total+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B8E27DA12256F5B700BD622E /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +88,7 @@
 				65972CD42228BD7800B2C005 /* AuthenticationServices.framework in Frameworks */,
 				6584A33722245B980070D30E /* MapKit.framework in Frameworks */,
 				65BCC5E422278EA60016CA58 /* HealthKit.framework in Frameworks */,
+				659EBC09226D4FF200EABE39 /* Contentful.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,35 +115,36 @@
 		650DD94121AC8F0900AEBDD7 /* walkMedfordiOS */ = {
 			isa = PBXGroup;
 			children = (
-				B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */,
-				B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */,
-				6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */,
-				650DD94E21AC8F0A00AEBDD7 /* Info.plist */,
+				B853DD3B226FC34D00E72270 /* Total+CoreDataClass.swift */,
+				B853DD3C226FC34D00E72270 /* Total+CoreDataProperties.swift */,
 				652BD6DC223AD754004F01AF /* AlertsView.swift */,
 				650DD94221AC8F0900AEBDD7 /* AppDelegate.swift */,
 				B8393BF62204D7FB006A2F66 /* ARView.swift */,
-				B84F93682249747000FDD264 /* ImageInformationViewController.swift */,
+				650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */,
+				659EBC0B226E586600EABE39 /* ContentfulLandmark.swift */,
 				65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */,
 				65B8CC6D2221E3E100B7C83E /* HealthView.swift */,
-				B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */,
+				B84F93682249747000FDD264 /* ImageInformationViewController.swift */,
+				650DD94E21AC8F0A00AEBDD7 /* Info.plist */,
 				65B8CC6F2221E41A00B7C83E /* Landmark.swift */,
-				B8E27DA12256F5B700BD622E /* PersistenceService.swift */,
 				655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */,
 				657BA4212253E2B300799A3A /* LandmarkCreationView.swift */,
 				65E077E52231C0B1006DDD2F /* LandmarkView.swift */,
+				650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */,
 				65972CCD222880EF00B2C005 /* LoginView.swift */,
+				650DD94621AC8F0900AEBDD7 /* Main.storyboard */,
 				65B8CC712221E45600B7C83E /* MapView.swift */,
+				B8E27DA12256F5B700BD622E /* PersistenceService.swift */,
+				650DD94021AC8F0900AEBDD7 /* Products */,
 				65B8CC732221E49300B7C83E /* Route.swift */,
 				6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */,
 				65B8CC752221E4AD00B7C83E /* RouteSelectionView.swift */,
 				65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */,
 				65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */,
 				65972CCF2228885000B2C005 /* User.swift */,
+				6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */,
+				B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */,
 				652FB9EA224ECA02000C0ECD /* WebView.swift */,
-				650DD94921AC8F0A00AEBDD7 /* Assets.xcassets */,
-				650DD94021AC8F0900AEBDD7 /* Products */,
-				650DD94B21AC8F0A00AEBDD7 /* LaunchScreen.storyboard */,
-				650DD94621AC8F0900AEBDD7 /* Main.storyboard */,
 			);
 			path = walkMedfordiOS;
 			sourceTree = "<group>";
@@ -146,6 +152,7 @@
 		6584A33322245B7B0070D30E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				659EBC08226D4FF200EABE39 /* Contentful.framework */,
 				652FB9E8224EC823000C0ECD /* WebKit.framework */,
 				65972CD32228BD7800B2C005 /* AuthenticationServices.framework */,
 				65BCC5E322278EA60016CA58 /* HealthKit.framework */,
@@ -164,6 +171,7 @@
 				650DD93B21AC8F0900AEBDD7 /* Sources */,
 				650DD93C21AC8F0900AEBDD7 /* Frameworks */,
 				650DD93D21AC8F0900AEBDD7 /* Resources */,
+				659EBC0A226D501400EABE39 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -238,12 +246,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		659EBC0A226D501400EABE39 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Contentful.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		650DD93B21AC8F0900AEBDD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B853DD3E226FC34D00E72270 /* Total+CoreDataProperties.swift in Sources */,
 				652FB9EB224ECA02000C0ECD /* WebView.swift in Sources */,
+				B853DD3D226FC34D00E72270 /* Total+CoreDataClass.swift in Sources */,
 				B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */,
 				6553DDC3222CAC8C000A82A8 /* RouteCreationView.swift in Sources */,
 				65E077E62231C0B1006DDD2F /* LandmarkView.swift in Sources */,
@@ -251,14 +282,13 @@
 				65BF3832224B10D6007106F6 /* StartEndAnnotation.swift in Sources */,
 				65B8CC6E2221E3E100B7C83E /* HealthView.swift in Sources */,
 				B8E27D5B2256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld in Sources */,
-				B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */,
 				65B8CC742221E49300B7C83E /* Route.swift in Sources */,
 				65B8CC702221E41A00B7C83E /* Landmark.swift in Sources */,
 				65EFF334222E143F00966FA1 /* EventsLandmarksView.swift in Sources */,
 				655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */,
 				B8E27DA22256F5B700BD622E /* PersistenceService.swift in Sources */,
 				650DD94321AC8F0900AEBDD7 /* AppDelegate.swift in Sources */,
-				B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */,
+				659EBC0C226E586600EABE39 /* ContentfulLandmark.swift in Sources */,
 				65B8CC762221E4AD00B7C83E /* RouteSelectionView.swift in Sources */,
 				65B8CC722221E45600B7C83E /* MapView.swift in Sources */,
 				65972CD02228885000B2C005 /* User.swift in Sources */,

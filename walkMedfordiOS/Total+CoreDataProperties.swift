@@ -2,7 +2,7 @@
 //  Total+CoreDataProperties.swift
 //  walkMedfordiOS
 //
-//  Created by user150397 on 4/4/19.
+//  Created by user150397 on 4/23/19.
 //  Copyright © 2019 walkMedford. All rights reserved.
 //
 //
@@ -17,7 +17,7 @@ extension Total {
         return NSFetchRequest<Total>(entityName: "Total")
     }
 
-    @NSManaged public var steps: Double
     @NSManaged public var calories: Double
+    @NSManaged public var steps: Double
 
 }

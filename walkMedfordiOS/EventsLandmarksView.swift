@@ -61,7 +61,8 @@ class EventsLandmarksView: UIViewController, UITableViewDataSource, UITableViewD
                     
                     // Adds landmarks to array of type Landmark
                     for (_,subJson):(String, JSON) in json {
-                        let newLandmark = Landmark(title: subJson["landmark_name"].stringValue,
+                        let newLandmark = Landmark(id: subJson["landmark_id"].intValue,
+                                                   title: subJson["landmark_name"].stringValue,
                                                    latitude: subJson["landmark_latitude"].doubleValue,
                                                    longitude: subJson["landmark_longitude"].doubleValue,
                                                    address: subJson["landmark_address"].stringValue,

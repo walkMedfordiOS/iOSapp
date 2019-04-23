@@ -7,8 +7,11 @@
 //
 import UIKit
 import MapKit
+import HealthKit
 
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    let healthStore = HKHealthStore()
     
     // Variables for color of elements
     var red = UIColor(red: 150, green: 0, blue: 0, alpha: 1)
@@ -93,6 +96,20 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             locationManager.startUpdatingLocation()
         } else {
             locationManager.requestWhenInUseAuthorization()
+            let healthKitTypes: Set = [
+                HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
+                HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
+            ]
+            healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (_, _) in
+                print("authorized?")
+            }
+            healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { (bool, error) in
+                if let e = error {
+                    print("oops something went wrong during authorisation \(e.localizedDescription)")
+                } else {
+                    print("User has completed the authorization flow")
+                }
+            }
         }
     }
 
@@ -407,5 +424,17 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         }
         
         dataTask?.resume()
+    }
+    
+    
+    @IBAction func stopRoute(_ sender: Any) {
+        desiredRoute = nil
+        routePolyline = nil
+        directionsToRoutePolyline = nil
+        self.mapView.overlays.forEach {
+            if !($0 is MKUserLocation) {
+                self.mapView.removeOverlay($0)
+            }
+        }
     }
 }

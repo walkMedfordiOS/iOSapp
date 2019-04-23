@@ -111,12 +111,18 @@ class LoginView: UIViewController, UITextFieldDelegate {
     }
     
     /*
-     Purpose: To pass the user along to MapView
+     Purpose: To pass the user along to Route Creation
      Notes:
      */
-    func correctCredentials() {
-        self.performSegue(withIdentifier: "segueLoginToEvent", sender: self)
-        
+    func correctCredentials() {        
         self.performSegue(withIdentifier: "segueLoginToRoute", sender: self)
+    }
+    
+    /*
+     Purpose: To return user to profile page
+     Notes:
+     */
+    @IBAction func returnButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
