@@ -137,7 +137,6 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         
         if (allFieldsFilled()) {
             print("Creating Route")
-            
             sendRoute()
         } else {
             errorView.isHidden = false
@@ -212,7 +211,12 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
                     
                     let json = JSON(data)
                     
-                    self.route_id = json["route_id"].intValue
+                    for (_,subJson):(String, JSON) in json {
+                        self.route_id = subJson["route_id"].intValue
+                        print("Route ID: \(subJson["route_id"].intValue)")
+                    }
+                    
+                    self.sendLandmarks(landmarkNum: 0)
                 }
             }
         }
@@ -224,81 +228,89 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
      Purpose: To send the landmarks to the database
      Notes:
      */
-    func sendLandmarks() {
+    func sendLandmarks(landmarkNum: Int) {
         
-        for landmark in landmarks {
+        dataTask?.cancel()
             
-            dataTask?.cancel()
+        let name = landmarks[landmarkNum].title
+        let latitude = landmarks[landmarkNum].location.latitude
+        let longitude = landmarks[landmarkNum].location.longitude
+        let address = landmarks[landmarkNum].address
+        let description = landmarks[landmarkNum].description
+    
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createLandmark") {
+            urlComponents.query = "name=\(name)&latitude=\(latitude)&longitude=\(longitude)&address=\(address)&description=\(description)"
             
-            let name = landmark.title
-            let latitude = landmark.location.latitude
-            let longitude = landmark.location.longitude
-            let address = landmark.address
-            let description = landmark.description
-            
-            if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createRoute") {
-                urlComponents.query = "name=\(name)&latitude=\(latitude)&longitude=\(longitude)&address=\(address)&description=\(description)"
+            guard let url = urlComponents.url else { return }
+            dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                defer { self.dataTask = nil }
                 
-                guard let url = urlComponents.url else { return }
-                dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                    defer { self.dataTask = nil }
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                } else if let data = data,
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 {
+                        
+                    let json = JSON(data)
+                        
+                    for (_,subJson):(String, JSON) in json {
+                        self.landmark_ids.append(subJson["landmark_id"].intValue)
+                        print("Landmark ID: \(subJson["landmark_id"].intValue)")
+                    }
                     
-                    if let error = error {
-                        print("DataTask error: " + error.localizedDescription + "\n")
-                    } else if let data = data,
-                        let response = response as? HTTPURLResponse,
-                        response.statusCode == 200 {
-                        
-                        let json = JSON(data)
-                        
-                        self.landmark_ids.append(json["landmark_id"].intValue)
+                    if (landmarkNum + 1 < self.landmarks.count) {
+                        self.sendLandmarks(landmarkNum: landmarkNum + 1)
+                    } else {
+                        self.sendStops(landmarkNum: 0, stop: 1)
                     }
                 }
             }
-            
-            dataTask?.resume()
         }
-        
-        sendStops()
+            
+        dataTask?.resume()
     }
     
     /*
      Purpose: To send the stops to the database
      Notes:
      */
-    func sendStops() {
-        var stop_number = 1
+    func sendStops(landmarkNum: Int, stop: Int) {
         
-        for landmark_id in landmark_ids {
+        dataTask?.cancel()
             
-            dataTask?.cancel()
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createStop") {
+            urlComponents.query = "landmark_id=\(landmark_ids[landmarkNum])&route_id=\(route_id)&stop_number=\(stop)"
             
-            if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/createRoute") {
-                urlComponents.query = "landmark_id=\(landmark_id)&route_id=\(route_id)&stop_number=\(stop_number)"
-                
-                guard let url = urlComponents.url else { return }
-                dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                    defer { self.dataTask = nil }
+            print("Sending stop, landmark_id: \(landmark_ids[landmarkNum]), route_id: \(route_id), stop: \(stop)")
+            
+            guard let url = urlComponents.url else { return }
+            dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                defer { self.dataTask = nil }
                     
-                    if let error = error {
-                        print("DataTask error: " + error.localizedDescription + "\n")
-                    } else if let data = data,
-                        let response = response as? HTTPURLResponse,
-                        response.statusCode == 200 {
-                        
-                        let json = JSON(data)
-                        
-                        self.stop_ids.append(json["stop_id"].intValue)
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                } else if let data = data,
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 {
+                    
+                    let json = JSON(data)
+                    
+                    
+                    for (_,subJson):(String, JSON) in json {
+                        self.stop_ids.append(subJson["stop_id"].intValue)
+                        print("Stop ID: \(subJson["stop_id"].intValue)")
+                    }
+                    
+                    if (landmarkNum + 1 < self.landmark_ids.count) {
+                        self.sendStops(landmarkNum: landmarkNum + 1, stop: stop + 1)
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             }
-            
-            dataTask?.resume()
-            
-            stop_number += 1
         }
-        
-        self.dismiss(animated: true, completion: nil)
+            
+        dataTask?.resume()
     }
     
     /*
