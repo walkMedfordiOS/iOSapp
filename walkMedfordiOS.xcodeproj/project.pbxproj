@@ -32,6 +32,7 @@
 		65BF3832224B10D6007106F6 /* StartEndAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */; };
 		65E077E62231C0B1006DDD2F /* LandmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E077E52231C0B1006DDD2F /* LandmarkView.swift */; };
 		65EFF334222E143F00966FA1 /* EventsLandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */; };
+		65F9CC8D226FCE170058C3D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65F9CC8C226FCE170058C3D5 /* GoogleService-Info.plist */; };
 		65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */; };
 		B8393BF72204D7FB006A2F66 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8393BF62204D7FB006A2F66 /* ARView.swift */; };
 		B84F93692249747000FDD264 /* ImageInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F93682249747000FDD264 /* ImageInformationViewController.swift */; };
@@ -39,9 +40,11 @@
 		B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */; };
 		B8E27DA02256F3CA00BD622E /* Total+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */; };
 		B8E27DA22256F5B700BD622E /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27DA12256F5B700BD622E /* PersistenceService.swift */; };
+		F99A5D1903DB32BE3CDCD974 /* Pods_walkMedfordiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FC8535C0093DB25FE034A9 /* Pods_walkMedfordiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34FC8535C0093DB25FE034A9 /* Pods_walkMedfordiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_walkMedfordiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		650DD93F21AC8F0900AEBDD7 /* walkMedfordiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = walkMedfordiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650DD94221AC8F0900AEBDD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		650DD94721AC8F0900AEBDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,13 +73,16 @@
 		65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndAnnotation.swift; sourceTree = "<group>"; };
 		65E077E52231C0B1006DDD2F /* LandmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkView.swift; sourceTree = "<group>"; };
 		65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsLandmarksView.swift; sourceTree = "<group>"; };
+		65F9CC8C226FCE170058C3D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		7EEA86E7E23293E55DB03742 /* Pods-walkMedfordiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walkMedfordiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-walkMedfordiOS/Pods-walkMedfordiOS.release.xcconfig"; sourceTree = "<group>"; };
 		B8393BF62204D7FB006A2F66 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		B84F93682249747000FDD264 /* ImageInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInformationViewController.swift; sourceTree = "<group>"; };
 		B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B8E27D9E2256F3CA00BD622E /* Total+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B8E27DA12256F5B700BD622E /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		D7D40329BC6B42125A9EBE12 /* Pods-walkMedfordiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walkMedfordiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-walkMedfordiOS/Pods-walkMedfordiOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 				6584A33722245B980070D30E /* MapKit.framework in Frameworks */,
 				65BCC5E422278EA60016CA58 /* HealthKit.framework in Frameworks */,
 				659EBC09226D4FF200EABE39 /* Contentful.framework in Frameworks */,
+				F99A5D1903DB32BE3CDCD974 /* Pods_walkMedfordiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +107,7 @@
 			children = (
 				650DD94121AC8F0900AEBDD7 /* walkMedfordiOS */,
 				6584A33322245B7B0070D30E /* Frameworks */,
+				82DBD8D7D91DCC27C3649165 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +153,7 @@
 				6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */,
 				B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */,
 				652FB9EA224ECA02000C0ECD /* WebView.swift */,
+				65F9CC8C226FCE170058C3D5 /* GoogleService-Info.plist */,
 			);
 			path = walkMedfordiOS;
 			sourceTree = "<group>";
@@ -157,8 +166,18 @@
 				65972CD32228BD7800B2C005 /* AuthenticationServices.framework */,
 				65BCC5E322278EA60016CA58 /* HealthKit.framework */,
 				6584A33622245B980070D30E /* MapKit.framework */,
+				34FC8535C0093DB25FE034A9 /* Pods_walkMedfordiOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82DBD8D7D91DCC27C3649165 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7D40329BC6B42125A9EBE12 /* Pods-walkMedfordiOS.debug.xcconfig */,
+				7EEA86E7E23293E55DB03742 /* Pods-walkMedfordiOS.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,10 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 650DD95121AC8F0A00AEBDD7 /* Build configuration list for PBXNativeTarget "walkMedfordiOS" */;
 			buildPhases = (
+				978FA2430A7184060BBFCA98 /* [CP] Check Pods Manifest.lock */,
 				650DD93B21AC8F0900AEBDD7 /* Sources */,
 				650DD93C21AC8F0900AEBDD7 /* Frameworks */,
 				650DD93D21AC8F0900AEBDD7 /* Resources */,
 				659EBC0A226D501400EABE39 /* ShellScript */,
+				7EA896050F649C033B675DDB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				650DD94D21AC8F0A00AEBDD7 /* LaunchScreen.storyboard in Resources */,
+				65F9CC8D226FCE170058C3D5 /* GoogleService-Info.plist in Resources */,
 				650DD94A21AC8F0A00AEBDD7 /* Assets.xcassets in Resources */,
 				650DD94821AC8F0900AEBDD7 /* Main.storyboard in Resources */,
 			);
@@ -252,18 +274,52 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Contentful.framework",
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		7EA896050F649C033B675DDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-walkMedfordiOS/Pods-walkMedfordiOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-walkMedfordiOS/Pods-walkMedfordiOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		978FA2430A7184060BBFCA98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-walkMedfordiOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -439,6 +495,7 @@
 		};
 		650DD95221AC8F0A00AEBDD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7D40329BC6B42125A9EBE12 /* Pods-walkMedfordiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = walkMedfordiOS/walkMedfordiOS.entitlements;
@@ -463,6 +520,7 @@
 		};
 		650DD95321AC8F0A00AEBDD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EEA86E7E23293E55DB03742 /* Pods-walkMedfordiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = walkMedfordiOS/walkMedfordiOS.entitlements;
