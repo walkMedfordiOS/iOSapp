@@ -47,6 +47,8 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         // Set variables for landmarks tables
         landmarksTable.dataSource = self
         landmarksTable.allowsSelection = true
+        routeName.delegate = self
+        routeDescription.delegate = self
         landmarksTable.delegate = self
     }
     
@@ -72,7 +74,7 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
      */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField == routeName) {
-            routeName.resignFirstResponder()
+            textField.resignFirstResponder()
             routeDescription.becomeFirstResponder()
         } else if (textField == routeDescription) {
             textField.resignFirstResponder()
