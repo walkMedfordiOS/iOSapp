@@ -34,6 +34,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // Variable for directions
     @IBOutlet weak var directionsInMapsButton: UIButton!
+    @IBOutlet weak var cancelRouteButton: UIButton!
     
     /*
      Purpose: To call functions when view is loaded
@@ -49,6 +50,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         mapView.delegate = self
         mapView.showsUserLocation = true
         directionsInMapsButton.isHidden = true
+        cancelRouteButton.isHidden = true
         centerOnUser()
         setUpUserTrackingButton()
     }
@@ -260,6 +262,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.mapView.addOverlay((self.directionsToRoutePolyline!), level: MKOverlayLevel.aboveRoads)
             
             self.directionsInMapsButton.isHidden = false
+            self.cancelRouteButton.isHidden = false
         }
         
         centerOnUser()
@@ -426,14 +429,14 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         dataTask?.resume()
     }
     
-    @IBAction func stopRoute(_ sender: Any) {
-        desiredRoute = nil
-        routePolyline = nil
-        directionsToRoutePolyline = nil
-        self.mapView.overlays.forEach {
-            if !($0 is MKUserLocation) {
-                self.mapView.removeOverlay($0)
-            }
-        }
+    /*
+     Purpose: To cancel the route
+     Notes:
+     */
+    @IBAction func cancelRouteButton(_ sender: Any) {
+        clearMap()
+        cancelRouteButton.isHidden = true
+        directionsInMapsButton.isHidden = true
     }
+    
 }

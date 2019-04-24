@@ -138,9 +138,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-hO-Z3A">
-                                <rect key="frame" x="16" y="680" width="170" height="34"/>
+                                <rect key="frame" x="16" y="678" width="200" height="36"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="06F-ds-dVa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Directions to Route">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -164,12 +167,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kS-tK-RGh">
-                                <rect key="frame" x="262" y="59" width="97" height="40"/>
+                                <rect key="frame" x="238" y="54" width="121" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="bpq-EZ-1BZ"/>
+                                    <constraint firstAttribute="height" constant="36" id="bpq-EZ-1BZ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="121" id="lCy-I8-X5U"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Stop Route">
+                                <state key="normal" title="Cancel Route">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -178,21 +183,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="cancelRouteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zzx-dE-cxI"/>
                                     <action selector="showNumberSteps:" destination="Awj-cx-ySX" eventType="touchUpInside" id="3Sv-pN-5R6"/>
                                     <action selector="showNumberSteps:" destination="VIa-mg-aQ3" eventType="touchUpInside" id="zNl-Ga-FV7"/>
-                                    <action selector="stopRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Ld-Xe-6qs"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="4kS-tK-RGh" firstAttribute="top" secondItem="caR-On-58y" secondAttribute="top" id="0PS-fV-hPt"/>
                             <constraint firstAttribute="trailing" secondItem="LTc-qe-TRr" secondAttribute="trailing" id="5ZX-eC-qlY"/>
                             <constraint firstItem="caR-On-58y" firstAttribute="leading" secondItem="bd5-hO-Z3A" secondAttribute="leading" id="7TP-hM-Ym3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bd5-hO-Z3A" secondAttribute="trailing" constant="189" id="BtI-NJ-eVs"/>
                             <constraint firstItem="LTc-qe-TRr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="C4T-ub-z4q"/>
                             <constraint firstItem="4kS-tK-RGh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="caR-On-58y" secondAttribute="trailing" constant="8" symbolic="YES" id="GI5-W2-UdH"/>
                             <constraint firstItem="bd5-hO-Z3A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NyZ-WA-MwS"/>
-                            <constraint firstItem="4kS-tK-RGh" firstAttribute="centerY" secondItem="caR-On-58y" secondAttribute="centerY" id="OI7-Ke-ogN"/>
                             <constraint firstItem="LTc-qe-TRr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="49" id="P0L-Il-ia6"/>
                             <constraint firstItem="caR-On-58y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="VXy-7Y-Xn7"/>
                             <constraint firstItem="LTc-qe-TRr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dQg-YR-pU6"/>
@@ -204,6 +208,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="7zj-H2-IDP"/>
                     <connections>
+                        <outlet property="cancelRouteButton" destination="4kS-tK-RGh" id="NAo-1j-4R7"/>
                         <outlet property="directionsInMapsButton" destination="bd5-hO-Z3A" id="rTC-sW-ajy"/>
                         <outlet property="mapView" destination="LTc-qe-TRr" id="o5T-28-IER"/>
                         <segue destination="SKM-wi-3gV" kind="show" identifier="segueMapToLandmark" id="ico-7s-g3i"/>
