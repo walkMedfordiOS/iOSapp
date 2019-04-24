@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FirebaseStorage
 
-class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     // Variables for HTTP Requests
     let defaultSession = URLSession(configuration: .default)
@@ -64,6 +64,21 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
      */
     @IBAction func cancelRouteCreation(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    /*
+     Purpose: To hide the keyboard when the return key is pressed
+     Notes:
+     */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField == routeName) {
+            routeName.resignFirstResponder()
+            routeDescription.becomeFirstResponder()
+        } else if (textField == routeDescription) {
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
     
     /*
@@ -165,7 +180,7 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
             filled = false
         }
         
-        if (landmarks.count < 2) {
+        if (landmarks.count < 1) {
             print("Not Enough Landmarks in Route")
             errorLabel.text = errorLabel.text! + "Not Enough Landmarks in Route \n"
             filled = false

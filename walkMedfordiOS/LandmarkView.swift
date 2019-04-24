@@ -66,7 +66,7 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
         filename = filename.replacingOccurrences(of: ":", with: "_")
         filename = filename.replacingOccurrences(of: ",", with: "_")
         filename += ".jpg"
-        
+                
         let storage = Storage.storage()
         let storageRef = storage.reference()
         

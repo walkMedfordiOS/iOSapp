@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>144209520094-hp87ql767qq2nuk3acve1eh25kpmv089.apps.googleusercontent.com</string>
+	<string>578840939569-301prhvnsi71o7n941v05indcoqo6mjh.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.144209520094-hp87ql767qq2nuk3acve1eh25kpmv089</string>
+	<string>com.googleusercontent.apps.578840939569-301prhvnsi71o7n941v05indcoqo6mjh</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAtwjdIK21dPzcHDZvC1FJiNHzBLiiwfvU</string>
+	<string>AIzaSyBPYfxNFWnH5Vau4wixrPBvHuL653SZ4pg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>144209520094</string>
+	<string>578840939569</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.walkMedfordiOS.walkMedfordiOS</string>
 	<key>PROJECT_ID</key>
-	<string>walkmedford-ce5ea</string>
+	<string>walkmedfordios-ede8e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>walkmedford-ce5ea.appspot.com</string>
+	<string>walkmedfordios-ede8e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:144209520094:ios:e902e62547ac36e7</string>
+	<string>1:578840939569:ios:e902e62547ac36e7</string>
 	<key>DATABASE_URL</key>
-	<string>https://walkmedford-ce5ea.firebaseio.com</string>
+	<string>https://walkmedfordios-ede8e.firebaseio.com</string>
 </dict>
 </plist>

@@ -14,7 +14,6 @@
 		652BD6DD223AD754004F01AF /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BD6DC223AD754004F01AF /* AlertsView.swift */; };
 		652FB9E9224EC823000C0ECD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652FB9E8224EC823000C0ECD /* WebKit.framework */; };
 		652FB9EB224ECA02000C0ECD /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652FB9EA224ECA02000C0ECD /* WebView.swift */; };
-		65512FFE226FF0710084C1E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65512FFD226FF0710084C1E6 /* GoogleService-Info.plist */; };
 		6553DDC3222CAC8C000A82A8 /* RouteCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */; };
 		655BC01621B1D0D400CA3024 /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */; };
 		657BA4222253E2B300799A3A /* LandmarkCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BA4212253E2B300799A3A /* LandmarkCreationView.swift */; };
@@ -33,6 +32,7 @@
 		65BF3832224B10D6007106F6 /* StartEndAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */; };
 		65E077E62231C0B1006DDD2F /* LandmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E077E52231C0B1006DDD2F /* LandmarkView.swift */; };
 		65EFF334222E143F00966FA1 /* EventsLandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */; };
+		65FB73D92270F8F40043AE45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65FB73D82270F8F40043AE45 /* GoogleService-Info.plist */; };
 		65FD5D8F222731690064FBA6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */; };
 		B8E27D5B2256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */; };
 		B8E27D9F2256F3CA00BD622E /* Total+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */; };
@@ -51,7 +51,6 @@
 		652BD6DC223AD754004F01AF /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		652FB9E8224EC823000C0ECD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		652FB9EA224ECA02000C0ECD /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		65512FFD226FF0710084C1E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6553DDC2222CAC8C000A82A8 /* RouteCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCreationView.swift; sourceTree = "<group>"; };
 		655BC01521B1D0D400CA3024 /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		657BA4212253E2B300799A3A /* LandmarkCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkCreationView.swift; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		65BF3831224B10D6007106F6 /* StartEndAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndAnnotation.swift; sourceTree = "<group>"; };
 		65E077E52231C0B1006DDD2F /* LandmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkView.swift; sourceTree = "<group>"; };
 		65EFF333222E143F00966FA1 /* EventsLandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsLandmarksView.swift; sourceTree = "<group>"; };
+		65FB73D82270F8F40043AE45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65FD5D8E222731690064FBA6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		B8E27D5A2256EBFD00BD622E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B8E27D9D2256F3CA00BD622E /* Total+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Total+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 				6584A33A22245BCC0070D30E /* walkMedfordiOS.entitlements */,
 				B8E27D592256EBFD00BD622E /* walkMedfordiOS.xcdatamodeld */,
 				652FB9EA224ECA02000C0ECD /* WebView.swift */,
-				65512FFD226FF0710084C1E6 /* GoogleService-Info.plist */,
+				65FB73D82270F8F40043AE45 /* GoogleService-Info.plist */,
 			);
 			path = walkMedfordiOS;
 			sourceTree = "<group>";
@@ -253,10 +253,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FB73D92270F8F40043AE45 /* GoogleService-Info.plist in Resources */,
 				650DD94D21AC8F0A00AEBDD7 /* LaunchScreen.storyboard in Resources */,
 				650DD94A21AC8F0A00AEBDD7 /* Assets.xcassets in Resources */,
 				650DD94821AC8F0900AEBDD7 /* Main.storyboard in Resources */,
-				65512FFE226FF0710084C1E6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
