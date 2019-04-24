@@ -7,5 +7,6 @@ target 'walkMedfordiOS' do
 
   # Pods for walkMedfordiOS
   pod 'Firebase/Core'  
+  pod 'Firebase/Storage'
 
 end

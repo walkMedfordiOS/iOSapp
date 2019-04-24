@@ -8,7 +8,8 @@
 
 import UIKit
 import MapKit
-import Contentful
+import Firebase
+import FirebaseStorage
 
 class LandmarkView: UIViewController, MKMapViewDelegate {
 
@@ -52,22 +53,25 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
      */
     func setUpImage() {
 
-        imageView.image = convertImage()
-    }
-    
-    func convertImage() -> UIImage? {
-//        var strings = cadenaImagen.components(separatedBy: ",")
-//        var bytes = [UInt8]()
-//        for i in 0..<strings.count {
-//            if let signedByte = Int8(strings[i]) {
-//                bytes.append(UInt8(bitPattern: signedByte))
-//            } else {
-//                // Do something with this error condition
-//            }
-//        }
-        let bytes: [UInt8] = [47,57,106,47,52,65,65,81,83,107,90,74,82,103,65,66,65,81,65,65,116,65,67,48,65,65,68,47,52,81,76,85,82,88,104,112,90,103,65,65,84,85,48,65,75,103,65,65,65,65,103,65,67,81,69,79,65,65,73,65,65,65,65,103,65,65,65,65,101,103,69,80,65,65,73,65,65,65,65,71,65,65,65,65,109,103,69,81,65,65,73,65,65,65,65,90,65,65,65,65,111,65,69,83,65,65,77,65,65,65,65,66,65,65,69,65,65,65,69,97,65,65,85,65,65,65,65,66,65,65,65,65,117,103,69,98,65,65,85,65,65,65,65,66,65,65,65,65,119,103,69,111,65,65,77,65,65,65,65,66,65,65,73,65,65,65,69,121,65,65,73,65,65,65,65,85,65,65,65,65,121,111,100,112,65,65,81,65,65,65,65,66,65,65,65,65,51,103,65,65,65,65,65,103,73,67,65,103,73,67,65,103,73,67,65,103,73,67,65,103,73,67,65,103,73,67,65,103,73,67,65,103,73,67,65,103,73,67,65,103,73,67,65,103,65,69,78,104,98,109,57,117,65,69,78,104,98,109,57,117,73,70,66,118,100,50,86,121,85,50,104,118,100,67,66,84,87,68,69,49,77,67,66,74,85,119,65,65,65,65,65,65,116,65,65,65,65,65,69,65,65,65,67,48,65,65,65,65,65,84,73,119,77,84,73,54,77,68,99,54,77,106,69,103,77,84,65,54,77,122,89,54,78,68,107,65,65]
-        let datos: NSData = NSData(bytes: bytes, length: bytes.count)
-        return UIImage(data: datos as Data) // Note it's optional. Don't force unwrap!!!
+        var filename = landmark.title.replacingOccurrences(of: " ", with: "_")
+        filename = filename.replacingOccurrences(of: "/", with: "_")
+        filename = filename.replacingOccurrences(of: "\\", with: "_")
+        filename = filename.replacingOccurrences(of: ":", with: "_")
+        filename = filename.replacingOccurrences(of: ",", with: "_")
+        filename += ".jpg"
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
+        let imagesRef = storageRef.child(filename)
+       
+        imagesRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("ERROR: \(error)")
+            } else {
+                self.imageView.image = UIImage(data: data!)
+            }
+        }
     }
     
     /*
