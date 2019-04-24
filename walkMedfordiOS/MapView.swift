@@ -28,6 +28,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var desiredRoute: Route?                            // User's chosen route
     var routePolyline : MKPolyline?                     // Line for route that visits landmarks
     var directionsToRoutePolyline : MKPolyline?         // Line for user to follow to get to the start of the route
+    var landmarks = [Landmark]()
     
     // Variable for selected landmark by user
     var selectedLandmark: Landmark!
@@ -53,6 +54,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         cancelRouteButton.isHidden = true
         centerOnUser()
         setUpUserTrackingButton()
+        getAllLandmarks()
     }
     
     /*
@@ -154,6 +156,54 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         routePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
         directionsToRoutePolyline = MKPolyline(coordinates: &polyInit, count: polyInit.count)
+    }
+    
+    /*
+     Purpose: To get all the landmarks
+     Notes:
+     */
+    func getAllLandmarks() {
+        dataTask?.cancel()
+        
+        if var urlComponents = URLComponents(string: "https://walkmedford.herokuapp.com/allLandmarks") {
+            urlComponents.query = ""
+            
+            guard let url = urlComponents.url else { return }
+            dataTask = defaultSession.dataTask(with: url) { data, response, error in
+                defer { self.dataTask = nil }
+                
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                } else if let data = data,
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 {
+                    
+                    let json = JSON(data)
+                    
+                    // Adds landmarks to array of type Landmark
+                    for (_,subJson):(String, JSON) in json {
+                        let newLandmark = Landmark(id: subJson["landmark_id"].intValue,
+                                                   title: subJson["landmark_name"].stringValue,
+                                                   latitude: subJson["landmark_latitude"].doubleValue,
+                                                   longitude: subJson["landmark_longitude"].doubleValue,
+                                                   address: subJson["landmark_address"].stringValue,
+                                                   description: subJson["landmark_description"].stringValue)
+                        self.landmarks.append(newLandmark)
+                    }
+                    
+                    for landmark in self.landmarks {
+                        let landmarkAnnotation = LandmarkAnnotation(title: landmark.title,
+                                                                    subtitle: landmark.address,
+                                                                    coordinate: landmark.location)
+                        self.mapView.addAnnotation(landmarkAnnotation)
+                    }
+                    
+                    self.centerOnUser()
+                }
+            }
+        }
+        
+        dataTask?.resume()
     }
     
     /*
@@ -366,9 +416,17 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
      */
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        for landmark in desiredRoute!.landmarks {
-            if (landmark.title == view.annotation?.title) {
-                selectedLandmark = landmark
+        if desiredRoute != nil {
+            for landmark in desiredRoute!.landmarks {
+                if (landmark.title == view.annotation?.title) {
+                    selectedLandmark = landmark
+                }
+            }
+        } else if landmarks.count != 0 {
+            for landmark in landmarks {
+                if (landmark.title == view.annotation?.title) {
+                    selectedLandmark = landmark
+                }
             }
         }
         
@@ -437,6 +495,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         clearMap()
         cancelRouteButton.isHidden = true
         directionsInMapsButton.isHidden = true
+        getAllLandmarks()
     }
     
 }
