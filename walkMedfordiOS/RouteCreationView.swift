@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FirebaseStorage
 
 class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -138,6 +139,7 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         if (allFieldsFilled()) {
             print("Creating Route")
             sendRoute()
+            sendImages()
         } else {
             errorView.isHidden = false
         }
@@ -311,6 +313,42 @@ class RouteCreationView: UIViewController, UITableViewDataSource, UITableViewDel
         }
             
         dataTask?.resume()
+    }
+    
+    /*
+     Purpose: To send all images to Firebase Storage
+     Notes:
+     */
+    func sendImages() {
+    
+        for (index, image) in images.enumerated() {
+        
+            var filename = landmarks[index].title.replacingOccurrences(of: " ", with: "_")
+            filename = filename.replacingOccurrences(of: "/", with: "_")
+            filename = filename.replacingOccurrences(of: "\\", with: "_")
+            filename = filename.replacingOccurrences(of: ":", with: "_")
+            filename = filename.replacingOccurrences(of: ",", with: "_")
+            filename += ".jpg"
+        
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+        
+            let imagesRef = storageRef.child(filename)
+            let data: NSData = image.jpegData(compressionQuality: 1)! as NSData
+        
+            imagesRef.putData(data as Data, metadata: metadata) { (metadata, error) in
+                guard let metadata = metadata else {
+                    print("ERROR")
+                    return
+                }
+                // Metadata contains file metadata such as size, content-type.
+                let size = metadata.size
+                print(size)
+            }
+        }
     }
     
     /*

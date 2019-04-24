@@ -30,6 +30,10 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
     // Selected landmark variable
     var landmark: Landmark!
     
+    // To show loading
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     /*
      Purpose: To load variables when view has loaded
      Notes:
@@ -42,6 +46,9 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
         titleLabel.text = landmark.title
         addressLabel.text = landmark.address
         descriptionLabel.text = landmark.description
+        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         
         setUpImage()
         setUpMap()
@@ -70,6 +77,8 @@ class LandmarkView: UIViewController, MKMapViewDelegate {
                 print("ERROR: \(error)")
             } else {
                 self.imageView.image = UIImage(data: data!)
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
             }
         }
     }

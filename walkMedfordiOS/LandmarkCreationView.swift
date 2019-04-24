@@ -296,6 +296,17 @@ class LandmarkCreationView: UIViewController, UINavigationControllerDelegate, UI
             print("Landmark Image Required")
             errorLabel.text = errorLabel.text! + "Landmark Image Required \n"
             filled = false
+            return filled
+        }
+        
+        let image = landmarkImage.image!
+        let data: NSData = image.jpegData(compressionQuality: 1)! as NSData
+        let imageSize = data.length
+        
+        if (imageSize > 1048576) {
+            print("Landmark Image is Too Large")
+            errorLabel.text = errorLabel.text! + "Landmark Image is Too Large \n"
+            filled = false
         }
         
         return filled
