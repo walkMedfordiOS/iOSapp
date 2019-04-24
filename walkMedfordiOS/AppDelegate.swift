@@ -9,7 +9,6 @@ import UIKit
 import CoreData
 //import Fabric
 //import Crashlytics
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //Fabric.with([Crashlytics.self])
-        FirebaseApp.configure()
         return true
     }
     
