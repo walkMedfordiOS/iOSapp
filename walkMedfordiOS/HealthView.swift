@@ -59,13 +59,35 @@ class HealthView: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let total = Total(context: PersistenceService.context)
+        getTodaysSteps { (result) in
+            print("\(result)")
+            DispatchQueue.main.async {
+                self.stepsLabel.text = "Steps Walked Today: \(result)" }
+            print(total.steps)
+            total.steps = total.steps + result
+            self.totalStepsLabel.text = "Total Steps: \(total.steps)"
+        }
+        getTodaysCalories { (result) in
+            print("\(result)")
+            DispatchQueue.main.async {
+                self.caloriesLabel.text = "Calories Burned Today: \(result)" }
+            total.calories = total.calories + result
+            self.totalCaloriesLabel.text = "Total Calories: \(total.calories)"
+        }
+        PersistenceService.saveContext()
+    }
+    }
+    
     func getTodaysSteps(completion: @escaping (Double) -> Void) {
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         let now = Date()
-        //let startOfDay = Calendar.current.startOfDay(for: now)
+        let startOfDay = Calendar.current.startOfDay(for: now)
         if let date = UserDefaults.standard.object(forKey: "date") as? Date {
             print(date)
-        let predicate = HKQuery.predicateForSamples(withStart: date, end: now, options: .strictStartDate)
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
         let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (_, result, error) in
             var resultCount = 0.0
             guard let result = result else {
@@ -86,10 +108,10 @@ class HealthView: UIViewController {
     func getTodaysCalories(completion: @escaping (Double) -> Void) {
         let caloriesQuantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         let now = Date()
-        //let startOfDay = Calendar.current.startOfDay(for: now)
+        let startOfDay = Calendar.current.startOfDay(for: now)
         if let date = UserDefaults.standard.object(forKey: "date") as? Date {
             print(date)
-            let predicate = HKQuery.predicateForSamples(withStart: date, end: now, options: .strictStartDate)
+            let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
             let query = HKStatisticsQuery(quantityType: caloriesQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (_, result, error) in
                 var resultCount = 0.0
                 guard let result = result else {
