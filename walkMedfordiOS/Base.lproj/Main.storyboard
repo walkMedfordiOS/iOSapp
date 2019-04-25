@@ -1019,29 +1019,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78n-Lq-GhM">
-                                <rect key="frame" x="16" y="567" width="343" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Find Out Health Data">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="showNumberSteps:" destination="VIa-mg-aQ3" eventType="touchUpInside" id="XgI-0O-dn9"/>
-                                    <action selector="showNumberSteps:" destination="Awj-cx-ySX" eventType="touchUpInside" id="obN-K6-3m3"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" secondItem="UV1-D4-e2s" secondAttribute="trailing" constant="16" id="15X-RF-7hH"/>
                             <constraint firstItem="FXU-fO-1Pc" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="16" id="2fb-aD-ygG"/>
                             <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" secondItem="FXU-fO-1Pc" secondAttribute="trailing" constant="16" id="6gu-7y-5oz"/>
-                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="top" secondItem="78n-Lq-GhM" secondAttribute="bottom" constant="8" id="75W-zJ-wdg"/>
                             <constraint firstItem="4Oy-4Y-eG2" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="16" id="8YK-IS-Sb1"/>
                             <constraint firstItem="UV1-D4-e2s" firstAttribute="top" secondItem="WKz-AB-W03" secondAttribute="bottom" constant="8" id="Bof-a5-Gcp"/>
                             <constraint firstItem="ogV-4t-T3n" firstAttribute="centerX" secondItem="74f-Ys-g5w" secondAttribute="centerX" id="CeT-cQ-fNy"/>
@@ -1050,7 +1033,6 @@
                             <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" secondItem="Wwk-Ze-MKM" secondAttribute="trailing" constant="16" id="IDz-t5-7pc"/>
                             <constraint firstItem="4Oy-4Y-eG2" firstAttribute="top" secondItem="ogV-4t-T3n" secondAttribute="bottom" constant="8" id="IwZ-LT-gRt"/>
                             <constraint firstItem="WKz-AB-W03" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="16" id="OGI-g4-BdT"/>
-                            <constraint firstItem="78n-Lq-GhM" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="16" id="P9t-vb-2LE"/>
                             <constraint firstItem="FXU-fO-1Pc" firstAttribute="top" secondItem="4Oy-4Y-eG2" secondAttribute="bottom" constant="8" id="Qeq-04-naN"/>
                             <constraint firstItem="Wwk-Ze-MKM" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="16" id="RLW-SY-iVH"/>
                             <constraint firstItem="Wwk-Ze-MKM" firstAttribute="top" secondItem="Cqc-2w-kuH" secondAttribute="bottom" constant="8" id="Sjy-k1-g1d"/>
@@ -1060,12 +1042,10 @@
                             <constraint firstItem="Cqc-2w-kuH" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="16" id="eoo-p0-sXh"/>
                             <constraint firstItem="Ja6-Zt-MV0" firstAttribute="top" secondItem="FXU-fO-1Pc" secondAttribute="bottom" constant="8" id="hNy-iJ-5fz"/>
                             <constraint firstItem="Wwk-Ze-MKM" firstAttribute="top" secondItem="Cqc-2w-kuH" secondAttribute="bottom" constant="8" id="iUO-nc-5v3"/>
-                            <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" secondItem="78n-Lq-GhM" secondAttribute="trailing" constant="16" id="k3c-cM-t9d"/>
                             <constraint firstItem="UV1-D4-e2s" firstAttribute="top" secondItem="WKz-AB-W03" secondAttribute="bottom" constant="8" id="kiK-7z-wPl"/>
                             <constraint firstItem="4Oy-4Y-eG2" firstAttribute="top" secondItem="ogV-4t-T3n" secondAttribute="bottom" constant="8" id="lak-6r-iRP"/>
                             <constraint firstItem="ogV-4t-T3n" firstAttribute="top" secondItem="uoR-3Z-3tG" secondAttribute="top" constant="10" id="mIT-Qo-1Pz"/>
                             <constraint firstItem="WKz-AB-W03" firstAttribute="top" secondItem="Ja6-Zt-MV0" secondAttribute="bottom" constant="8" id="mTF-eI-Aih"/>
-                            <constraint firstItem="Cqc-2w-kuH" firstAttribute="top" secondItem="78n-Lq-GhM" secondAttribute="bottom" constant="8" id="oTn-Nd-ute"/>
                             <constraint firstItem="UV1-D4-e2s" firstAttribute="leading" secondItem="uoR-3Z-3tG" secondAttribute="leading" constant="16" id="q92-Bm-HGC"/>
                             <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" secondItem="Ja6-Zt-MV0" secondAttribute="trailing" constant="16" id="qh3-3F-C8q"/>
                             <constraint firstItem="uoR-3Z-3tG" firstAttribute="trailing" secondItem="WKz-AB-W03" secondAttribute="trailing" constant="16" id="z2K-ov-1yW"/>

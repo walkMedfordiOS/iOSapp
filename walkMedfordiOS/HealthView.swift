@@ -79,7 +79,7 @@ class HealthView: UIViewController {
         }
         PersistenceService.saveContext()
     }
-    }
+    
     
     func getTodaysSteps(completion: @escaping (Double) -> Void) {
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
@@ -129,32 +129,32 @@ class HealthView: UIViewController {
         }
     }
     
-    @IBAction func showNumberSteps(_ sender: UIButton) {
-        //self.stepsLabel.text = "Hello1"
-        /*print("steps")
-        retrieveStepCount(completion: {steps in
-            print("steps")
-            self.stepsLabel.text = "Hello!"
-            self.stepsLabel.text = String(format: "%f", steps)
-            
-        })*/
-        let total = Total(context: PersistenceService.context)
-        getTodaysSteps { (result) in
-            print("\(result)")
-            DispatchQueue.main.async {
-                self.stepsLabel.text = "Steps Walked Today: \(result)" }
-            print(total.steps)
-            total.steps = total.steps + result
-            self.totalStepsLabel.text = "Total Steps: \(total.steps)"
-        }
-        getTodaysCalories { (result) in
-            print("\(result)")
-            DispatchQueue.main.async {
-                self.caloriesLabel.text = "Calories Burned Today: \(result)" }
-            total.calories = total.calories + result
-            self.totalCaloriesLabel.text = "Total Calories: \(total.calories)"
-        }
-        PersistenceService.saveContext()
-    }
+//    @IBAction func showNumberSteps(_ sender: UIButton) {
+//        //self.stepsLabel.text = "Hello1"
+//        /*print("steps")
+//        retrieveStepCount(completion: {steps in
+//            print("steps")
+//            self.stepsLabel.text = "Hello!"
+//            self.stepsLabel.text = String(format: "%f", steps)
+//
+//        })*/
+//        let total = Total(context: PersistenceService.context)
+//        getTodaysSteps { (result) in
+//            print("\(result)")
+//            DispatchQueue.main.async {
+//                self.stepsLabel.text = "Steps Walked Today: \(result)" }
+//            print(total.steps)
+//            total.steps = total.steps + result
+//            self.totalStepsLabel.text = "Total Steps: \(total.steps)"
+//        }
+//        getTodaysCalories { (result) in
+//            print("\(result)")
+//            DispatchQueue.main.async {
+//                self.caloriesLabel.text = "Calories Burned Today: \(result)" }
+//            total.calories = total.calories + result
+//            self.totalCaloriesLabel.text = "Total Calories: \(total.calories)"
+//        }
+//        PersistenceService.saveContext()
+//    }
     
 }
