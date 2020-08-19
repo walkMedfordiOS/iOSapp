@@ -10,6 +10,8 @@ The purpose of this app is to show users the historical landmarks around Medford
 
 <img src="https://github.com/walkMedfordiOS/iOSapp/blob/master/AvailableLandmarks.png" width="200" height="353" />
 
+### Functionality
+
 A user can select an established route that will walk them past different landmarks
 
 <img src="https://github.com/walkMedfordiOS/iOSapp/blob/master/AvailableRoutes.png" width="200" height="353" /> <img src="https://github.com/walkMedfordiOS/iOSapp/blob/master/RouteMap.png" width="200" height="353" />
