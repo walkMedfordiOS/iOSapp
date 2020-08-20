@@ -1,7 +1,7 @@
 # WalkMedford iOS App <img src="https://github.com/walkMedfordiOS/iOSapp/blob/master/WalkMedford_LogoOnly.png" width="50" height="50"/>
 
 ### Background
-WalkMedford is an iOS app that was developed for the Senior Capstone Project for the Computer Science Degree at Tufts University from September 2018 to May 2019. This app was developed for the local government organization WalkMedford of Medford, MA
+WalkMedford is an iOS app that was developed for the Senior Capstone Project for the Computer Science Degree at Tufts University from September 2018 to May 2019. This app was developed by [Sam Hollingsworth](https://github.com/samhollingsworth) and [Craig Neubieser](https://github.com/19CraigDN) for the local government organization WalkMedford of Medford, MA.
 
 <img src="https://github.com/walkMedfordiOS/iOSapp/blob/master/BlankMap.png" alt="Blank map" width="200" height="353"/>
 
