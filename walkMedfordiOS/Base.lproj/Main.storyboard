@@ -159,6 +159,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caR-On-58y">
                                 <rect key="frame" x="16" y="54" width="50" height="50"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="YlE-lz-EXv"/>
                                     <constraint firstAttribute="height" constant="50" id="cG1-ck-c1S"/>
                                 </constraints>
                                 <state key="normal" image="logo"/>
@@ -203,7 +204,6 @@
                             <constraint firstItem="LTc-qe-TRr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dQg-YR-pU6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bd5-hO-Z3A" secondAttribute="bottom" constant="15" id="qho-as-mko"/>
                             <constraint firstItem="4kS-tK-RGh" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="s1z-xm-Ryn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="caR-On-58y" secondAttribute="trailing" constant="309" id="sxy-0y-pRW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

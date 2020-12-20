@@ -7,16 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>WalkMedford</string>
 	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>MKDirectionsRequest</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.apple.maps.directionsrequest</string>
-			</array>
-		</dict>
-	</array>
+	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.8</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -37,10 +28,6 @@
 	<true/>
 	<key>MGLMapboxAccessToken</key>
 	<string>pk.eyJ1Ijoid2Fsa21lZGZvcmQiLCJhIjoiY2p0b3VoNmsxMGMzZTRibWVwZnF2NDdrdyJ9.1ed4n1_vAqlyrggSuvmYqA</string>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array>
-		<string>MKDirectionsModePedestrian</string>
-	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>For Augmented Reality</string>
 	<key>NSHealthShareUsageDescription</key>
